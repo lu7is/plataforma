@@ -144,7 +144,8 @@ $rol = $_SESSION['rol'];
                                                  <textarea name="" id="descripcion" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
                                              </div> <br>
                                              <button type="submit" class="btn btn-primary btn-block text-center">Guardar Tarea</button> 
-                                        </form>
+                                             <input type="hidden" id="guardar" name="guardar" value="guardar">
+                                            </form>
                                     </div>
                                 </div>
                                

@@ -5,8 +5,8 @@ if(!empty($_POST)){
 
     $Search= new Busca();
     
-     $Nombre = $_POST['Nombre'];
-    
+     $name = $_POST['name'];
+     $name = $_POST['name'];
 
     $Search->Buscar($Nombre);
     

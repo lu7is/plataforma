@@ -26,12 +26,18 @@ $(document).ready(function(){
 
 
 $('#task-form').submit(function (e) {
+   
+   
     const datos_post ={
         name: $('#name').val(),
         descripcion: $('#descripcion').val(),
+       
 
     };
-    $.post('../../app/controladores')
+    $.post('../../app/controladores/guardarTarea.php',datos_post,function(response){
+        console.log(response);
+        $('#task-form').trigger('reset');
+    });
 
     
     e.preventDefault();
