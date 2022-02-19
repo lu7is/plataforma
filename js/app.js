@@ -7,7 +7,7 @@ $(document).ready(function(){
         if($('#Nombre').val()){
             let Nombre = $('#Nombre').val();
         $.ajax({
-            url: '../../app/controladores/tareaController.php',
+            url: '../../app/controladores/tareaBuscarController.php',
             type: 'POST',
             data:{Nombre},
             success: function(response){
@@ -34,7 +34,7 @@ $('#task-form').submit(function (e) {
        
 
     };
-    $.post('../../app/controladores/guardarTarea.php',datos_post,function(response){
+    $.post('../../app/controladores/buscarTarea.php',datos_post,function(response){
         console.log(response);
         $('#task-form').trigger('reset');
     });
