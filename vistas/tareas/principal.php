@@ -52,50 +52,114 @@ $rol = $_SESSION['rol'];
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Inicio</div>
+                        <div class="sb-sidenav-menu-heading">Inicio:</div>
                             <a class="nav-link" href="../dashboard.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Pagina Principal
                             </a>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Usuarios
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="usuarios/principal.php">Usuarios Registrados</a>
+                                    <a class="nav-link" href="../usuarios/principal.php">Usuarios Registrados</a>
                                  </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Bodegas
+                            <a class="nav-link collapsed" href="#tarea" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Tareas
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="tarea" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="tareas/principal.php">Registrar</a>
+                                    <a class="nav-link" href="usuarios/principal.php">Tareas </a>
+                                 </nav>
+                            </div>
+
+                            <div class="sb-sidenav-menu-heading">Logistico:</div>
+                            
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div> 
+                                Bodegas
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> <i class="fa-solid fa-cheese"></i>
                             </a>
 
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Index
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Registrar  
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
                                     </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="../tables.html">futuro</a>   
-                                        </nav>
-                                    </div>
-                                    
-                                    
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Separación
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Despachos
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
                                 </nav>
                             </div>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Proveedores
+
+                            <div class="sb-sidenav-menu-heading">Operativo:</div>
+                            <a class="nav-link collapsed" href="#pro" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
+                                Productividad 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <a class="nav-link" href="tareas/principal.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Tareas
+
+                            <div class="collapse" id="pro" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Producción 
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Nomina
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Asistencia
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Gastos
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                </nav>
+                            </div>
+
+
+                            <div class="sb-sidenav-menu-heading">Materia prima:</div>
+                            
+                            <a class="nav-link collapsed" href="#mate" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                                Proveedores 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
+
+                            <div class="collapse" id="mate" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Registrar 
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Pedidos
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Inventario
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                   
+                                </nav>
+                            </div> 
                             
                         </div>
                     </div>
@@ -108,101 +172,65 @@ $rol = $_SESSION['rol'];
             </div>
             <!-- empieza la pagina principal -->
 <div id="layoutSidenav_content">
+    
       <main>
         <div class="container-fluid px-6">
-            <h1 class="mt-4">Listado de tareas</h1>
-                <div class="form-row d-flex">
-                            <div class="form-group col-md-6 p-2">    
-                                 <input type="Search" class="form-control" min="1" pattern="^[0-9]+" id="Nombre" placeholder="Buscar" required >
-                            </div>
-                            
+         <div class="card my-4 "  id="resultado" >        
+            <div class="card-body">
+               <ul id="container">
+                
+            </ul>
+                 </div>
+                </div>
+                <h1 class="mt-4">Registrar tareas</h1>
 
-                                <div class="form-group col-md-6 p-2">
-                                    <button class="btn btn-success my-2 my-sm-0 " type="submit" >
-                                        Buscar
-                                    </button>
-                                </div>
-                 </div> 
-
-                 <div class="card my-4 "  id="resultado" >
-                                <div class="card-body">
-                                    <ul id="container">
-
-                                    </ul>
-                                </div>
-                            </div>
-                 <div class="container p-4">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <form action="" id="task-form"> 
-                                             <div class="form-group">
-                                                 <input type="text" id="name" placeholder="Nueva tarea" class="form-control">
-                                             </div> <br>
-                                             <div class="form-group">
-                                                 <textarea name="" id="descripcion" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
-                                             </div> <br>
-                                             <button type="submit" class="btn btn-primary btn-block text-center">Guardar Tarea</button> 
-                                             <input type="hidden" id="guardar" name="guardar" value="guardar">
-                                            </form>
-                                    </div>
-                                </div>
+                <form method="post" action="" >
+                            <div class="form-row d-flex">
+                                
                                
-                            </div>
-                        </div>
-                    </div>
-                    
-           
-                    <table class="table table-bordered table-sm">
-                        <thead>
-                            <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Descripcion</th>
-                            <th scope="col">Acciones</th>
+                             </div>
+                                
+                              <div class="form-row d-flex">
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="telefono">Telefono:</label>
+                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Telefono" id="Telefono" placeholder="Telefono" required >
+                                </div>
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="direccion">Dirección:</label>
+                                  <select class="form-select" name="Rol" id="Rol"required >
+                                    <option selected>Selecciona El Rol </option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="empleado">Empleado</option>
+                                    <option value="cliente">Cliente</option>
+                                    <option value="proveedor">Proveedor</option>
+                                  </select>
+                                </div>
+                                </div>
+                                
+                            
+                                <div class="form-row d-flex">
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="contraseña">Contraseña:</label>
+                                 
+                                  <textarea name="" id="descripcion" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
+                                </div>
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="direccion">Dirección:</label>
+                                  <select class="form-select" name="Rol" id="Rol"required >
+                                    <option selected>Selecciona El Rol </option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="empleado">Empleado</option>
+                                    <option value="cliente">Cliente</option>
+                                    <option value="proveedor">Proveedor</option>
+                                  </select>
+                                </div>
+                                </div>
+                              <br>
                            
-                            </tr>
-                        </thead>
-                        <tbody id="tareas">
-                            <tr>
-                                
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>
-                                    <button>Eliminar</button>
-                                    <button>Editar</button>
-                                
-                                </td>
-                            </tr>
-                          
-                        </tbody>
-                        </table>
-
-
+                            <button type="button" onclick="Validacion();" class="btn btn-primary">Registrar Usuario</button>
+                            <button type="submit" class="btn btn-warning">Cancelar</button>
+                          </form>
         </div>
-
-                   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </main>
                 
                 
@@ -226,5 +254,10 @@ $rol = $_SESSION['rol'];
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="../../js/app.js"></script>
+
+
+
+
+        
     </body>
 </html>
