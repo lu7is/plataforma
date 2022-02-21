@@ -25,33 +25,28 @@ $(document).ready(function(){
     });
 
 
-$('#task-form').submit(function (e) {
+$('#regi-tarea').submit(function (e) {
    
    
-    const datos_post ={
-        name: $('#name').val(),
-        descripcion: $('#descripcion').val(),
+    const datos_post = {
+        Nonbre: $('#Nonbre').val(),
+        Descrip: $('#Descrip').val(),
+        Prioridad: $('#Prioridad').val(),
+        Estado: $('#Estado').val(),
        
 
     };
-    $.post('../../app/controladores/buscarTarea.php',datos_post,function(response){
+    
+    $.post('../../app/controladores/Tareas/agregarTarea.php',datos_post,function(response){
         console.log(response);
-        $('#task-form').trigger('reset');
+        $('#regi-tarea').trigger('reset');
     });
 
     
     e.preventDefault();
 });
 
-
-
-
-
-
-
-
-    
-    });
+});
 
 
   

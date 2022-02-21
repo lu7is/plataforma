@@ -175,34 +175,26 @@ $rol = $_SESSION['rol'];
     
       <main>
         <div class="container-fluid px-6">
-         <div class="card my-4 "  id="resultado" >        
-            <div class="card-body">
-               <ul id="container">
-                
-            </ul>
-                 </div>
-                </div>
+        
                 <h1 class="mt-4">Registrar tareas</h1>
 
-                <form method="post" action="" >
+                <form id="regi-tarea" >
                             <div class="form-row d-flex">
-                                
-                               
-                             </div>
+                              </div>
                                 
                               <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
-                                  <label for="telefono">Telefono:</label>
-                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Telefono" id="Telefono" placeholder="Telefono" required >
+                                  <label for="nombre">Nombre:</label>
+                                  <input type="text" class="form-control" name="Nonbre" id="Nonbre" placeholder="Nombre" required >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
-                                  <label for="direccion">Dirección:</label>
-                                  <select class="form-select" name="Rol" id="Rol"required >
-                                    <option selected>Selecciona El Rol </option>
-                                    <option value="administrador">Administrador</option>
-                                    <option value="empleado">Empleado</option>
-                                    <option value="cliente">Cliente</option>
-                                    <option value="proveedor">Proveedor</option>
+                                  <label for="Prioridad">Prioridad:</label>
+                                  <select class="form-select" name="Prioridad" id="Prioridad"required >
+                                    <option selected>Selecciona la priridad </option>
+                                    <option value="alta">Alta</option>
+                                    <option value="media">Media</option>
+                                    <option value="baja">Baja</option>
+                                    <option value="ninguna">Ninguna</option>
                                   </select>
                                 </div>
                                 </div>
@@ -210,24 +202,23 @@ $rol = $_SESSION['rol'];
                             
                                 <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
-                                  <label for="contraseña">Contraseña:</label>
-                                 
-                                  <textarea name="" id="descripcion" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
+                                  <label for="descrip">Descripción:</label>
+                                  <textarea name="Descrip" id="Descrip" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
                                 </div>
+
                                 <div class="form-group col-md-6 p-2">
-                                  <label for="direccion">Dirección:</label>
-                                  <select class="form-select" name="Rol" id="Rol"required >
+                                  <label for="direccion">Estado:</label>
+                                  <select class="form-select" name="Estado" id="Estado"required >
                                     <option selected>Selecciona El Rol </option>
-                                    <option value="administrador">Administrador</option>
-                                    <option value="empleado">Empleado</option>
-                                    <option value="cliente">Cliente</option>
-                                    <option value="proveedor">Proveedor</option>
+                                    <option value="activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
+                                    
                                   </select>
                                 </div>
                                 </div>
                               <br>
                            
-                            <button type="button" onclick="Validacion();" class="btn btn-primary">Registrar Usuario</button>
+                            <button type="submit" class="btn btn-primary">Registrar Tarea</button>
                             <button type="submit" class="btn btn-warning">Cancelar</button>
                           </form>
         </div>
