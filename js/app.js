@@ -25,24 +25,17 @@ $(document).ready(function(){
     });
 
 
-$('#regi-tarea').submit(function (e) {
-   
-   
+$('#regi-tarea').submit(function(e) {
     const datos_post = {
         Nonbre: $('#Nonbre').val(),
         Descrip: $('#Descrip').val(),
         Prioridad: $('#Prioridad').val(),
         Estado: $('#Estado').val(),
-       
-
     };
-    
-    $.post('../../app/controladores/Tareas/agregarTarea.php',datos_post,function(response){
+  $.post('../../app/controladores/tareas/agregarTarea.php',datos_post,function(response){
         console.log(response);
         $('#regi-tarea').trigger('reset');
     });
-
-    
     e.preventDefault();
 });
 

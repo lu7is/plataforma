@@ -2,14 +2,14 @@
 
 require_once("../../modelos/tareaModel.php");
 
-if(!empty($_POST)){
+if($_POST){
 
     $Agregar= new Busca();
     
-     $Nonbre = $_POST['Nonbre'];
-     $Descrip = $_POST['Descrip'];
-     $Prioridad = $_POST['Prioridad'];
-     $Estado = $_POST['Estado'];
+      $Nonbre = $_POST['Nonbre'];
+      $Descrip = $_POST['Descrip'];
+      $Prioridad = $_POST['Prioridad'];
+      $Estado = $_POST['Estado'];
 
     $Agregar->Registrar($Nonbre,$Descrip,$Prioridad,$Estado);
     

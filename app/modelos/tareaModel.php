@@ -1,5 +1,6 @@
 <?php
-require_once("../../bd/conexion.php");
+
+require_once($_SERVER['DOCUMENT_ROOT']."../../bd/conexion.php");
 
 class Busca extends BD{
 
@@ -27,13 +28,17 @@ class Busca extends BD{
     }
 
     public function Registrar($Nonbre,$Descrip,$Prioridad,$Estado){
-        $statement = $this->db->prepare("INSERT INTO tareas (nombre, descrip, prioridad, estado) VALUE (:Nonbre. :Descrip, :Prioridad, :Estado)");
+        $statement = $this->db->prepare("INSERT INTO tareas (nombre, descrip, prioridad, estado)
+                                         VALUES (:Nonbre, :Descrip, :Prioridad, :Estado)");
         $statement->bindParam(':Nonbre',$Nonbre);
         $statement->bindParam(':Descrip',$Descrip);
         $statement->bindParam(':Prioridad',$Prioridad);
         $statement->bindParam(':Estado',$Estado);
-
-        $statement->execute();
+        if($statement->execute()){
+            header("location:../../vistas/usuarios/principal.php ");
+        }else{
+            header("location:../../vistas/dashboard.php ");
+        }
         
     }
     

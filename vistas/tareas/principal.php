@@ -183,30 +183,27 @@ $rol = $_SESSION['rol'];
                               </div>
                                 
                               <div class="form-row d-flex">
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="nombre">Nombre:</label>
-                                  <input type="text" class="form-control" name="Nonbre" id="Nonbre" placeholder="Nombre" required >
+                                    <div class="form-group col-md-6 p-2">
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" class="form-control" name="Nonbre" id="Nonbre" placeholder="Nombre" required >
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="Prioridad">Prioridad:</label>
-                                  <select class="form-select" name="Prioridad" id="Prioridad"required >
-                                    <option selected>Selecciona la priridad </option>
-                                    <option value="alta">Alta</option>
-                                    <option value="media">Media</option>
-                                    <option value="baja">Baja</option>
-                                    <option value="ninguna">Ninguna</option>
-                                  </select>
-                                </div>
-                                </div>
-                                
-                            
                                 <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
                                   <label for="descrip">Descripción:</label>
                                   <textarea name="Descrip" id="Descrip" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
                                 </div>
-
+                                
                                 <div class="form-group col-md-6 p-2">
+                                  <label for="direccion">Prioridad:</label>
+                                  <select class="form-select" name="Prioridad" id="Prioridad"required >
+                                    <option selected>Selecciona la prioridad </option>
+                                    <option value="alta">Alta</option>
+                                    <option value="media">Media</option>
+                                    <option value="baja">Baja</option>
+                                    <option value="ninguna">Ninguna</option>
+                                    
+                                  </select>
                                   <label for="direccion">Estado:</label>
                                   <select class="form-select" name="Estado" id="Estado"required >
                                     <option selected>Selecciona El Rol </option>
@@ -215,7 +212,9 @@ $rol = $_SESSION['rol'];
                                     
                                   </select>
                                 </div>
+                                
                                 </div>
+                                
                               <br>
                            
                             <button type="submit" class="btn btn-primary">Registrar Tarea</button>
