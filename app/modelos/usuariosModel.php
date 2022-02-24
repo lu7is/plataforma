@@ -1,6 +1,5 @@
 <?php
-require ("../../bd/conexion.php");
-
+require("../../bd/conexion.php");
 
 class Usuarios extends BD {
 

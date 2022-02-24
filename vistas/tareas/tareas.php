@@ -172,80 +172,33 @@ $rol = $_SESSION['rol'];
             </div>
             <!-- empieza la pagina principal -->
 <div id="layoutSidenav_content">
+    
       <main>
         <div class="container-fluid px-6">
-            <h1 class="mt-4">Listado de tareas</h1>
-                <div class="form-row d-flex">
-                            <div class="form-group col-md-6 p-2">    
-                                 <input type="Search" class="form-control" min="1" pattern="^[0-9]+" id="Nombre" placeholder="Buscar" required >
-                            </div>
-                            
+        
+                <h1 class="mt-4">Listado de tareas</h1>
+                <p>
+                    <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Link with href
+                    </a>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Button with data-bs-target
+                    </button>
+                </p>
 
-                                <div class="form-group col-md-6 p-2">
-                                    <button class="btn btn-success my-2 my-sm-0 " type="submit" >
-                                        Buscar
-                                    </button>
-                                </div>
-                 </div> 
 
-                 <div class="card my-4 "  id="resultado" >
-                                <div class="card-body">
-                                    <ul id="container">
-
-                                    </ul>
-                                </div>
-                            </div>
-                 <div class="container p-4">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <form action="" id="task-form"> 
-                                             <div class="form-group">
-                                                 <input type="text" id="name" placeholder="Nueva tarea" class="form-control">
-                                             </div> <br>
-                                             <div class="form-group">
-                                                 <textarea name="" id="descripcion" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
-                                             </div> <br>
-                                             <button type="submit" class="btn btn-primary btn-block text-center">Guardar Tarea</button> 
-                                             <input type="hidden" id="guardar" name="guardar" value="guardar">
-                                            </form>
-                                    </div>
-                                </div>
-                               
-                            </div>
-                        </div>
+                    <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
                     </div>
-                    
-           
-                    
+                    </div>
 
-
+                    <div id="lista">
+                        
+                    </div>
+                
         </div>
-
-                   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </main>
+      </main>
                 
                 
                 <footer class="py-4 bg-grey mt-auto">
@@ -268,5 +221,11 @@ $rol = $_SESSION['rol'];
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="../../js/app.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
+        
     </body>
 </html>

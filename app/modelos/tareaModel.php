@@ -1,6 +1,5 @@
 <?php
-
-require_once($_SERVER['DOCUMENT_ROOT']."../../bd/conexion.php");
+require("conexion.php");
 
 class Busca extends BD{
 
@@ -34,15 +33,29 @@ class Busca extends BD{
         $statement->bindParam(':Descrip',$Descrip);
         $statement->bindParam(':Prioridad',$Prioridad);
         $statement->bindParam(':Estado',$Estado);
-        if($statement->execute()){
-            header("location:../../vistas/usuarios/principal.php ");
-        }else{
-            header("location:../../vistas/dashboard.php ");
+        $statement->execute();
+          
         }
-        
-    }
-    
 
+    public function Listar(){
+       // $rows = null;
+        $statement = $this->db->prepare("SELECT * FROM tareas ");
+        $statement->execute();
+
+        $json = array();
+
+        while($row = $statement->fetch()){  
+            $json[] = array(
+                'nombre' => $row['nombre'],
+                'descrip' => $row['descrip'],
+                'prioridad' => $row['prioridad'],
+                'estado' => $row['estado'],
+                'id' => $row['id']
+         );
+         $jsonstring = json_encode($json);
+         echo $jsonstring;
+        }
+    }
 
 }
 
