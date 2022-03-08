@@ -68,10 +68,11 @@ $(document).ready(function () {
 
                 tarea.forEach(tarea => {
                     template += ` 
-        <div class="card" taskId = " ${tarea.id} ">
+            <div class="card" taskId = " ${tarea.id} ">
             <div class="card-body " > 
-                    <p> ${tarea.nombre} <h6>prioridad</h6> ${tarea.prioridad}  </p>
-                    <p> ${tarea.descrip} - ${tarea.estado}  </p>
+            
+                    <p> ${tarea.nombre} <h6>PRIORIDAD:</h6> ${tarea.prioridad}  </p>
+                    <p> ${tarea.descrip} <h6>ESTADO:</h6> ${tarea.estado}  </p>
                     <a class="eliminar btn btn-danger" >Eliminar</a>  <a class=" editar btn btn-warning" data-bs-toggle="modal" data-bs-target="#registrar">Editar</a>
                     
                  <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
@@ -124,7 +125,7 @@ $(document).ready(function () {
                                             
                                           <br>
                                        
-                                        <button type="submit" class="btn btn-primary">Registrar Tarea</button>
+                                        <button type="submit" class=" regi_tare btn btn-primary">Registrar Tarea</button>
                                         <button type="button" class="btn bg-warning" data-bs-dismiss="modal" aria-label="close">Cancelar</button>
                                       </form>
                                         </div>
@@ -143,7 +144,7 @@ $(document).ready(function () {
 
 
     $(document).on('click', '.editar', function () {
-
+     
         let element = $(this)[0].parentElement.parentElement;
         let Id = $(element).attr('taskId');
 
@@ -157,8 +158,6 @@ $(document).ready(function () {
         $('#Estado').val(tarea.estado);
         $('#taskId').val(tarea.id)
         
-        });
-
         $('#registrar_modal').submit(function (e) {
             const tarea = {
                 
@@ -166,33 +165,63 @@ $(document).ready(function () {
                 Descrip: $('#Descrip').val(),
                 Prioridad: $('#Prioridad').val(),
                 Estado: $('#Estado').val(),
-                Id: $('#taskId').val()
-                
-
+                Id: $('#taskId').val(),
+                  
             };
     
             $.post('../../app/controladores/tareas/actualizarTarea.php', tarea, function (response) {
-    
-                console.log(response);
-                $('#regi-tarea').trigger('reset');
-                window.location.replace("tareas.php");
+                Swal.fire({
+                    title: 'Informacion editada?',
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Continuar!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        console.log(response);
+                        $('#regi-tarea').trigger('reset');
+                        window.location.replace("tareas.php");
+                    }
+                });
+                
             })
             e.preventDefault();
-    
-    
-    
-    
+           
+       });
         });
+    });
 
 
+
+
+
+
+/*
+    $(document).on('click','', function(){
+        Swal.fire({
+            title: 'Estas seguro?',
+            text: "Esta actividad no tiene regreso!",
+            icon: 'warning',
+            showCancelButton: 'cancelar         ',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, eliminar!'
+        })
 
     });
 
+
     
+*/
 
 
 
 
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////
     $(document).on('click', '.eliminar', function () {
 
         Swal.fire({

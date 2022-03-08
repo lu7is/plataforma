@@ -101,11 +101,9 @@ class Busca extends BD{
         $statement->bindParam(':Descrip',$Descrip);
         $statement->bindParam(':Prioridad',$Prioridad);
         $statement->bindParam(':Estado',$Estado);
-        if($statement->execute()){
-           echo "si agrego";
-        }else{
-           echo "no mi papa";
-        }
+        $statement->execute();
+          
+        
     }
 
 

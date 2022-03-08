@@ -12,7 +12,5 @@ if($_POST){
 
     $control->Actualizar($Id, $Nonbre, $Descrip, $Prioridad, $Estado);
     
-}else{
-   header("location:../../vistas/dashboard.php ");
 }
 ?>
