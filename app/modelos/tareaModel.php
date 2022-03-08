@@ -42,20 +42,74 @@ class Busca extends BD{
         $statement = $this->db->prepare("SELECT * FROM tareas ");
         $statement->execute();
 
-        $json = array();
+        $json= array();
 
         while($row = $statement->fetch()){  
-            $json[] = array(
+          $json[]  = array( 
                 'nombre' => $row['nombre'],
                 'descrip' => $row['descrip'],
                 'prioridad' => $row['prioridad'],
                 'estado' => $row['estado'],
                 'id' => $row['id']
-         );
-         $jsonstring = json_encode($json);
+          ); 
+        }
+        $jsonstring = json_encode($json);
          echo $jsonstring;
+    }
+
+    public function Eliminar($Id){
+        $statement = $this->db->prepare("DELETE FROM tareas WHERE id = :Id ");
+        $statement->bindParam(':Id', $Id);
+        if($statement->execute()){
+            die('si claro ');
+        }else{
+           echo "jumm parece que si ";
+        }
+        
+        
+    }
+
+    public function Listar_id($Id){
+        // $rows = null;
+         $statement = $this->db->prepare("SELECT *  FROM tareas WHERE id = :Id ");
+         $statement->bindParam(':Id', $Id);
+         $statement->execute();
+ 
+         $json= array();
+         while($row = $statement->fetch()){  
+           $json[]  = array( 
+             'nombre' => $row['nombre'],
+             'descrip' => $row['descrip'],
+             'prioridad' => $row['prioridad'],
+             'estado' => $row['estado'],
+             'id' => $row['id']
+           );
+ 
+          
+         }
+ 
+         $jsonstring = json_encode($json[0]);
+          echo $jsonstring;
+     }
+
+
+     public function Actualizar($Id, $Nonbre, $Descrip, $Prioridad, $Estado){
+        $statement = $this->db->prepare("UPDATE tareas SET nombre =:Nonbre, descrip = :Descrip, prioridad = :Prioridad,
+                                        estado = :Estado WHERE id = :Id");
+        $statement->bindParam(':Id',$Id);
+        $statement->bindParam(':Nonbre',$Nonbre);
+        $statement->bindParam(':Descrip',$Descrip);
+        $statement->bindParam(':Prioridad',$Prioridad);
+        $statement->bindParam(':Estado',$Estado);
+        if($statement->execute()){
+           echo "si agrego";
+        }else{
+           echo "no mi papa";
         }
     }
+
+
+
 
 }
 

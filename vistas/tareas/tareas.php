@@ -74,8 +74,8 @@ $rol = $_SESSION['rol'];
                             </a>
                             <div class="collapse" id="tarea" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="tareas/principal.php">Registrar</a>
-                                    <a class="nav-link" href="usuarios/principal.php">Tareas </a>
+                                    <a class="nav-link" href="principal.php">Registrar</a>
+                                    <a class="nav-link" href="#">Tareas </a>
                                  </nav>
                             </div>
 
@@ -177,25 +177,15 @@ $rol = $_SESSION['rol'];
         <div class="container-fluid px-6">
         
                 <h1 class="mt-4">Listado de tareas</h1>
-                <p>
-                    <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        Link with href
-                    </a>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Button with data-bs-target
-                    </button>
-                </p>
-
-
-                    <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                    </div>
-                    </div>
+                
 
                     <div id="lista">
-                        
+                   
+           
                     </div>
+
+               
+
                 
         </div>
       </main>

@@ -192,7 +192,7 @@
                   <div class="container">
                     <form method="post" action="../../app/controladores/editarUsuario.php" >
                           <div class="form-group col-md-6 p-2">
-                            <input type="text" name="Id" class="form-control" value="<?php echo $id; ?>" >
+                            <input type="hidden" name="Id" class="form-control" value="<?php echo $id; ?>" >
                           </div>
                                 <?php
                                 if($Editar !=null){
