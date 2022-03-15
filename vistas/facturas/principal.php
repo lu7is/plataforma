@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once('../../app/modelos/usuariosModel.php');
 $id= $_SESSION['id'];
 if($id == null ){
     header("location:auth/index.php");
@@ -8,7 +7,7 @@ if($id == null ){
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $rol = $_SESSION['rol'];
-$clientes = new Usuarios();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -89,7 +88,7 @@ $clientes = new Usuarios();
                             </a>
                             <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Registrar</a>
+                                    <a class="nav-link" href="../bodegas/principal.php">Registrar</a>
                                     <a class="nav-link" href="separar.php">Separacion </a>
                                     <a class="nav-link" href="despachos.php">Despachos </a>
                                     
@@ -105,7 +104,7 @@ $clientes = new Usuarios();
                             </a>
                             <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../facturas/principal.php">Facturacion</a>
+                                    <a class="nav-link" href="#">Facturacion</a>
                                     <a class="nav-link" href="tareas/tareas.php">Producción </a>
                                     <a class="nav-link" href="tareas/tareas.php">Nomina </a>
                                     <a class="nav-link" href="tareas/tareas.php">Asistencia </a>
@@ -162,71 +161,57 @@ $clientes = new Usuarios();
             <div id="layoutSidenav_content">
 
             <main>
-            <div class="container-fluid px-4">
-              <h1 class="mt-4">Bodegas registradas</h1>
-                  <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" >Registrar</button>
-                   <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="modalTitle">Registrar Bodegas</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-                        </div>
-                        <div class="modal-body">
-                        <form  id="regi_bode" >
-                            <div class="form-row d-flex">
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="cedula">Op:</label>
-                                  <input type="text" class="form-control" id="Op" placeholder="Op" required >
-                                </div>
-                                <div class="form-group col-md-6 p-2">
-                                    <label for="Cantidad">Cantidad:</label>
-                                    <input type="number" class="form-control" min="1" pattern="^[0-9]+"  name="Cantidad" id="Cantidad" placeholder="Cantidad" required >
-                                </div>
-                             </div>
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="apellido">Descripcion:</label>
-                                  <textarea name="Descrip" id="Descrip" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
-                                </div>
-                              <div class="form-row d-flex">
-                                <div class="form-group col-md-6 p-2">
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4"><i class="fas fa-cube"></i>Facturación</h1>
+                        <form method="post" action="" >
+                        <div class="form-row d-flex">
+                        <div class="form-group col-md-2 p-2">
                                   <label for="telefono">Fecha:</label>
-                                  <input type="date" class="form-control" name="Fecha" id="Fecha" placeholder="Fecha" required >
-                                </div>
-                                <div class="form-group col-md-6 p-2">
-                                <label for="direccion">Cliente:</label>
-                                  <select class="form-select" name="Cliente" id="Cliente" required >
-
-                                    <option selected>Selecciona el cliente </option>
-                                    <?php 
-                                        $cliente = $clientes->List_Clientes();
-                                        if($cliente !=null){ 
-                                            foreach($cliente as $client){ 
-                                    ?>
-                                    <option value="<?php echo $client['id']; ?>"><?php echo $client['nombre']; ?></option>
-                                    <?php 
-                                      }  
-
-                                    }
-                                   ?>
+                                  <input type="date" class="form-control" min="1" pattern="^[0-9]+" name="Fecha" id="Fecha" placeholder="Fecha" required >
+                        </div>
+                        <div class="form-group col-md-3 p-2">
+                                  <label for="direccion">Dirección:</label>
+                                  <select class="form-select" name="Rol" id="Rol"required >
+                                    <option selected>Selecciona El Rol </option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="empleado">Empleado</option>
+                                    <option value="cliente">Cliente</option>
+                                    <option value="proveedor">Proveedor</option>
                                   </select>
                                 </div>
+                                </div><br><br>
+                            <div class="form-row d-flex">
+                                <div class="form-group col-md-1 p-2">
+                                  <label for="cantidad">Cantidad:</label>
+                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cantidad" id="Cantidad" placeholder="Cantidad" required >
                                 </div>
-                             
+                                <div class="form-group col-md-3 p-2">
+                                    <label for="nombre">Descripción:</label>
+                                    <input type="text" class="form-control"  name="Descrip" id="Descrip" placeholder="Descripción" required >
+                                </div>
+                                <div class="form-group col-md-1 p-2">
+                                  <label for="precio">Precio:</label>
+                                  <input type="text" class="form-control" name="Precio" id="Precio" placeholder="Precio"required >
+                                  <button type="button" onclick="Validacion();" class="btn btn-primary" inline>+</button>
+                                </div>
+                                <div class="form-group col-md-1 p-2">
                                 
-                              <br>
+                                
+                                </div>
+                                <button type="submit" class="btn btn-warning">Cancelar</button>
+                             </div>
+                                
+                             
+                              
                            
-                            <button type="submit" class="btn btn-primary">Registrar </button>
-                            <button type="submit" class="btn btn-warning">Cancelar</button>
+                            
                           </form>
-                        </div>
-
-                      </div>
-
+                        
+ 
+                        
+                       
+                        
                     </div>
-
-                  </div>
-                  </div>
                 </main>
 
                
@@ -244,14 +229,9 @@ $clientes = new Usuarios();
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../../js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="../../assets/demo/chart-area-demo.js"></script>
-        <script src="../../assets/demo/chart-bar-demo.js"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="../../js/datatables-simple-demo.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="../../js/app.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="../../js/bodegas.js"></script>
+        <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>

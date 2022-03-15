@@ -80,6 +80,16 @@ class Usuarios extends BD {
         return $rows;
     }
 
+    public function List_Clientes(){
+        $rows = null;
+        $statement = $this->db->prepare("SELECT * FROM usuarios WHERE rol = 'cliente'");
+        $statement->execute();
+        while($result = $statement->fetch()){
+            $rows[] = $result;
+        }
+        return $rows;
+    }
+
     
 
 

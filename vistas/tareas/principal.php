@@ -105,32 +105,20 @@ $rol = $_SESSION['rol'];
                             </div>
 
                             <div class="sb-sidenav-menu-heading">Operativo:</div>
-                            <a class="nav-link collapsed" href="#pro" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapsePages">
+                            <a class="nav-link collapsed" href="#opera" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
                                 Productividad 
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-
-                            <div class="collapse" id="pro" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Producción 
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Nomina
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Asistencia
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Gastos
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                </nav>
+                            <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="facturas/principal.php">Facturacion</a>
+                                    <a class="nav-link" href="tareas/tareas.php">Producción </a>
+                                    <a class="nav-link" href="tareas/tareas.php">Nomina </a>
+                                    <a class="nav-link" href="tareas/tareas.php">Asistencia </a>
+                                    <a class="nav-link" href="tareas/tareas.php">Gastos </a>
+                                    
+                                 </nav>
                             </div>
 
 
