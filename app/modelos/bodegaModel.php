@@ -38,6 +38,7 @@ class Bodega extends BD{
           
         }
 
+
     public function Listar(){
        // $rows = null;
         $statement = $this->db->prepare("SELECT * FROM tareas ");
@@ -106,6 +107,33 @@ class Bodega extends BD{
           
         
     }
+
+    public function Listar_bode($Id){
+        // $rows = null;
+         $statement = $this->db->prepare("SELECT bodega.op, bodega.cantidad, bodega.descrip
+                                          FROM bodega
+                                          INNER JOIN usuarios
+                                          WHERE bodega.id_cliente = usuarios.id AND usuarios.id = :Id ");
+         $statement->bindParam(':Id', $Id);
+         $statement->execute();
+         $statement->rowCount() == 1;
+ 
+         $json= array();
+         while($row = $statement->fetch()){  
+           $json[]  = array( 
+             'op' => $row['op'],
+             'cantidad' => $row['cantidad'],
+             'descrip' => $row['descrip'],
+           //  'fecha' => $row['fecha'],
+            
+           );
+ 
+          
+         }
+ 
+         $jsonstring = json_encode($json);
+          echo $jsonstring;
+     }
 
 
 

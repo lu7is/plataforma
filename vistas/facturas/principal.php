@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('../../app/modelos/usuariosModel.php');
 $id= $_SESSION['id'];
 if($id == null ){
     header("location:auth/index.php");
@@ -7,7 +8,7 @@ if($id == null ){
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $rol = $_SESSION['rol'];
-
+$clientes = new Usuarios();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,6 +21,7 @@ $rol = $_SESSION['rol'];
         <title>Dashboard-MRK</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="../../css/styles.css" rel="stylesheet" />
+        <link href="../../css/factura.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -163,56 +165,110 @@ $rol = $_SESSION['rol'];
             <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4"><i class="fas fa-cube"></i>Facturación</h1>
-                        <form method="post" action="" >
-                        <div class="form-row d-flex">
-                        <div class="form-group col-md-2 p-2">
-                                  <label for="telefono">Fecha:</label>
-                                  <input type="date" class="form-control" min="1" pattern="^[0-9]+" name="Fecha" id="Fecha" placeholder="Fecha" required >
-                        </div>
-                        <div class="form-group col-md-3 p-2">
-                                  <label for="direccion">Dirección:</label>
-                                  <select class="form-select" name="Rol" id="Rol"required >
-                                    <option selected>Selecciona El Rol </option>
-                                    <option value="administrador">Administrador</option>
-                                    <option value="empleado">Empleado</option>
-                                    <option value="cliente">Cliente</option>
-                                    <option value="proveedor">Proveedor</option>
-                                  </select>
-                                </div>
-                                </div><br><br>
-                            <div class="form-row d-flex">
-                                <div class="form-group col-md-1 p-2">
+                        <form id="fact">
+    <div id="btn_registrar">
+    <button type="button"  class="btn btn-primary" inline>Generar Factura</button>
+    </div>
+    
+
+    <div class="form-row d-flex">
+    <div class="form-group col-md-2 p-2">
+              <label for="telefono">Fecha:</label>
+              <input type="date" class="form-control" min="1" pattern="^[0-9]+" name="Fecha" id="Fecha" placeholder="Fecha" required >
+    </div>
+    <div class="form-group col-md-3 p-2">
+              <label for="direccion">Cliente:</label>
+                <select class="form-select" name="Cliente" id="Cliente"required >
+                
+                    <option selected>Selecciona El Cliente </option>
+                    <?php 
+                        $cliente = $clientes->List_Clientes();
+                        if($cliente !=null){ 
+                            foreach($cliente as $client){ 
+                    ?>
+                <option value="<?php echo $client['id']; ?>"><?php echo $client['nombre']; ?></option>
+                    <?php 
+                    }  
+
+                    }
+                ?>
+                </select>
+    
+    </div>
+    <div class="form-group col-md-3 p-2">                      
+    <label for="cantidad">Op:</label>
+                    <div id="op">
+
+                    </div>
+              </div>
+            </div><br><br>
+            
+        <div class="form-row d-flex">
+        
+              
+           
+            <div class="form-group col-md-1 p-2">
+              <label for="cantidad">Cantidad:</label>
+              <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cantidad" id="Cantidad" placeholder="Cantidad" required >
+            </div>
+            <div class="form-group col-md-3 p-2">
+                <label for="nombre">Descripción:</label>
+                <input type="text" class="form-control"  name="Descrip" id="Descrip" placeholder="Descripción" required >
+            </div>
+            <div class="form-group col-md-1 p-2">
+              <label for="precio">Precio:</label>
+              <input type="text" class="form-control" name="Precio" id="Precio" placeholder="Precio"required >  
+            </div>
+            <div class="form-group col-md-1 p-2">
+              <label for="precio">Total:</label>
+              <input type="text" class="form-control" name="Total" id="Total" placeholder="Precio"required >  
+            </div>
+            
+            <button type="button"  class="btn btn-primary" inline>+</button>
+            
+            
+            <br><br>
+        
+           
+         </div>
+        </form>
+
+                        
+                          <br><br>
+
+                          <div class="form-row d-flex">
+                                <div class="form-group col-md-2 p-2">
                                   <label for="cantidad">Cantidad:</label>
-                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cantidad" id="Cantidad" placeholder="Cantidad" required >
+                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cantidad" id="Cantidad" placeholder="" required >
                                 </div>
-                                <div class="form-group col-md-3 p-2">
+                                <div class="form-group col-md-4 p-2">
                                     <label for="nombre">Descripción:</label>
-                                    <input type="text" class="form-control"  name="Descrip" id="Descrip" placeholder="Descripción" required >
+                                    <input type="text" class="form-control"  name="Descrip" id="Descrip" placeholder="" required >
                                 </div>
-                                <div class="form-group col-md-1 p-2">
+                                <div class="form-group col-md-2 p-2">
                                   <label for="precio">Precio:</label>
-                                  <input type="text" class="form-control" name="Precio" id="Precio" placeholder="Precio"required >
-                                  <button type="button" onclick="Validacion();" class="btn btn-primary" inline>+</button>
+                                  <input type="text" class="form-control" name="Precio" id="Precio" placeholder=""required >  
                                 </div>
-                                <div class="form-group col-md-1 p-2">
-                                
-                                
+                                <div class="form-group col-md-2 p-2">
+                                  <label for="precio">Total:</label>
+                                  <input type="text" class="form-control" name="Total" id="Total" placeholder=""required >  
                                 </div>
-                                <button type="submit" class="btn btn-warning">Cancelar</button>
-                             </div>
                                 
-                             
-                              
-                           
+                                <button type="button"  class="btn btn-primary" inline>+</button>
+                                
+                                
+                                <br><br>
                             
-                          </form>
+                               
+                             </div>
                         
- 
-                        
-                       
                         
                     </div>
+
+                    
                 </main>
+
+                
 
                
                 
@@ -229,9 +285,14 @@ $rol = $_SESSION['rol'];
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../../js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="../../assets/demo/chart-area-demo.js"></script>
+        <script src="../../assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        <script src="../../js/datatables-simple-demo.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../../js/facturas.js"></script>
     </body>
 </html>

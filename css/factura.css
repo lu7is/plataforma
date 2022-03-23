@@ -1,0 +1,14 @@
+
+
+
+#btn_registrar{
+   
+    display: flex;
+    border-radius: 19px;
+    justify-content: center;
+}
+
+#btn_registrar:hover{
+    background: red;
+    transition: 10ms;
+}

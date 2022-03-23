@@ -162,18 +162,9 @@ $rol = $_SESSION['rol'];
     
       <main>
         <div class="container-fluid px-6">
-        
-                <h1 class="mt-4">Listado de tareas</h1>
-                
-
-                    <div id="lista">
-                   
-           
-                    </div>
-
-               
-
-                
+         <h1 class="mt-4">Listado de tareas</h1>
+                <div id="lista">
+                </div>   
         </div>
       </main>
                 

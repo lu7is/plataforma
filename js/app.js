@@ -55,19 +55,17 @@ $(document).ready(function () {
     }
 
 
-    function ListarTareas() {
-        $.ajax({
+function ListarTareas() {
+     $.ajax({
 
-            url: '../../app/controladores/Tareas/listarTareas.php',
-            type: 'GET',
-            success: function (response) {
+     url: '../../app/controladores/Tareas/listarTareas.php',
+    type: 'GET',
+     success: function (response) {
 
-                let tarea = JSON.parse(response);
-
-                let template = '';
-
-                tarea.forEach(tarea => {
-                    template += ` 
+    let tarea = JSON.parse(response);
+    let template = '';
+    tarea.forEach(tarea => {
+        template += ` 
             <div class="card" taskId = " ${tarea.id} ">
             <div class="card-body " > 
             
@@ -191,37 +189,6 @@ $(document).ready(function () {
         });
     });
 
-
-
-
-
-
-/*
-    $(document).on('click','', function(){
-        Swal.fire({
-            title: 'Estas seguro?',
-            text: "Esta actividad no tiene regreso!",
-            icon: 'warning',
-            showCancelButton: 'cancelar         ',
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, eliminar!'
-        })
-
-    });
-
-
-    
-*/
-
-
-
-
-
-
-
-
-    ///////////////////////////////////////////////////////////////////////////////////////
     $(document).on('click', '.eliminar', function () {
 
         Swal.fire({
