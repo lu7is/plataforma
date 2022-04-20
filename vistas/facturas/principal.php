@@ -148,10 +148,6 @@ $clientes = new Usuarios();
                             
                         </div>
                     </div>
-
-
-
-
                     <div class="sb-sidenav-footer">
                         <div class="small">Login por:</div>
                         <?php echo $nombre, " ", $apellido," ",
@@ -165,107 +161,114 @@ $clientes = new Usuarios();
             <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4"><i class="fas fa-cube"></i>Facturación</h1>
+
+                        <div id="btn_registrar">
+                            <button type="button" id="generar_factura"  class="btn btn-primary" inline>Generar Factura</button>
+                            </div>
                         <form id="fact">
-    <div id="btn_registrar">
-    <button type="button"  class="btn btn-primary" inline>Generar Factura</button>
-    </div>
+                           
     
 
-    <div class="form-row d-flex">
-    <div class="form-group col-md-2 p-2">
-              <label for="telefono">Fecha:</label>
-              <input type="date" class="form-control" min="1" pattern="^[0-9]+" name="Fecha" id="Fecha" placeholder="Fecha" required >
-    </div>
-    <div class="form-group col-md-3 p-2">
-              <label for="direccion">Cliente:</label>
-                <select class="form-select" name="Cliente" id="Cliente"required >
-                
-                    <option selected>Selecciona El Cliente </option>
-                    <?php 
-                        $cliente = $clientes->List_Clientes();
-                        if($cliente !=null){ 
-                            foreach($cliente as $client){ 
-                    ?>
-                <option value="<?php echo $client['id']; ?>"><?php echo $client['nombre']; ?></option>
-                    <?php 
-                    }  
+                            <div class="form-row d-flex">
+                            <div class="form-group col-md-2 p-2">
+                                    <label for="telefono">Fecha:</label>
+                                    <input type="date" class="form-control" min="1" pattern="^[0-9]+" name="Fecha" id="Fecha" placeholder="Fecha" required >
+                            </div>
+                            <div class="form-group col-md-3 p-2">
+                                    <label for="direccion">Cliente:</label>
+                                        <select class="form-select" name="Cliente" id="Cliente"required >
+                                        
+                                            <option selected>Selecciona El Cliente </option>
+                                            <?php 
+                                                $cliente = $clientes->List_Clientes();
+                                                if($cliente !=null){ 
+                                                    foreach($cliente as $client){ 
+                                            ?>
+                                        <option value="<?php echo $client['id']; ?>"><?php echo $client['nombre']; ?></option>
+                                            <?php 
+                                            }  
 
-                    }
-                ?>
-                </select>
-    
-    </div>
-    <div class="form-group col-md-3 p-2">                      
-    <label for="cantidad">Op:</label>
-                    <div id="op">
-
-                    </div>
-              </div>
-            </div><br><br>
-            
-        <div class="form-row d-flex">
-        
-              
-           
-            <div class="form-group col-md-1 p-2">
-              <label for="cantidad">Cantidad:</label>
-              <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cantidad" id="Cantidad" placeholder="Cantidad" required >
-            </div>
-            <div class="form-group col-md-3 p-2">
-                <label for="nombre">Descripción:</label>
-                <input type="text" class="form-control"  name="Descrip" id="Descrip" placeholder="Descripción" required >
-            </div>
-            <div class="form-group col-md-1 p-2">
-              <label for="precio">Precio:</label>
-              <input type="text" class="form-control" name="Precio" id="Precio" placeholder="Precio"required >  
-            </div>
-            <div class="form-group col-md-1 p-2">
-              <label for="precio">Total:</label>
-              <input type="text" class="form-control" name="Total" id="Total" placeholder="Precio"required >  
-            </div>
-            
-            <button type="button"  class="btn btn-primary" inline>+</button>
-            
-            
-            <br><br>
-        
-           
-         </div>
-        </form>
-
-                        
-                          <br><br>
-
-                          <div class="form-row d-flex">
-                                <div class="form-group col-md-2 p-2">
-                                  <label for="cantidad">Cantidad:</label>
-                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cantidad" id="Cantidad" placeholder="" required >
-                                </div>
-                                <div class="form-group col-md-4 p-2">
-                                    <label for="nombre">Descripción:</label>
-                                    <input type="text" class="form-control"  name="Descrip" id="Descrip" placeholder="" required >
-                                </div>
-                                <div class="form-group col-md-2 p-2">
-                                  <label for="precio">Precio:</label>
-                                  <input type="text" class="form-control" name="Precio" id="Precio" placeholder=""required >  
-                                </div>
-                                <div class="form-group col-md-2 p-2">
-                                  <label for="precio">Total:</label>
-                                  <input type="text" class="form-control" name="Total" id="Total" placeholder=""required >  
-                                </div>
-                                
-                                <button type="button"  class="btn btn-primary" inline>+</button>
-                                
-                                
-                                <br><br>
+                                            }
+                                        ?>
+                                        </select>
                             
-                               
-                             </div>
-                        
-                        
-                    </div>
+                                 </div>
+                              <div class="form-group col-md-3 p-2">                      
+    
+                                <div id="op">
 
-                    
+                                </div>
+                             </div>
+                            </div><br>
+            
+                     <div id="">
+
+                     </div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <table class="table table-bordered table-hover" id="invoiceItem">	
+        <tr>
+            <th width="2%"><input id="checkAll" class="formcontrol" type="checkbox"></th>
+            <th width="15%">Cantidad</th>
+            <th width="38%">Descripción</th>
+            <th width="15%">Precio Unitario</th>								
+            <th width="15%">Monto</th>
+        </tr>							
+        <tr>
+            <td><input class="itemRow" type="checkbox"></td>
+            <td><input type="text" name="cantidad" id="cantidad" class="form-control" autocomplete="off" disabled></td>
+            <td><input type="text" name="productName[]" id="descripcion" class="form-control" autocomplete="off"></td>			
+            <td><input type="number" name="quantity[]" id="precio" class="form-control quantity" autocomplete="off"></td>
+            <td><input type="number" name="price[]" id="monto" class="form-control price" autocomplete="off"></td>
+           
+        </tr>						
+    </table>
+</div>
+
+
+<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+    <button class="btn btn-danger delete" id="removeRows" type="button">- Borrar</button>
+    <button class="btn btn-success" id="addRows" type="button" disabled>+ Agregar Más</button>
+</div>
+<div class="row">
+<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"><br>
+    <h3>Observaciónes:</h3>
+    <div class="form-group">
+        <textarea class="form-control txt" rows="5" name="notes" id="notes" placeholder="Escribe aqui..."></textarea>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="hidden" value="<?php echo $_SESSION['userid']; ?>" class="form-control" name="userId">
+        <input data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="Guardar Factura" class="btn btn-success submit_btn invoice-save-btm">						
+    </div>
+    
+</div>
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <span class="form-inline">						
+        <div class="form-group">
+            <label>Total: &nbsp;</label>
+            <div class="input-group">
+                <div class="input-group-addon currency"></div>
+                <input value="" type="number" class="form-control" name="totalAftertax" id="totalAftertax" placeholder="Total">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Cantidad pagada: &nbsp;</label>
+            <div class="input-group">
+                <div class="input-group-addon currency"></div>
+                <input value="" type="number" class="form-control" name="amountPaid" id="amountPaid" placeholder="Cantidad pagada">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Cantidad debida: &nbsp;</label>
+            <div class="input-group">
+                <div class="input-group-addon currency"></div>
+                <input value="" type="number" class="form-control" name="amountDue" id="amountDue" placeholder="Cantidad debida">
+            </div>
+        </div>
+    </span>
+</div>
+</div>
+                    </form>
                 </main>
 
                 

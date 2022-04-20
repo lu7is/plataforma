@@ -110,7 +110,7 @@ class Bodega extends BD{
 
     public function Listar_bode($Id){
         // $rows = null;
-         $statement = $this->db->prepare("SELECT bodega.op, bodega.cantidad, bodega.descrip
+         $statement = $this->db->prepare("SELECT bodega.id, bodega.op, bodega.cantidad, bodega.recibido, bodega.descrip
                                           FROM bodega
                                           INNER JOIN usuarios
                                           WHERE bodega.id_cliente = usuarios.id AND usuarios.id = :Id ");
@@ -121,8 +121,10 @@ class Bodega extends BD{
          $json= array();
          while($row = $statement->fetch()){  
            $json[]  = array( 
+             'id' => $row['id'],
              'op' => $row['op'],
              'cantidad' => $row['cantidad'],
+             'recibido' => $row['recibido'],
              'descrip' => $row['descrip'],
            //  'fecha' => $row['fecha'],
             

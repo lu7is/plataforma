@@ -46,14 +46,6 @@ $(document).ready(function () {
 
     });
 
-    function Alerta() {
-        Swal.fire(
-            'Exito!',
-            'Tarea registrada!',
-            'success'
-        )
-    }
-
 
 function ListarTareas() {
      $.ajax({
@@ -83,6 +75,7 @@ function ListarTareas() {
 
                                         <div class="modal-body">
                                         <form id="registrar_modal" >
+
                                         <input type="hidden"  id="taskId" placeholder="Nombre" required >
 
                                         <div class="form-row d-flex">
