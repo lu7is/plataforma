@@ -88,7 +88,7 @@ $rol = $_SESSION['rol'];
                             <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="bodegas/principal.php">Registrar</a>
-                                    <a class="nav-link" href="tareas/tareas.php">Separacion </a>
+                                    <a class="nav-link" href="separacion/principal.php">Separacion </a>
                                     <a class="nav-link" href="tareas/tareas.php">Despachos </a>
                                     
                                     

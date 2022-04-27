@@ -69,7 +69,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Usuarios Registrados</a>
+                                    <a class="nav-link" href="../usuarios/principal.php">Usuarios Registrados</a>
                                  </nav>
                             </div>
                             <a class="nav-link collapsed" href="#tarea" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
@@ -80,25 +80,34 @@
                             <div class="collapse" id="tarea" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="usuarios/principal.php">Registrar</a>
-                                    <a class="nav-link" href="usuarios/principal.php">Tareas </a>
+                                    <a class="nav-link" href="../tareas/tareas.php">Tareas </a>
                                  </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">logistico:</div>
-                            <a class="nav-link collapsed" href="#opera" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
-                                Bodega 
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../facturas/principal.php">Registro de mercancia</a>
-                                    <a class="nav-link" href="../separacion/principal.php">Separacion </a>
-                                    <a class="nav-link" href="tareas/tareas.php">Despachos </a>
-                                    
-                                    
-                                 </nav>
-                            </div>
+
+                            <div class="sb-sidenav-menu-heading">Logistico:</div>
                             
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div> 
+                                Bodegas
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> <i class="fa-solid fa-cheese"></i>
+                            </a>
+
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Registro de mercancia
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Separación
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Despachos
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                </nav>
+                            </div>
 
                             <div class="sb-sidenav-menu-heading">Operativo:</div>
                             <a class="nav-link collapsed" href="#opera" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
@@ -156,7 +165,7 @@
             
             <div id="layoutSidenav_content">
               <div class="container-fluid px-4">
-              <h1 class="mt-4">Usuarios Registrados</h1>
+              <h1 class="mt-4">Separacion</h1>
                   <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" >Registrar</button>
                    <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
@@ -228,51 +237,7 @@
                   <br>
                   <div class="container">
             
-                <table class="table table-striped">
-                  <thead >
-                    <tr>
-                      
-                      <th scope="col">Nombre</th>
-                      
-                      <th scope="col">Telefono</th>
-                      <th scope="col">Dirección</th>
-                      <th scope="col">Correo</th>
-                      <th scope="col">Rol</th>
-                      <th scope="col">Acciones</th>
-                    </tr>
-                  </thead>
-                    <tbody>
-                        <?php 
-                        $resultado = $modelo->Listar();
-                        if($resultado != null){
-                          foreach($resultado as $resul){ 
-                        ?>
-                      <tr>
-                        
-                        
-                        <td ><?php echo $resul['nombre']  ?></td>
-                        <td ><?php echo $resul['telefono']  ?></td>
-                        <td ><?php echo $resul['direccion']  ?></td>
-                        <td><?php echo $resul['correo'] ?></td>
-                        <td><?php echo $resul['rol']  ?></td>
-                        <td>
-                       
-                        <a href="ediVer.php?id=<?php echo $resul['id'] ?>"><button type="button" class= "btn btn-warning">Editar</button></a>
-                        <a href="php?id=<?php echo $resul['id'] ?>"><button type="button" class= "btn btn-danger" onclick="mostrar();">Eliminar</button></a>
-                        <button type="submit" class= "btn btn-primary" onclick="AlertaEliminar();" >Ver</button>   
-
-
-                        
-                      </td>
-                        
-                      </tr>
-                    </tbody>
-             <?php  
-                  }
-            } 
-            
-            ?>
-                  </table>
+              
 
                   </div>
 
