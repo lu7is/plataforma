@@ -1,16 +1,18 @@
 
 //AGREGAR MAS ITENS EN LA FACTURA
+
 var count = $(".itemRow").length;
 	
 	$(document).on('click', '#addRows', function() { 
 		count++;
 		var htmlRows = '';
 		htmlRows += '<tr>';
+        
 		htmlRows += '<td><input class="itemRow" type="checkbox"></td>';          
 		htmlRows += '<td><input type="text" name="productCode[]" id="cantidad'+count+'" class="form-control" autocomplete="off"></td>';          
 		htmlRows += '<td><input type="text" name="productName[]" id="descripcion'+count+'" class="form-control" autocomplete="off"></td>';	
 		htmlRows += '<td><input type="number" name="quantity[]" id="quantity_'+count+'" class="form-control quantity" autocomplete="off"></td>';   		
-		htmlRows += '<td><input type="number" name="price[]" id="price_'+count+'" class="form-control price" autocomplete="off"></td>';		 
+		htmlRows += '<td><input type="number" name="price[]" id="price_'+count+'" class="form-control price" autocomplete="off"></td>';		
 		          
 		htmlRows += '</tr>';
 		$('#invoiceItem').append(htmlRows);
@@ -33,6 +35,12 @@ $('#precio').keyup(function(e){
 
     var precioTotal = $(this).val() * $('#cantidad').val();
     $('#monto').val(precioTotal);
+    //OCULTAR BOTTON POR VALIDACION
+    if($(this).val() < 1 || isNaN($(this).val())){
+        $('#addRows').slideUp();
+    }else{
+        $('#addRows').slideDown();
+    }
     
 })
 
@@ -54,16 +62,32 @@ $('#precio').keyup(function(e){
 
 
 
-
+//inicia el documento cargando todas las funciones
 $(document).ready(function() {
-    $.ajax({
-        url:'../../app/modelos/usuariosModel.php',
-        type:'GET',
-        success: function (response){
-
-        }
+    $('').click(function(){
+        agregar();
     })
 });
+
+var count =0;
+
+function agregar(){
+     alert("presion");
+    var htmlRows = '';
+		htmlRows += '<tr>';
+		htmlRows += '<td><input class="itemRow" type="checkbox"></td>';          
+		htmlRows += '<td><input type="text" name="productCode[]" id="cantidad'+count+'" class="form-control" autocomplete="off"></td>';          
+		htmlRows += '<td><input type="text" name="productName[]" id="descripcion'+count+'" class="form-control" autocomplete="off"></td>';	
+		htmlRows += '<td><input type="number" name="quantity[]" id="quantity_'+count+'" class="form-control quantity" autocomplete="off"></td>';   		
+		htmlRows += '<td><input type="number" name="price[]" id="price_'+count+'" class="form-control price" autocomplete="off"></td>';		 
+		          
+		htmlRows += '</tr>';
+
+    $('#invoiceItem').append(htmlRows);
+    
+}
+
+
 
 
 $('#Cliente').change(function(){
@@ -78,14 +102,13 @@ $('#Cliente').change(function(){
             let bode = JSON.parse(response);
             let template = '';
            
-            
            bode.forEach(bode=>{
                 
                 template +=`
                 <div bodekId="${bode.id}">
-                     
+                 <div cant ="${bode.recibido}">
                 <input type="checkbox"  class="valor" > Op: ${bode.op} - Cantidad: ${bode.cantidad} - Recibido: ${bode.recibido} <br>        
-
+                </div>
                 </div>
                 `
            });
@@ -99,12 +122,11 @@ $('#Cliente').change(function(){
     }
 });
 
-
 $(document).on('click', '.valor',function(){
 
         if($('.valor').is(':checked')){
           
-          let element = $(this)[0].parentElement;
+          let element = $(this)[0].parentElement.parentElement;
           let Id = $(element).attr('bodekId');
             console.log(Id);
           $('#cantidad').removeAttr('disabled');
@@ -116,17 +138,28 @@ $(document).on('click', '.valor',function(){
           $('#addRows').attr('disabled','disabled');
         }
     
-
-    let template= '';
-
-    template +=`
-    
-
-    `
-    
-
 });
 
+//optener el valor registrado 
+$(document).on('click', '.valor',function(){
+
+    if($('.valor').is(':checked')){
+      
+    let element = $(this)[0].parentElement;
+      var cant0 = parseInt($(element).attr('cant'));
+        console.log(cant0);
+    }
+    $('#cantidad').keyup(function(e){
+        e.preventDefault();
+        if( ($(this).val() < 1 || isNaN($(this).val())) || ($(this).val() > cant0 ) ){
+            $('#addRows').slideUp();
+        }else{
+            $('#addRows').slideDown();
+        }
+        
+    })
+
+});
 
 
 

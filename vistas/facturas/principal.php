@@ -161,10 +161,6 @@ $clientes = new Usuarios();
             <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4"><i class="fas fa-cube"></i>Facturación</h1>
-
-                        <div id="btn_registrar">
-                            <button type="button" id="generar_factura"  class="btn btn-primary" inline>Generar Factura</button>
-                            </div>
                         <form id="fact">
                            
     
@@ -205,6 +201,33 @@ $clientes = new Usuarios();
 
                      </div>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <table class="table table-bordered table-hover" id="">	
+        <tr>
+           
+            <th width="15%">Cantidad</th>
+            <th width="38%">Descripción</th>
+            <th width="15%">Precio Unitario</th>								
+            <th width="15%">Monto</th>
+            <th width="38%">Acciones</th>
+        </tr>							
+        <tr>
+           
+            <td><input type="text" name="cantidad" id="cantidad" class="form-control" autocomplete="off" disabled></td>
+            <td><input type="text" name="productName[]" id="descripcion" class="form-control" autocomplete="off"></td>			
+            <td><input type="number" name="quantity[]" id="precio" class="form-control quantity" autocomplete="off"></td>
+            <td><input type="number" name="price[]" id="monto" class="form-control price" autocomplete="off"></td>
+            <td>
+    
+    <button class="btn btn-success" id="addRows" type="button" disabled inline>+ Agregar</button>
+</td>
+
+<button class="btn btn-danger delete" id="removeRows" type="button" inline>- Borrar</button> 
+        </tr>						 
+    </table>
+</div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <table class="table table-bordered table-hover" id="invoiceItem">	
         <tr>
             <th width="2%"><input id="checkAll" class="formcontrol" type="checkbox"></th>
@@ -214,21 +237,14 @@ $clientes = new Usuarios();
             <th width="15%">Monto</th>
         </tr>							
         <tr>
-            <td><input class="itemRow" type="checkbox"></td>
-            <td><input type="text" name="cantidad" id="cantidad" class="form-control" autocomplete="off" disabled></td>
-            <td><input type="text" name="productName[]" id="descripcion" class="form-control" autocomplete="off"></td>			
-            <td><input type="number" name="quantity[]" id="precio" class="form-control quantity" autocomplete="off"></td>
-            <td><input type="number" name="price[]" id="monto" class="form-control price" autocomplete="off"></td>
-           
-        </tr>						
+            
+
+        </tr>						 
     </table>
 </div>
 
 
-<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-    <button class="btn btn-danger delete" id="removeRows" type="button">- Borrar</button>
-    <button class="btn btn-success" id="addRows" type="button" disabled>+ Agregar Más</button>
-</div>
+
 <div class="row">
 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"><br>
     <h3>Observaciónes:</h3>
