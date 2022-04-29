@@ -85,8 +85,8 @@
                             </div>
                             <div class="sb-sidenav-menu-heading">logistico:</div>
                             <a class="nav-link collapsed" href="#logist" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
-                                Bodega 
+                                <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
+                                Bodegas 
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="logist" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -119,7 +119,7 @@
 
                             <div class="sb-sidenav-menu-heading">Materia prima:</div>
                             <a class="nav-link collapsed" href="#mate" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-pen"></i></div>
                                 Proveedores 
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>

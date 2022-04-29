@@ -86,27 +86,19 @@
 
                             <div class="sb-sidenav-menu-heading">Logistico:</div>
                             
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div> 
-                                Bodegas
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> <i class="fa-solid fa-cheese"></i>
+                            <a class="nav-link collapsed" href="#bode" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
+                                Bodegas 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Registro de mercancia
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Separación
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Despachos
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                </nav>
+                            <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="../bodegas/principal.php">Registrar</a>
+                                    <a class="nav-link" href="#">Separacion </a>
+                                    <a class="nav-link" href="../despacho/principal.php">Despachos </a>
+                                    
+                                    
+                                 </nav>
                             </div>
 
                             <div class="sb-sidenav-menu-heading">Operativo:</div>
@@ -117,40 +109,29 @@
                             </a>
                             <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../facturas/principal.php">Facturacion</a>
-                                    <a class="nav-link" href="tareas/tareas.php">Producción </a>
-                                    <a class="nav-link" href="tareas/tareas.php">Nomina </a>
-                                    <a class="nav-link" href="tareas/tareas.php">Asistencia </a>
-                                    <a class="nav-link" href="tareas/tareas.php">Gastos </a>
+                                    <a class="nav-link" href="../facturacion/principal.php">Facturacion</a>
+                                    <a class="nav-link" href="../produccion/principal.php">Producción </a>
+                                    <a class="nav-link" href="../nomina/principal.php">Nomina </a>
+                                    <a class="nav-link" href="../asistencia/principal.php">Asistencia </a>
+                                    <a class="nav-link" href="../gastos/principal.php">Gastos </a>
                                     
                                  </nav>
                             </div>
 
                             <div class="sb-sidenav-menu-heading">Materia prima:</div>
-                            
-                            <a class="nav-link collapsed" href="#mate" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                            <a class="nav-link collapsed" href="#mate" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-pen"></i></div>
                                 Proveedores 
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-
-                            <div class="collapse" id="mate" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Registrar 
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Pedidos
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Inventario
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                   
-                                </nav>
+                            <div class="collapse" id="mate" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="../proveedores/principal.php">Registrar</a>
+                                    <a class="nav-link" href="../pedidos/principal.php">Pedidos </a>
+                                    <a class="nav-link" href="../inventario/principal.php">Inventario </a>
+                                    
+                                    
+                                 </nav>
                             </div>
                         </div>
                     </div>

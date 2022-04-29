@@ -116,7 +116,7 @@ $rol = $_SESSION['rol'];
 
                             <div class="sb-sidenav-menu-heading">Materia prima:</div>
                             <a class="nav-link collapsed" href="#prove" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-pen"></i></div>
                                 Proveedores 
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
