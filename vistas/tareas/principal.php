@@ -79,29 +79,20 @@ $rol = $_SESSION['rol'];
                                  </nav>
                             </div>
 
-                            <div class="sb-sidenav-menu-heading">Logistico:</div>
-                            
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div> 
-                                Bodegas
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> <i class="fa-solid fa-cheese"></i>
+                            <div class="sb-sidenav-menu-heading">logistico:</div>
+                            <a class="nav-link collapsed" href="#logist" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
+                                Bodega 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Registrar  
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Separación
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Despachos
-                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
-                                    </a>
-                                </nav>
+                            <div class="collapse" id="logist" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="../bodegas/principal.php">Registrar</a>
+                                    <a class="nav-link" href="../separacion/principal.php">Separacion </a>
+                                    <a class="nav-link" href="../despacho/principal.php">Despachos </a>
+                                    
+                                    
+                                 </nav>
                             </div>
 
                             <div class="sb-sidenav-menu-heading">Operativo:</div>

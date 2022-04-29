@@ -57,47 +57,92 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Inicio</div>
+                        <div class="sb-sidenav-menu-heading">Inicio:</div>
                             <a class="nav-link" href="../dashboard.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Pagina Principal
                             </a>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Usuarios
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="">Usuarios Registrados</a>
-                                </nav>
+                                    <a class="nav-link" href="../usuarios/principal.php">Usuarios Registrados</a>
+                                 </nav>
                             </div>
-                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Bodegas
+                            <a class="nav-link collapsed" href="#tarea" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Tareas
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="tarea" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="usuarios/principal.php">Registrar</a>
+                                    <a class="nav-link" href="usuarios/principal.php">Tareas </a>
+                                 </nav>
+                            </div>
+                            <div class="sb-sidenav-menu-heading">logistico:</div>
+                            <a class="nav-link collapsed" href="#opera" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
+                                Bodega 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="../facturas/principal.php">Registro de mercancia</a>
+                                    <a class="nav-link" href="../separacion/principal.php">Separacion </a>
+                                    <a class="nav-link" href="tareas/tareas.php">Despachos </a>
+                                    
+                                    
+                                 </nav>
+                            </div>
+                            
+
+                            <div class="sb-sidenav-menu-heading">Operativo:</div>
+                            <a class="nav-link collapsed" href="#opera" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
+                                Productividad 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="../facturas/principal.php">Facturacion</a>
+                                    <a class="nav-link" href="tareas/tareas.php">Producción </a>
+                                    <a class="nav-link" href="tareas/tareas.php">Nomina </a>
+                                    <a class="nav-link" href="tareas/tareas.php">Asistencia </a>
+                                    <a class="nav-link" href="tareas/tareas.php">Gastos </a>
+                                    
+                                 </nav>
+                            </div>
+
+                            <div class="sb-sidenav-menu-heading">Materia prima:</div>
+                            
+                            <a class="nav-link collapsed" href="#mate" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                                Proveedores 
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
 
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="mate" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Index
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                        Registrar 
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
                                     </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="../tables.html">futuro</a>   
-                                        </nav>
-                                    </div>
-                                    
-                                    
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Pedidos
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Inventario
+                                        <div class="sb-sidenav-collapse-arrow"><i class=""></i></div>
+                                    </a>
+                                   
                                 </nav>
                             </div>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Proveedores
-                            </a>
-                            
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -111,13 +156,13 @@
             
             <div id="layoutSidenav_content">
               <div class="container-fluid px-4">
-              <h1 class="mt-4">Usuarios Registrados</h1>
+              <h1 class="mt-4">Registrar proveedores</h1>
                   <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" >Registrar</button>
                    <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="modalTitle">Registrar Usuarios</h5>
+                          <h5 class="modal-title" id="modalTitle">Registrar proveedores</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                         </div>
                         <div class="modal-body">
@@ -168,7 +213,7 @@
                                 </div>
                               <br>
                            
-                            <button type="button" onclick="Validacion();" class="btn btn-primary">Registrar Usuario</button>
+                            <button type="button" onclick="Validacion();" class="btn btn-primary">Registrar proveedores</button>
                             <button type="submit" class="btn btn-warning">Cancelar</button>
                           </form>
                         </div>
@@ -183,52 +228,7 @@
                   <br>
                   <div class="container">
             
-                <table class="table table-sm ">
-                  <thead >
-                    <tr>
-                      
-                      <th scope="col">Nombre</th>
-                      
-                      <th scope="col">Telefono</th>
-                      <th scope="col">Dirección</th>
-                      <th scope="col">Correo</th>
-                      <th scope="col">Rol</th>
-                      <th scope="col">Acciones</th>
-                    </tr>
-                  </thead>
-                    <tbody>
-                        <?php 
-                        $resultado = $modelo->Listar();
-                        if($resultado != null){
-                          foreach($resultado as $resul){ 
-                        ?>
-                      <tr>
-                        
-                        
-                        <td ><?php echo $resul['nombre']  ?></td>
-                        <td ><?php echo $resul['telefono']  ?></td>
-                        <td ><?php echo $resul['direccion']  ?></td>
-                        <td><?php echo $resul['correo'] ?></td>
-                        <td><?php echo $resul['rol']  ?></td>
-                        <td>
-                       
-                        <a href="ediVer.php?id=<?php echo $resul['id'] ?>"><button type="button" class= "btn btn-warning">Editar</button></a>
-                        <a href="php?id=<?php echo $resul['id'] ?>"><button type="button" class= "btn btn-danger" onclick="mostrar();">Eliminar</button></a>
-                        <button type="submit" class= "btn btn-primary" onclick="AlertaEliminar();" >Ver</button>   
-
-
-                        
-                      </td>
-                        
-                      </tr>
-                    </tbody>
-             <?php  
-                  }
-            } 
-            
-            ?>
-                  </table>
-
+                
                   </div>
 
                 

@@ -79,7 +79,7 @@
                             </a>
                             <div class="collapse" id="tarea" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="usuarios/principal.php">Registrar</a>
+                                    <a class="nav-link" href="../tareas/principal.php">Registrar</a>
                                     <a class="nav-link" href="../tareas/tareas.php">Tareas </a>
                                  </nav>
                             </div>
