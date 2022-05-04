@@ -40,11 +40,7 @@ $(document).ready(function () {
             window.location.replace("tareas.php");
         })
         e.preventDefault();
-
-
-
-
-    });
+});
 
 
 function ListarTareas() {

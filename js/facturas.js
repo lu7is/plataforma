@@ -2,12 +2,14 @@
 //AGREGAR MAS ITENS EN LA FACTURA
 
 var count = $(".itemRow").length;
+
 	
 	$(document).on('click', '#addRows', function() { 
 		count++;
 		var htmlRows = '';
-		htmlRows += '<tr>';
         
+		htmlRows += '<tr>';
+
 		htmlRows += '<td><input class="itemRow" type="checkbox"></td>';          
 		htmlRows += '<td><input type="text" name="productCode[]" id="cantidad'+count+'" class="form-control" autocomplete="off"></td>';          
 		htmlRows += '<td><input type="text" name="productName[]" id="descripcion'+count+'" class="form-control" autocomplete="off"></td>';	
@@ -15,6 +17,7 @@ var count = $(".itemRow").length;
 		htmlRows += '<td><input type="number" name="price[]" id="price_'+count+'" class="form-control price" autocomplete="off"></td>';		
 		          
 		htmlRows += '</tr>';
+
 		$('#invoiceItem').append(htmlRows);
 	}); 
 

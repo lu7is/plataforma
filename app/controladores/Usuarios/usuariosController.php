@@ -1,13 +1,10 @@
 <?php
 
+require_once("../../modelos/usuariosModel.php");
 
-
-
-
-require_once("../modelos/usuariosModel.php");
 if($_POST){
 
-    $control=new Usuarios();
+    $control = new Usuarios();
 
      $Cedula = $_POST['Cedula'];
      $Nombre = $_POST['Nombre'];
@@ -21,6 +18,6 @@ if($_POST){
     $control->Registrar($Cedula,$Nombre,$Apellido,$Telefono,$Direccion,$Correo,$Password,$Rol );
     
 }else{
-   header("location:../../vistas/dashboard.php ");
+   
 }
 ?>

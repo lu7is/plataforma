@@ -186,9 +186,7 @@ $clientes = new Usuarios();
                              </div>
                             </div><br>
             
-                     <div id="">
-
-                     </div>
+                    
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <table class="table table-bordered table-hover" id="">	
         <tr>
@@ -233,7 +231,7 @@ $clientes = new Usuarios();
 </div>
 
 
-
+<!-- AQUI TERMINA LA FACTURA-->
 <div class="row">
 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8"><br>
     <h3>Observaciónes:</h3>

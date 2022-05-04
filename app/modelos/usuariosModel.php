@@ -1,5 +1,5 @@
 <?php
-require("../../bd/conexion.php");
+require("conexion.php");
 
 class Usuarios extends BD {
 
@@ -9,7 +9,7 @@ class Usuarios extends BD {
 
     public function Registrar($Cedula, $Nombre, $Apellido, $Telefono, $Direccion, $Correo, $Password, $Rol){
         $statement = $this->db->prepare("INSERT INTO usuarios (cedula, nombre, apellido, telefono, direccion, correo, password, rol)
-                                        VALUE (:Cedula, :Nombre, :Apellido, :Telefono, :Direccion, :Correo, :Password, :Rol)");
+                                        VALUE (:Cedula, :Nombre, :Apellido, :Telefono, :Direccion, :Correo, :Password, :Rol )");
         $statement->bindParam(':Cedula',$Cedula);
         $statement->bindParam(':Nombre',$Nombre);
         $statement->bindParam(':Apellido',$Apellido);
@@ -19,11 +19,9 @@ class Usuarios extends BD {
         $statement->bindParam(':Password',$Password);
         $statement->bindParam(':Rol',$Rol);
 
-        if($statement->execute()){
-            header("location:../../vistas/usuarios/principal.php ");
-        }else{
-            header("location:../../vistas/dashboard.php ");
-        }
+        $statement->execute();
+           
+        
 
 
     }

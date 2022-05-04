@@ -158,7 +158,7 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                         </div>
                         <div class="modal-body">
-                        <form method="post" action="" >
+                        <form  id="form-usu" >
                             <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
                                   <label for="cedula">Cedula:</label>
@@ -205,8 +205,8 @@
                                 </div>
                               <br>
                            
-                            <button type="button" onclick="Validacion();" class="btn btn-primary">Registrar Usuario</button>
-                            <button type="submit" class="btn btn-warning">Cancelar</button>
+                            <button type="submit" id="registrar" class="btn btn-primary">Registrar Usuario</button>
+                            
                           </form>
                         </div>
 
@@ -251,7 +251,7 @@
                        
                         <a href="ediVer.php?id=<?php echo $resul['id'] ?>"><button type="button" class= "btn btn-warning">Editar</button></a>
                         <a href="php?id=<?php echo $resul['id'] ?>"><button type="button" class= "btn btn-danger" onclick="mostrar();">Eliminar</button></a>
-                        <button type="submit" class= "btn btn-primary" onclick="AlertaEliminar();" >Ver</button>   
+                        <button type="submit" class= "btn btn-primary"  >Ver</button>   
 
 
                         
@@ -286,13 +286,13 @@
         <script src="../../assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="../../js/datatables-simple-demo.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11">
+        <script src="../../cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        
+        <script src="../../js/usuarios.js"></script>
       
       </script>
         
-        <script src="../../js/java.js"></script>
+        
        
         
     </body>
