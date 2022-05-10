@@ -133,6 +133,7 @@
                                  </nav>
                             </div>
                     </div>
+                    </div>
                     <div class="sb-sidenav-footer">
                     <div class="small">Login por:</div>
                         <?php echo $nombre, " ", $apellido," ",

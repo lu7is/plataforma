@@ -4,7 +4,7 @@
 var count = $(".itemRow").length;
 
 	
-	$(document).on('click', '#addRows', function() { 
+	$(document).on('click', function() { 
 		count++;
 		var htmlRows = '';
         
@@ -33,11 +33,11 @@ $(document).on('click', '#removeRows', function(){
 
 //CALCULAR EL TOTAL AL INGRESAR LA CANTIDAD
 
-$('#precio').keyup(function(e){
+$('#Precio').keyup(function(e){
     e.preventDefault();
 
-    var precioTotal = $(this).val() * $('#cantidad').val();
-    $('#monto').val(precioTotal);
+    var precioTotal = $(this).val() * $('#Cantidad').val();
+    $('#Monto').val(precioTotal);
     //OCULTAR BOTTON POR VALIDACION
     if($(this).val() < 1 || isNaN($(this).val())){
         $('#addRows').slideUp();
@@ -46,51 +46,39 @@ $('#precio').keyup(function(e){
     }
     
 })
+//AGREGAR PRODUCTOS AL DETALLE
+$('#addRows').click(function(e){
+    e.preventDefault();
 
+    if($('#Cantidad').val() > 0){
+        const datos_post ={
+        Cantidad : $('#Cantidad').val(),
+        Descripcion : $('#Descripcion').val(),
+        Precio : $('#Precio').val(),
+        Monto : $('#Monto').val()
 
+        };
 
+        console.log(datos_post);
 
+        $.ajax({
+            url: '../../app/controladores/Facturas/factProduct.php',
+            type: 'POST',
+            async:true,
+            data:{datos_post},
 
+            success: function(response){
+                console.log(response);
+            },
+            error: function(error){
+                alert('error mano');
+            }
+        });
+        
+        
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//inicia el documento cargando todas las funciones
-$(document).ready(function() {
-    $('').click(function(){
-        agregar();
-    })
-});
-
-var count =0;
-
-function agregar(){
-     alert("presion");
-    var htmlRows = '';
-		htmlRows += '<tr>';
-		htmlRows += '<td><input class="itemRow" type="checkbox"></td>';          
-		htmlRows += '<td><input type="text" name="productCode[]" id="cantidad'+count+'" class="form-control" autocomplete="off"></td>';          
-		htmlRows += '<td><input type="text" name="productName[]" id="descripcion'+count+'" class="form-control" autocomplete="off"></td>';	
-		htmlRows += '<td><input type="number" name="quantity[]" id="quantity_'+count+'" class="form-control quantity" autocomplete="off"></td>';   		
-		htmlRows += '<td><input type="number" name="price[]" id="price_'+count+'" class="form-control price" autocomplete="off"></td>';		 
-		          
-		htmlRows += '</tr>';
-
-    $('#invoiceItem').append(htmlRows);
-    
-}
-
-
+})
 
 
 $('#Cliente').change(function(){
@@ -120,8 +108,6 @@ $('#Cliente').change(function(){
         }
        
         })
-        
-        
     }
 });
 
@@ -132,12 +118,12 @@ $(document).on('click', '.valor',function(){
           let element = $(this)[0].parentElement.parentElement;
           let Id = $(element).attr('bodekId');
             console.log(Id);
-          $('#cantidad').removeAttr('disabled');
+          $('#Cantidad').removeAttr('disabled');
           $('#addRows').removeAttr('disabled');
           
         }else{
           console.log("no esta chekeado")
-          $('#cantidad').attr('disabled','disabled');
+          $('#Cantidad').attr('disabled','disabled');
           $('#addRows').attr('disabled','disabled');
         }
     
@@ -152,7 +138,7 @@ $(document).on('click', '.valor',function(){
       var cant0 = parseInt($(element).attr('cant'));
         console.log(cant0);
     }
-    $('#cantidad').keyup(function(e){
+    $('#Cantidad').keyup(function(e){
         e.preventDefault();
         if( ($(this).val() < 1 || isNaN($(this).val())) || ($(this).val() > cant0 ) ){
             $('#addRows').slideUp();
@@ -166,20 +152,6 @@ $(document).on('click', '.valor',function(){
 
 
 
-$("#generar_factura").click(function(){
-
-
-
-    alert('fue precionado');
-//	$.ajax({
-	//url: ...,
-	//method: ...,
-
-//	})
-//	.done(function(res){
-	//	console.log(res)
-	//})
-});
 
 
 

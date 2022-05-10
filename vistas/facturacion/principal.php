@@ -199,10 +199,10 @@ $clientes = new Usuarios();
         </tr>							
         <tr>
            
-            <td><input type="text" name="cantidad" id="cantidad" class="form-control" autocomplete="off" disabled></td>
-            <td><input type="text" name="productName[]" id="descripcion" class="form-control" autocomplete="off"></td>			
-            <td><input type="number" name="quantity[]" id="precio" class="form-control quantity" autocomplete="off"></td>
-            <td><input type="number" name="price[]" id="monto" class="form-control price" autocomplete="off"></td>
+            <td><input type="text" name="Cantidad" id="Cantidad" class="form-control" autocomplete="off" disabled></td>
+            <td><input type="text" name="Descripcion" id="Descripcion" class="form-control" autocomplete="off"></td>			
+            <td><input type="number" name="Precio" id="Precio" class="form-control quantity" autocomplete="off"></td>
+            <td><input type="number" name="Monto" id="Monto" class="form-control price" autocomplete="off"></td>
             <td>
     
     <button class="btn btn-success" id="addRows" type="button" disabled inline>+ Agregar</button>
