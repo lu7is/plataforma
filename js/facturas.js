@@ -4,7 +4,7 @@
 var count = $(".itemRow").length;
 
 	
-	$(document).on('click', function() { 
+	$(document).on( function() { 
 		count++;
 		var htmlRows = '';
         
@@ -51,21 +51,18 @@ $('#addRows').click(function(e){
     e.preventDefault();
 
     if($('#Cantidad').val() > 0){
-        const datos_post ={
-        Cantidad : $('#Cantidad').val(),
-        Descripcion : $('#Descripcion').val(),
-        Precio : $('#Precio').val(),
-        Monto : $('#Monto').val()
-
-        };
-
-        console.log(datos_post);
+        
+      var  Cantidad = $('#Cantidad').val();
+      var  Descripcion = $('#Descripcion').val();
+      var  Precio = $('#Precio').val();
+      var  Monto = $('#Monto').val();
+      var  action = 'factura';
 
         $.ajax({
             url: '../../app/controladores/Facturas/factProduct.php',
             type: 'POST',
             async:true,
-            data:{datos_post},
+            data:{action:action, Cantidad:Cantidad, Descripcion:Descripcion, Precio:Precio, Monto:Monto},
 
             success: function(response){
                 console.log(response);

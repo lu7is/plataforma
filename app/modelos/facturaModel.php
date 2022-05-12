@@ -1,5 +1,8 @@
 <?php
 require_once("conexion.php");
+session_start();
+
+$id= $_SESSION['id'];
 
 
 class Factura extends BD{
@@ -9,7 +12,7 @@ class Factura extends BD{
     }
 
     public function AgregarTemp($Cantidad, $Descripcion, $Precio, $Monto,$TokenUsu ){
-        $statement = $this->db->prepare("CALL add_detalle_tem($Cantidad, '$Descripcion', $Precio, $Monto, '$TokenUsu' )");
+        $statement = $this->db->prepare("CALL add_detalle_tem($Cantidad,'$Descripcion',$Precio,$Monto, '$TokenUsu' )");
         $statement->bindParam(':Cantidad',$Cantidad);
         $statement->bindParam(':Descripcion',$Descripcion);
         $statement->bindParam(':Precio',$Precio);

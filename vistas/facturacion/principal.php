@@ -1,13 +1,14 @@
 <?php
 session_start();
 require_once('../../app/modelos/usuariosModel.php');
-$id= $_SESSION['id'];
+echo $id= md5($_SESSION['id']);
 if($id == null ){
     header("location:auth/index.php");
 }
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $rol = $_SESSION['rol'];
+
 $clientes = new Usuarios();
 ?>
 <!DOCTYPE html>
