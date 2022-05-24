@@ -46,9 +46,9 @@ $(document).ready(function () {
 function ListarTareas() {
      $.ajax({
 
-     url: '../../app/controladores/Tareas/listarTareas.php',
+    url: '../../app/controladores/Tareas/listarTareas.php',
     type: 'GET',
-     success: function (response) {
+     success: function(response) {
 
     let tarea = JSON.parse(response);
     let template = '';

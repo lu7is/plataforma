@@ -60,11 +60,13 @@ $clientes = new Usuarios();
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Pagina Principal
                             </a>
+                            <?php if($rol == 'administrador' ) { ?>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Usuarios
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
+                            <?php } ?>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="../usuarios/principal.php">Usuarios Registrados</a>
@@ -99,6 +101,7 @@ $clientes = new Usuarios();
                                  </nav>
                             </div>
 
+                            <?php if($rol == 'administrador' ) { ?>
                             <div class="sb-sidenav-menu-heading">Operativo:</div>
                             <a class="nav-link collapsed" href="#opera" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
@@ -107,14 +110,15 @@ $clientes = new Usuarios();
                             </a>
                             <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Facturacion</a>
-                                    <a class="nav-link" href="../produccion/principal.php">Producción </a>
-                                    <a class="nav-link" href="../nomina/principal.php">Nomina </a>
-                                    <a class="nav-link" href="../asistencia/principal.php">Asistencia </a>
-                                    <a class="nav-link" href="../gastos/principal.php">Gastos </a>
+                                    <a class="nav-link" href="facturacion/principal.php">Facturacion</a>
+                                    <a class="nav-link" href="produccion/principal.php">Producción </a>
+                                    <a class="nav-link" href="nomina/principal.php">Nomina </a>
+                                    <a class="nav-link" href="asistencia/principal.php">Asistencia </a>
+                                    <a class="nav-link" href="gastos/principal.php">Gastos </a>
                                     
                                  </nav>
                             </div>
+                            <?php } ?>
 
 
                             <div class="sb-sidenav-menu-heading">Materia prima:</div>
@@ -150,7 +154,7 @@ $clientes = new Usuarios();
 
             <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4"><i class="fas fa-cube"></i>Facturación</h1>
+                        <h1 class="mt-2"><i class="fas fa-cube"></i>Facturación</h1>
                         <form id="fact">
                            
     
@@ -225,7 +229,13 @@ $clientes = new Usuarios();
             <th width="15%">Monto</th>
         </tr>							
         <tr>
-            
+            <div id="list_temp">
+                
+             <input type="month">    
+             <input type="range">  
+             <input type="reset">  
+
+            </div>
 
         </tr>						 
     </table>
@@ -244,6 +254,7 @@ $clientes = new Usuarios();
         <input type="hidden" value="<?php echo $_SESSION['userid']; ?>" class="form-control" name="userId">
         <input data-loading-text="Guardando factura..." type="submit" name="invoice_btn" value="Guardar Factura" class="btn btn-success submit_btn invoice-save-btm">						
     </div>
+
     
 </div>
 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -272,6 +283,7 @@ $clientes = new Usuarios();
     </span>
 </div>
 </div>
+
                     </form>
                 </main>
 
@@ -292,8 +304,8 @@ $clientes = new Usuarios();
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../../js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="../../assets/demo/chart-area-demo.js"></script>
-        <script src="../../assets/demo/chart-bar-demo.js"></script>
+        <script src="../../app/assets/demo/chart-area-demo.js"></script>
+        <script src="../../app/assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="../../js/datatables-simple-demo.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

@@ -6,7 +6,6 @@ if($_POST){
     $control= new Bodega();
      $Id = $_POST['Id'];
     
-
     $control->Listar_bode($Id);
     
 }

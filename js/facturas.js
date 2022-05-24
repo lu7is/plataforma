@@ -65,17 +65,43 @@ $('#addRows').click(function(e){
             data:{action:action, Cantidad:Cantidad, Descripcion:Descripcion, Precio:Precio, Monto:Monto},
 
             success: function(response){
-                console.log(response);
+              //  console.log(response);
+               // Listar_Temp();
             },
             error: function(error){
                 alert('error mano');
             }
-        });
-        
-        
+        });    
     }
+});
 
-})
+//LIATAR LOS DATROS DE LA TABLA TEMPORAL
+function Listar_Temp(){
+   $.ajax({
+       url:'../../app/controladores/Facturas/listar_temp.php',
+       type: 'get',
+       success:function(response){
+           let listado = JSON.parse(response);
+           let template = '';
+
+           listado.forEach(listado =>{
+                template +=`
+                <div si="${listado.cantidad}">   </div> 
+                
+                ` 
+           }); 
+           $('#list_temp').html(template);
+           console.log(si);
+           
+       }
+   })
+    
+}
+
+
+
+
+
 
 
 $('#Cliente').change(function(){

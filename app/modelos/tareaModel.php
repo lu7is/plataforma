@@ -38,7 +38,7 @@ class Busca extends BD{
         }
 
     public function Listar(){
-       // $rows = null;
+  
         $statement = $this->db->prepare("SELECT * FROM tareas ");
         $statement->execute();
 
