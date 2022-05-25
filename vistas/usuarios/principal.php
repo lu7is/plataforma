@@ -62,7 +62,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Pagina Principal
                             </a>
-                            <?php if($rol == 'administrador' ) { ?>
+                            <?php if($rol == 'administrador' || $rol == 'supervisor' ) { ?>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Usuarios
@@ -205,6 +205,7 @@
                                     <option value="cliente">Cliente</option>
                                     <option value="proveedor">Proveedor</option>
                                     <option value="bodega">Bodega</option>
+                                    <option value="supervisor">Supervisor</option>
                                   </select>
                                 </div>
                                 </div>

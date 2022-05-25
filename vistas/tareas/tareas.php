@@ -145,6 +145,25 @@ $rol = $_SESSION['rol'];
                                  </nav>
                             </div>
                             <?php }?>
+                            <?php if($rol == 'administrador' || $rol == 'proveedor' ) { ?>
+                            <div class="sb-sidenav-menu-heading">Materia prima:</div>
+                            <a class="nav-link collapsed" href="#prove" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-pen"></i></div>
+                                Proveedores 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="prove" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                <?php if($rol == 'administrador' ) { ?>
+                                    <a class="nav-link" href="proveedores/principal.php">Registrar</a>
+                                <?php } ?>
+                                    <a class="nav-link" href="pedidos/principal.php">Pedidos </a>
+                                    <a class="nav-link" href="inventario/principal.php">Inventario </a>
+                                   
+                                    
+                                 </nav>
+                            </div>
+                            <?php } ?>
                             
                         </div>
                     </div>

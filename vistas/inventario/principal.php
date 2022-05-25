@@ -85,21 +85,29 @@
                                     <a class="nav-link" href="../tareas/tareas.php">Tareas </a>
                                  </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">logistico:</div>
-                            <a class="nav-link collapsed" href="#logis" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                            <?php if($rol == 'bodega' || $rol == 'administrador' || $rol== 'cliente') { ?>
+                            <div class="sb-sidenav-menu-heading">Logistico:</div>
+                            <a class="nav-link collapsed" href="#bode" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
-                                Bodegas
+                                Bodegas 
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="logis" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../bodegas/principal.php">Registro </a>
-                                    <a class="nav-link" href="../separacion/principal.php">Separacion </a>
+                                   <?php if($rol == 'administrador' || $rol== 'bodega' || $rol== 'cliente'  ) { ?>
+                                    <a class="nav-link" href="bodegas/principal.php">Registrar</a>
+                                    <?php } ?>
+                                    <?php if($rol == 'administrador' || $rol== 'bodega'  ) { ?>
+                                    <a class="nav-link" href="separacion/principal.php">Separacion </a>
+                                    <?php } ?>
+                                    <?php if($rol == 'administrador'  ) { ?>
                                     <a class="nav-link" href="../despacho/principal.php">Despachos </a>
+                                    <?php } ?>
                                     
                                     
                                  </nav>
                             </div>
+                            <?php }?>
                             
 
                             <?php if($rol == 'administrador' ) { ?>
@@ -121,21 +129,29 @@
                             </div>
                             <?php } ?>
 
+                            <?php if($rol == 'administrador' || $rol == 'proveedor' ) { ?>
                             <div class="sb-sidenav-menu-heading">Materia prima:</div>
-                            <a class="nav-link collapsed" href="#mate" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link collapsed" href="#prove" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-pen"></i></div>
                                 Proveedores 
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="mate" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="prove" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../proveedores/principal.php">Registrar</a>
-                                    <a class="nav-link" href="../pedidos/principal.php">Pedidos </a>
-                                    <a class="nav-link" href="#">Inventario </a>
-                                    
+                                <?php if($rol == 'administrador' ) { ?>
+                                    <a class="nav-link" href="proveedores/principal.php">Registrar</a>
+                                <?php } ?>
+                                    <a class="nav-link" href="pedidos/principal.php">Pedidos </a>
+                                    <a class="nav-link" href="inventario/principal.php">Inventario </a>
+                                   
                                     
                                  </nav>
                             </div>
+                            <?php } ?>
+                            
+                            
+                            
+                        </div>
                     </div>
                     <div class="sb-sidenav-footer">
                     <div class="small">Login por:</div>

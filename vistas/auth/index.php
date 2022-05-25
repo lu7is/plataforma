@@ -13,6 +13,7 @@
         <meta name="author" content="" />
         <title>Login</title>
         <link href="../../css/styles.css" rel="stylesheet" />
+        <link href="../../css/login.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
@@ -38,9 +39,11 @@
                                                 <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">Forgot Password?</a>
-                                                <button type="submit" class="btn btn-primary">Login</button>
+                                            <a class="small" href="password.html">Olvidaste tu contraseña?</a>
+                                            <div id="iniciar">
+                                                
+                                                <button type="submit" class="btn btn-primary" >Iniciar Sesíon</button>
+                                                <a href="../index.html"><button type="button" class="btn btn-danger" >Cancelar</button></a>
                                             </div>
                                         </form>
                                     </div>

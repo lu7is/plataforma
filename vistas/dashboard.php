@@ -57,7 +57,7 @@ $rol = $_SESSION['rol'];
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Pagina Principal
                             </a>
-                            <?php if($rol == 'administrador' ) { ?>
+                            <?php if($rol == 'administrador' || $rol == 'supervisor' ) { ?>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Usuarios
@@ -80,7 +80,7 @@ $rol = $_SESSION['rol'];
                                     <a class="nav-link" href="tareas/tareas.php">Tareas </a>
                                  </nav>
                             </div>
-                            <?php if($rol == 'bodega' || $rol == 'administrador' || $rol== 'cliente') { ?>
+                            <?php if($rol == 'bodega' || $rol == 'administrador' || $rol== 'cliente' || $rol == 'supervisor')  { ?>
                             <div class="sb-sidenav-menu-heading">Logistico:</div>
                             <a class="nav-link collapsed" href="#bode" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
@@ -89,10 +89,10 @@ $rol = $_SESSION['rol'];
                             </a>
                             <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                   <?php if($rol == 'administrador' || $rol== 'bodega' || $rol== 'cliente'  ) { ?>
+                                   <?php if($rol == 'administrador' || $rol== 'bodega' || $rol== 'cliente' || $rol == 'supervisor'  ) { ?>
                                     <a class="nav-link" href="bodegas/principal.php">Registrar</a>
                                     <?php } ?>
-                                    <?php if($rol == 'administrador' || $rol== 'bodega'  ) { ?>
+                                    <?php if($rol == 'administrador' || $rol== 'bodega' || $rol == 'supervisor'   ) { ?>
                                     <a class="nav-link" href="separacion/principal.php">Separacion </a>
                                     <?php } ?>
                                     <?php if($rol == 'administrador'  ) { ?>
@@ -104,7 +104,7 @@ $rol = $_SESSION['rol'];
                             </div>
                             <?php }?>
                             
-                            <?php if($rol == 'administrador' ) { ?>
+                            <?php if($rol == 'administrador' || $rol == 'supervisor' ) { ?>
                             <div class="sb-sidenav-menu-heading">Operativo:</div>
                             <a class="nav-link collapsed" href="#opera" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
@@ -113,16 +113,22 @@ $rol = $_SESSION['rol'];
                             </a>
                             <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                    <?php if($rol == 'administrador' ) { ?>
                                     <a class="nav-link" href="facturacion/principal.php">Facturacion</a>
+                                    <?php } ?>
+                                    <?php if($rol == 'supervisor' ) { ?>
                                     <a class="nav-link" href="produccion/principal.php">Producción </a>
+                                    <?php } ?>
+                                    <?php if($rol == 'administrador' ) { ?>
                                     <a class="nav-link" href="nomina/principal.php">Nomina </a>
+                                    <?php } ?>
                                     <a class="nav-link" href="asistencia/principal.php">Asistencia </a>
                                     <a class="nav-link" href="gastos/principal.php">Gastos </a>
                                     
                                  </nav>
                             </div>
                             <?php } ?>
-                            <?php if($rol == 'administrador' || $rol == 'proveedor' ) { ?>
+                            <?php if($rol == 'administrador' || $rol == 'proveedor' || $rol == 'supervisor') { ?>
                             <div class="sb-sidenav-menu-heading">Materia prima:</div>
                             <a class="nav-link collapsed" href="#prove" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-pen"></i></div>
@@ -161,9 +167,9 @@ $rol = $_SESSION['rol'];
             <div id="layoutSidenav_content">
             <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Pagina Principal</h1>
+                        <h1 class="mt-4"> Bienvenido: <?php echo $nombre, " ", $apellido ?></h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Inicio</li>
+                            <li class="breadcrumb-item active"><?php echo $rol ?></li>
                         </ol>
                         
  
