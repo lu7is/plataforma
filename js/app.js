@@ -129,7 +129,7 @@ function ListarTareas() {
         });
     }
 
-
+//EDITAR TAREAS 
     $(document).on('click', '.editar', function () {
      
         let element = $(this)[0].parentElement.parentElement;

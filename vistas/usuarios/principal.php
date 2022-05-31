@@ -294,8 +294,15 @@
         <script src="../../js/datatables-simple-demo.js"></script>
         <script src="../../cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <!-- AQUI LISTAMOS NUESTRO ARCHIVO JS -->
         <script src="../../js/usuarios.js"></script>
+        <!-- AQUI REQUERIMOS A VUE.JS-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <!-- AQUI REQUERIMOS A AXIOS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+
       
+
       </script>
         
         

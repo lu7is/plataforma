@@ -141,6 +141,7 @@
                                     
                                  </nav>
                             </div>
+                            </div>
                     </div>
                     <div class="sb-sidenav-footer">
                     <div class="small">Login por:</div>
@@ -149,16 +150,18 @@
                     </div>
                 </nav>
             </div>
+           
             <!-- empieza la pagina principal -->
             
             <div id="layoutSidenav_content">
               <div class="container-fluid px-4">
               <h1 class="mt-4">Gastos</h1>
+              <div id="Gastos"></div>
                   <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" >Registrar</button>
                    <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header"><br>
                           <h5 class="modal-title" id="modalTitle">Registrar Usuarios</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                         </div>
@@ -166,51 +169,36 @@
                         <form method="post" action="" >
                             <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
-                                  <label for="cedula">Cedula:</label>
-                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cedula" id="Cedula" placeholder="Cedula" required >
+                                  <label for="fecha">Fecha:</label>
+                                  <input type="date" class="form-control" name="Fecha" id="Fecha" placeholder="" required >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
-                                    <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control"  name="Nombre" id="Nombre" placeholder="Nombre" required >
-                                </div>
-                             </div>
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="apellido">Apellido:</label>
-                                  <input type="text" class="form-control" name="Apellido" id="Apellido" placeholder="Apellido"required >
-                                </div>
-                              <div class="form-row d-flex">
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="telefono">Telefono:</label>
-                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Telefono" id="Telefono" placeholder="Telefono" required >
-                                </div>
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="direccion">Dirección:</label>
-                                  <input type="text" class="form-control" name="Direccion" id="Direccion" placeholder="Dirección" required >
-                                </div>
-                                </div>
-                              <div class="form-group col-md-6 p-2">
-                                  <label for="correo">Correo:</label>
-                                  <input type="email" class="form-control" name="Correo" id="Correo" placeholder="Correo@hotmail.com" required >
-                                </div>
-                                <div class="form-row d-flex">
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="contraseña">Contraseña:</label>
-                                  <input type="password" class="form-control" name="Password" id="Password" placeholder="********">
-                                </div>
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="direccion">Dirección:</label>
-                                  <select class="form-select" name="Rol" id="Rol"required >
-                                    <option selected>Selecciona El Rol </option>
-                                    <option value="administrador">Administrador</option>
-                                    <option value="empleado">Empleado</option>
-                                    <option value="cliente">Cliente</option>
-                                    <option value="proveedor">Proveedor</option>
+                                <label for="categoria">Concepto:</label>
+                                  <select class="form-select" name="Concepto" id="Concepto"required >
+                                    <option selected>Selecciona Concepto </option>
+                                    <option value="pinturas">Pinturas</option>
+                                    <option value="bolsas">Bolsas</option>
+                                    <option value="fijo">Fijo</option>
+                                    <option value="varios">Varios</option>
+                                    <option value="insumos">Insumos</option>
+                                    
                                   </select>
                                 </div>
+                             </div>
+                             <div class="form-row d-flex">
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="valor">Valor:</label>
+                                  <input type="number" class="form-control" name="Valor" id="Valor" min="1" pattern="^[0-9]+" placeholder="$Valor"required ><br>
+                                  <label for="proveedor">Poveedor:</label>
+                                  <input type="text" class="form-control" name="Proveedor" id="Proveedor" placeholder="Proveedor"required ><br>
                                 </div>
+                                </div>        
+                              
+                              
+                                
                               <br>
                            
-                            <button type="button" onclick="Validacion();" class="btn btn-primary">Registrar Usuario</button>
+                            <input type="submit" @click="registrar" id="registrar" class="btn btn-primary" value="Registrar Gasto">
                             <button type="submit" class="btn btn-warning">Cancelar</button>
                           </form>
                         </div>
@@ -223,9 +211,8 @@
                   </div>
                   
                   <br>
-                  <div class="container">
-            
-                
+                  <div id="Gastos">
+                  <input type="submit" @click="registrar" id="registrar" class="btn btn-primary" value="Registrar Gasto">
                   </div>
 
                 
@@ -246,14 +233,18 @@
         <script src="../../assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="../../js/datatables-simple-demo.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11">
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         
+        
+        <script src="../../js/.js"></script>
+        <!-- AQUI REQUERIMOS A VUE.JS-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <!-- AQUI REQUERIMOS A AXIOS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
       
-      </script>
+        </script>
         
-        <script src="../../js/java.js"></script>
-       
+        <script src="../../js/gastos.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         
     </body>
 </html>

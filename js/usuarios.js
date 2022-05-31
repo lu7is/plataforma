@@ -1,4 +1,6 @@
 
+
+//REGISTRAR USUARIOS 
 $('#form-usu').submit(function (e) {
     const datos_post = {
         Cedula: $('#Cedula').val(),
@@ -17,4 +19,8 @@ $('#form-usu').submit(function (e) {
     });
     e.preventDefault();
 });
+
+
+
+
 
