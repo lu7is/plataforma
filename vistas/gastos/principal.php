@@ -166,7 +166,7 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                         </div>
                         <div class="modal-body">
-                        <form method="post" action="" >
+                        <form id="regi-gasto">
                             <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
                                   <label for="fecha">Fecha:</label>
@@ -193,12 +193,10 @@
                                   <input type="text" class="form-control" name="Proveedor" id="Proveedor" placeholder="Proveedor"required ><br>
                                 </div>
                                 </div>        
-                              
-                              
-                                
+                
                               <br>
                            
-                            <input type="submit" @click="registrar" id="registrar" class="btn btn-primary" value="Registrar Gasto">
+                            <button type="submit"  id="registrar" class="btn btn-primary" >Registrar Gasto </button>
                             <button type="submit" class="btn btn-warning">Cancelar</button>
                           </form>
                         </div>
@@ -211,9 +209,7 @@
                   </div>
                   
                   <br>
-                  <div id="Gastos">
-                  <input type="submit" @click="registrar" id="registrar" class="btn btn-primary" value="Registrar Gasto">
-                  </div>
+                  
 
                 
                 <footer class="py-4 bg-grey mt-auto">
@@ -229,19 +225,16 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../../js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="../../app/assets/demo/chart-area-demo.js"></script>
+        <script src="../../assets/demo/chart-area-demo.js"></script>
         <script src="../../assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="../../js/datatables-simple-demo.js"></script>
-        
-        
-        <script src="../../js/.js"></script>
-        <!-- AQUI REQUERIMOS A VUE.JS-->
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-        <!-- AQUI REQUERIMOS A AXIOS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
-      
-        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="../../js/app.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+     
         
         <script src="../../js/gastos.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

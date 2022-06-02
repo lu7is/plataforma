@@ -1,36 +1,19 @@
-alert("si esta");
-//solicitamos a vue.js
-var Gastos = new Vue({
-    el: "#Gastos",
-    data: {
-        gasto:[],
-        Fecha:"",
-        Concepto:"",
-        Valor:"",
-        Proveedor:""
-    },
-    methods:{
-        //botones registrar
-        registrar: async function(){
-            alert("diste cli");
-            Swal.fire(
-                'Buen trabajo perro ',
-                'You clicked the button!',
-                'success'
-              )
-        },
-        editar: async function(){},
-        eliminar: function(){}
 
-    },
-    created: function(){},
-    computed:{}
+
+//REGISTRAR GASTOS
+
+$('#regi-gasto').submit(function(e){
+
+    const datos_post = {
+        Fecha: $('#Fecha').val(),
+        Concepto: $('#Concepto').val(),
+        Valor: $('#valor').val(),
+        Proveedor: $('#Proveedor').val(),
+
+
+    };
+console.log(datos_post);
+    e.preventDefault();
 
 });
 
-/*
-$('#registrar').submit(function(e){
-    alert("diste cli");
-});
-
-*/
