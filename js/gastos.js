@@ -1,7 +1,8 @@
-alert("si esta");
-//solicitamos a vue.js
+
+
+
 var Gastos = new Vue({
-    el: "#Gastos",
+    el:"#Gastos",
     data: {
         gasto:[],
         Fecha:"",
@@ -12,19 +13,22 @@ var Gastos = new Vue({
     methods:{
         //botones registrar
         registrar: async function(){
-            alert("diste cli");
-            Swal.fire(
-                'Buen trabajo perro ',
-                'You clicked the button!',
-                'success'
-              )
+            
+            
+                
+              alert("si vamos bie3n");
+               
+  
+             
+              
+              
+            
         },
         editar: async function(){},
         eliminar: function(){}
 
-    },
-    created: function(){},
-    computed:{}
+    }
+  
 
 });
 
