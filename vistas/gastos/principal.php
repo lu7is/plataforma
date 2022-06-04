@@ -156,63 +156,57 @@
             <div id="layoutSidenav_content">
               <div class="container-fluid px-4">
               <h1 class="mt-4">Gastos</h1>
-              <div id="Gastos">
-
-              <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" >Registrar</button>
-                <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
-                 <div class="modal-dialog modal-lg">
-                   <div class="modal-content">
-                     <div class="modal-header"><br>
-                       <h5 class="modal-title" id="modalTitle">Registrar Usuarios</h5>
-                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-                     </div>
-                     <div class="modal-body">
-                     <form method="post" action="" >
-                         <div class="form-row d-flex">
-                             <div class="form-group col-md-6 p-2">
-                               <label for="fecha">Fecha:</label>
-                               <input type="date" class="form-control" name="Fecha" id="Fecha" placeholder="" required >
+                  <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" >Registrar</button>
+                   <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header"><br>
+                          <h5 class="modal-title" id="modalTitle">Registrar Usuarios</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form id="regi-gasto">
+                            <div class="form-row d-flex">
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="fecha">Fecha:</label>
+                                  <input type="date" class="form-control" name="Fecha" id="Fecha" placeholder="" required >
+                                </div>
+                                <div class="form-group col-md-6 p-2">
+                                <label for="categoria">Concepto:</label>
+                                  <select class="form-select" name="Concepto" id="Concepto"required >
+                                    <option selected>Selecciona Concepto </option>
+                                    <option value="pinturas">Pinturas</option>
+                                    <option value="bolsas">Bolsas</option>
+                                    <option value="fijo">Fijo</option>
+                                    <option value="varios">Varios</option>
+                                    <option value="insumos">Insumos</option>
+                                    
+                                  </select>
+                                </div>
                              </div>
-                             <div class="form-group col-md-6 p-2">
-                             <label for="categoria">Concepto:</label>
-                               <select class="form-select" name="Concepto" id="Concepto"required >
-                                 <option selected>Selecciona Concepto </option>
-                                 <option value="pinturas">Pinturas</option>
-                                 <option value="bolsas">Bolsas</option>
-                                 <option value="fijo">Fijo</option>
-                                 <option value="varios">Varios</option>
-                                 <option value="insumos">Insumos</option>
-                                 
-                               </select>
-                             </div>
-                          </div>
-                          <div class="form-row d-flex">
-                             <div class="form-group col-md-6 p-2">
-                               <label for="valor">Valor:</label>
-                               <input type="number" class="form-control" name="Valor" id="Valor" min="1" pattern="^[0-9]+" placeholder="$Valor"required ><br>
-                               <label for="proveedor">Poveedor:</label>
-                               <input type="text" class="form-control" name="Proveedor" id="Proveedor" placeholder="Proveedor"required ><br>
-                             </div>
-                             </div>        
-                           <br>
-                        
-                         <input type="submit" @click="registrar" id="registrar" class="btn btn-primary" value="Registrar Gasto">
-                         <button type="submit" class="btn btn-warning">Cancelar</button>
-                       </form>
-                     </div>
+                             <div class="form-row d-flex">
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="valor">Valor:</label>
+                                  <input type="number" class="form-control" name="Valor" id="Valor" min="1" pattern="^[0-9]+" placeholder="$Valor"required ><br>
+                                  <label for="proveedor">Poveedor:</label>
+                                  <input type="text" class="form-control" name="Proveedor" id="Proveedor" placeholder="Proveedor"required ><br>
+                                </div>
+                                </div>        
+                
+                              <br>
+                           
+                            <button type="submit"  id="registrar" class="btn btn-primary" >Registrar Gasto </button>
+                            <button type="submit" class="btn btn-warning">Cancelar</button>
+                          </form>
+                        </div>
+                        </div>
+                        </div>  
+                        </div>  
+                        </div>  
+                       
+                                     
 
                   
-              </div>
-              </div>
-              </div>
-              </div>
-             
-                    
-
-                 
-                 
-                
-                  </div>
 
                 
                 <footer class="py-4 bg-grey mt-auto">
@@ -228,19 +222,17 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../../js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="../../app/assets/demo/chart-area-demo.js"></script>
-        <script src="../../app/assets/demo/chart-bar-demo.js"></script>
+
+
+        <script src="../../assets/demo/chart-area-demo.js"></script>
+        <script src="../../assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="../../js/datatables-simple-demo.js"></script>
-        
-        
-        
-        <!-- AQUI REQUERIMOS A VUE.JS-->
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-        <!-- AQUI REQUERIMOS A AXIOS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
-      
-       
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="../../js/app.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
         
         <script src="../../js/gastos.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

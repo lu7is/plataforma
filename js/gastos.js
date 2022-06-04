@@ -1,40 +1,63 @@
 
 
-
-var Gastos = new Vue({
-    el:"#Gastos",
-    data: {
-        gasto:[],
-        Fecha:"",
-        Concepto:"",
-        Valor:"",
-        Proveedor:""
-    },
-    methods:{
-        //botones registrar
-        registrar: async function(){
-            
-            
-                
-              alert("si vamos bie3n");
-               
-  
-             
-              
-              
-            
-        },
-        editar: async function(){},
-        eliminar: function(){}
-
-    }
-  
-
-});
-
+//REGISTRAR GASTOS
 /*
-$('#registrar').submit(function(e){
-    alert("diste cli");
+$('#regi-gasto').submit(function(e){
+
+    const datos_post = {
+        action  'registrar',
+        Fecha: $('#Fecha').val(),
+        Concepto: $('#Concepto').val(),
+        Valor: $('#valor').val(),
+        Proveedor: $('#Proveedor').val(),
+        
+
+
+    };
+$.post('../../app/controladores/Gastos/gastosController.php',datos_post,function (response){
+    console.log(response);
+    $('#regi-gasto').trigger('reset');
+    
+})
+
+    e.preventDefault();
+
+
+});
+*/
+$('#regi-gasto').submit(function(e){
+
+    
+        
+        Fecha = $('#Fecha').val(),
+        Concepto = $('#Concepto').val(),
+        Valor = $('#Valor').val(),
+        Proveedor = $('#Proveedor').val(),
+        action = 'registrar'
+        
+        $.ajax({
+            url:'../../app/controladores/Gastos/gastosController.php',
+            method:'POST',
+            async:true,
+            data:{action:action, Fecha:Fecha, Concepto:Concepto, Valor:Valor, Proveedor:Proveedor},
+
+            success: function(response){
+                console.log(response);
+                $('#regi-gasto').trigger('reset');
+            },
+
+            error: function(error){
+                alert('no mano ahh ')
+            }
+        })
+
+    
+    
+    
+
+
+    e.preventDefault();
+
+
 });
 
-*/
