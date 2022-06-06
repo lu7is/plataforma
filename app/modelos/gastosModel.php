@@ -20,6 +20,24 @@ class Gasto extends BD{
         $statement->bindParam(':Proveedor',$Proveedor);
         $statement->execute();
     }
+
+    public function Listar(){
+        $statement = $this->db->prepare("CALL listar_Gasto");
+        $statement -> execute();
+
+        $json = array();
+
+        while($row = $statement->fetch()){
+            $json[] = array(
+                'fecha'=>$row['fecha'],
+                'concepto'=>$row['concepto'],
+                'valor'=>$row['valor'],
+                'proveedor'=>$row['proveedor']
+            );
+        }
+        $jsonstring = json_encode($json);
+        echo $jsonstring;
+    }
 }
 
 

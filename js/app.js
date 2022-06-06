@@ -25,22 +25,42 @@ $(document).ready(function () {
     });
 
 
-    $('#regi-tarea').submit(function (e) {
-        const datos_post = {
-            Nonbre: $('#Nonbre').val(),
-            Descrip: $('#Descrip').val(),
-            Prioridad: $('#Prioridad').val(),
-            Estado: $('#Estado').val(),
-        };
+    $('#regi-tarea').submit(function(e) {
+        
+            Nombre = $('#Nombre').val(),
+            Descrip = $('#Descrip').val(),
+            Prioridad = $('#Prioridad').val(),
+            Fecha = $('#Fecha').val(),
+            action = 'registrar'
 
-        $.post('../../app/controladores/tareas/agregarTarea.php', datos_post, function (response) {
-
-            console.log(response);
-            $('#regi-tarea').trigger('reset');
+        $.ajax({
+            url: '../../app/controladores/Tareas/tareaController.php', 
+            method: 'POST',
+            async: true,
+            data:{action:action, Nombre:Nombre, Descrip:Descrip, Prioridad:prioridad, Fecha:Fecha},
+            
+            success: function(response){
+           // $('#regi-tarea').trigger('reset');
             window.location.replace("tareas.php");
+            },
+
+            error: function(error){
+                alert('Error al realizar el registro, por favor intentar nuevamente')
+            }
+
+          
         })
+
         e.preventDefault();
 });
+
+
+
+
+
+
+
+
 
 
 function ListarTareas() {
@@ -48,12 +68,11 @@ function ListarTareas() {
 
     url: '../../app/controladores/Tareas/listarTareas.php',
     type: 'GET',
-     success: function(response) {
-
+    success: function(response) {
     let tarea = JSON.parse(response);
     let template = '';
     tarea.forEach(tarea => {
-        template += ` 
+        template +=` 
             <div class="card" taskId = " ${tarea.id} ">
             <div class="card-body " > 
             

@@ -149,15 +149,14 @@
                         "Rol:"," ", $rol; ?>
                     </div>
                 </nav>
-            </div>
-           
+            </div>  
             <!-- empieza la pagina principal -->
-            <div id="Gastos">
+            
             <div id="layoutSidenav_content">
               <div class="container-fluid px-4">
               <h1 class="mt-4">Gastos</h1>
-                  <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" >Registrar</button>
-                   <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+                  <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#modal_registrar" >Registrar</button>
+                   <div class="modal fade" id="modal_registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
                         <div class="modal-header"><br>
@@ -198,10 +197,28 @@
                             <button type="submit"  id="registrar" class="btn btn-primary" >Registrar Gasto </button>
                             <button type="submit" class="btn btn-warning">Cancelar</button>
                           </form>
+
+
+
+
+                          
                         </div>
+                        
                         </div>
+                        
                         </div>  
+                        
                         </div>  
+                         <div id="listar_gasto">
+                          
+                         </div>
+
+                        
+                               <div>
+                        
+
+                        
+                    </div>
                         </div>  
                        
                                      
@@ -213,28 +230,28 @@
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Sitio Web MRK-BRAND</div>
-                          
                         </div>
                     </div>
                 </footer>
             </div>
+
+
+
+
+
+
+
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../../js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-
-
-        <script src="../../assets/demo/chart-area-demo.js"></script>
-        <script src="../../assets/demo/chart-bar-demo.js"></script>
+        <script src="../../app/assets/demo/chart-area-demo.js"></script>
+        <script src="../../app/assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="../../js/datatables-simple-demo.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="../../js/app.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
-        
-        <script src="../../js/gastos.js"></script>
+        <script src="../../js/gasto.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         
     </body>

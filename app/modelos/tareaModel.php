@@ -26,13 +26,14 @@ class Busca extends BD{
         echo $jsonstring;  
     }
 
-    public function Registrar($Nonbre,$Descrip,$Prioridad,$Estado){
-        $statement = $this->db->prepare("INSERT INTO tareas (nombre, descrip, prioridad, estado)
-                                         VALUES (:Nonbre, :Descrip, :Prioridad, :Estado)");
+    public function Registrar($Nonbre,$Descrip,$Prioridad,$Fecha,$TokenUsu){
+        $statement = $this->db->prepare("INSERT INTO tareas (nombre, descrip, prioridad, estado, fecha, id_usuario)
+                                         VALUES (:Nonbre, :Descrip, :Prioridad, 'Activo',:Fecha, :TokenUsu )");
         $statement->bindParam(':Nonbre',$Nonbre);
         $statement->bindParam(':Descrip',$Descrip);
         $statement->bindParam(':Prioridad',$Prioridad);
-        $statement->bindParam(':Estado',$Estado);
+        $statement->bindParam(':Fecha',$Fecha);
+        $statement->bindParam(':TokenUsu',$TokenUsu);
         $statement->execute();
           
         }

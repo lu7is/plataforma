@@ -168,7 +168,7 @@ $rol = $_SESSION['rol'];
                               <div class="form-row d-flex">
                                     <div class="form-group col-md-6 p-2">
                                     <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control" name="Nonbre" id="Nonbre" placeholder="Nombre" required >
+                                    <input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Nombre" required >
                                     </div>
                                 </div>
                                 <div class="form-row d-flex">
@@ -187,13 +187,11 @@ $rol = $_SESSION['rol'];
                                     <option value="ninguna">Ninguna</option>
                                     
                                   </select>
-                                  <label for="direccion">Estado:</label>
-                                  <select class="form-select" name="Estado" id="Estado"required >
-                                    <option selected>Selecciona El Rol </option>
-                                    <option value="activo">Activo</option>
-                                    <option value="inactivo">Inactivo</option>
+                                  <br>
+                                  <label for="direccion">Fecha:</label>
+                                  <input type="date" class="form-control" name="Fecha" id="Fecha" placeholder="" required >
                                     
-                                  </select>
+                                 
                                 </div>
                                 
                                 </div>
