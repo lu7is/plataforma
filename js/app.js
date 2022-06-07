@@ -1,5 +1,5 @@
 
-
+/*
 $(document).ready(function () {
     $('#resultado').hide();
     ListarTareas();
@@ -23,33 +23,25 @@ $(document).ready(function () {
             });
         }
     });
-
-
-    $('#regi-tarea').submit(function(e) {
+*/
+alert('hola siiii sonido')
+    $('#regi-tarea').submit(function (e) {
         
             Nombre = $('#Nombre').val(),
             Descrip = $('#Descrip').val(),
             Prioridad = $('#Prioridad').val(),
             Fecha = $('#Fecha').val(),
             action = 'registrar'
+            $.ajax({
+                url: '../../app/controladores/Tareas/tareaController.php', 
+                method: 'POST',
+                async:true,
+                data:{action:action, Nombre:Nombre, Descrip:Descrip, Prioridad:prioridad, Fecha:Fecha},
 
-        $.ajax({
-            url: '../../app/controladores/Tareas/tareaController.php', 
-            method: 'POST',
-            async: true,
-            data:{action:action, Nombre:Nombre, Descrip:Descrip, Prioridad:prioridad, Fecha:Fecha},
-            
-            success: function(response){
-           // $('#regi-tarea').trigger('reset');
-            window.location.replace("tareas.php");
-            },
-
-            error: function(error){
-                alert('Error al realizar el registro, por favor intentar nuevamente')
-            }
-
-          
-        })
+                success: function(response){
+                    window.location.replace("tareas.php"); 
+                }
+            })
 
         e.preventDefault();
 });
@@ -231,7 +223,6 @@ function ListarTareas() {
 
 
 
-});
 
 
 
