@@ -24,29 +24,13 @@ $(document).ready(function () {
         }
     });
 */
-$('#regi-tarea').submit(function(e){
-        
-            Nombre = $('#Nombre').val(),
-            Descrip = $('#Descrip').val(),
-            Prioridad = $('#Prioridad').val(),
-            Fecha = $('#Fecha').val(),
-            action = 'registrar',
-
-            $.ajax({
-            url: '../../app/controladores/Tareas/tareaController.php', 
-            method: 'POST',
-            async:true,
-            data:{action:action, Nombre:Nombre, Descrip:Descrip, Prioridad:prioridad, Fecha:Fecha},
-            });
-        e.preventDefault();
-});
 
 
 
 
 
 
-
+/*
 
 
 
@@ -135,6 +119,8 @@ function ListarTareas() {
         });
     }
 
+/*
+
 //EDITAR TAREAS 
     $(document).on('click', '.editar', function () {
      
@@ -183,7 +169,7 @@ function ListarTareas() {
        });
         });
     });
-
+/*
     $(document).on('click', '.eliminar', function () {
 
         Swal.fire({
@@ -212,14 +198,3 @@ function ListarTareas() {
 
 
     })
-
-
-
-
-
-
-
-
-
-
-
