@@ -3,7 +3,7 @@ require_once("../../modelos/tareaModel.php");
 session_start();
 $TokenUsu = $_SESSION['id'];
 
-if($_POST){
+if($_POST['action'] == 'registrar' ){
 
    $Agregar = new Busca();
     
@@ -15,6 +15,12 @@ if($_POST){
 
    $Agregar->Registrar($Nombre,$Descrip,$Prioridad,$Fecha,$TokenUsu );
     
+}
+
+if($_POST['action'] == 'listar'){
+
+   $listar = new Busca();
+   $listar->Listar();
 }
 
 

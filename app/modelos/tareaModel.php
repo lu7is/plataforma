@@ -40,7 +40,7 @@ class Busca extends BD{
 
     public function Listar(){
   
-        $statement = $this->db->prepare("SELECT * FROM tareas ");
+        $statement = $this->db->prepare("SELECT * FROM tarea ");
         $statement->execute();
 
         $json= array();

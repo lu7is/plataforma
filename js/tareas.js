@@ -38,12 +38,20 @@ e.preventDefault();
 
 //LISTAR TAREAS
 function ListarTareas() {
-    $.ajax({
+    var action = 'listar';
+    
+$.ajax({
 
    url: '../../app/controladores/Tareas/listarTareas.php',
    type: 'GET',
+   async: true,
+   data:{action:action},
+
+   
    success: function(response) {
+       
    let tarea = JSON.parse(response);
+   
    let template = '';
    tarea.forEach(tarea => {
        template +=` 
@@ -116,7 +124,9 @@ function ListarTareas() {
        </div>
                `
                });
+               console.log(tarea);
                $('#lista').html(template);
+               console.log(action);
            }
 
        });
