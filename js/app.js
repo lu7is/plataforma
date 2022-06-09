@@ -24,25 +24,20 @@ $(document).ready(function () {
         }
     });
 */
-alert('hola siiii sonido')
-    $('#regi-tarea').submit(function (e) {
+$('#regi-tarea').submit(function(e){
         
             Nombre = $('#Nombre').val(),
             Descrip = $('#Descrip').val(),
             Prioridad = $('#Prioridad').val(),
             Fecha = $('#Fecha').val(),
-            action = 'registrar'
+            action = 'registrar',
+
             $.ajax({
-                url: '../../app/controladores/Tareas/tareaController.php', 
-                method: 'POST',
-                async:true,
-                data:{action:action, Nombre:Nombre, Descrip:Descrip, Prioridad:prioridad, Fecha:Fecha},
-
-                success: function(response){
-                    window.location.replace("tareas.php"); 
-                }
-            })
-
+            url: '../../app/controladores/Tareas/tareaController.php', 
+            method: 'POST',
+            async:true,
+            data:{action:action, Nombre:Nombre, Descrip:Descrip, Prioridad:prioridad, Fecha:Fecha},
+            });
         e.preventDefault();
 });
 
