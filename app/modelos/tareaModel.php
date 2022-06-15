@@ -38,25 +38,27 @@ class Busca extends BD{
           
         }
 
-    public function Listar(){
-  
-        $statement = $this->db->prepare("SELECT * FROM tarea ");
-        $statement->execute();
+        public function Listar(){
+            // $rows = null;
+             $statement = $this->db->prepare("CALL listar_Tareas ");
+             $statement->execute();
+     
+             $json= array();
+     
+             while($row = $statement->fetch()){  
+               $json[]  = array( 
+                     'nombre' => $row['nombre'],
+                     'descrip' => $row['descrip'],
+                     'prioridad' => $row['prioridad'],
+                     'estado' => $row['estado'],
+                     'id' => $row['id']
+               ); 
+             }
+             $jsonstring = json_encode($json);
+              echo $jsonstring;
+         }
 
-        $json= array();
 
-        while($row = $statement->fetch()){  
-          $json[]  = array( 
-                'nombre' => $row['nombre'],
-                'descrip' => $row['descrip'],
-                'prioridad' => $row['prioridad'],
-                'estado' => $row['estado'],
-                'id' => $row['id']
-          ); 
-        }
-        $jsonstring = json_encode($json);
-         echo $jsonstring;
-    }
 
     public function Eliminar($Id){
         $statement = $this->db->prepare("DELETE FROM tareas WHERE id = :Id ");
@@ -72,7 +74,7 @@ class Busca extends BD{
 
     public function Listar_id($Id){
         // $rows = null;
-         $statement = $this->db->prepare("SELECT *  FROM tareas WHERE id = :Id ");
+         $statement = $this->db->prepare("SELECT *  FROM tarea WHERE id = :Id ");
          $statement->bindParam(':Id', $Id);
          $statement->execute();
  

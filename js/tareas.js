@@ -16,8 +16,6 @@ $('#regi-tarea').submit(function (e) {
 
         success: function(response){
            // 
-        
-
           Swal.fire({
            
             icon: 'success',
@@ -36,98 +34,126 @@ $('#regi-tarea').submit(function (e) {
 e.preventDefault();
 });
 
-//LISTAR TAREAS
-function ListarTareas() {
-    var action = 'listar';
+
+
+
+//LISTAR TAREA
+$(document).ready(function(){
+
+
+    ListarTarea();
+
+  
+
+});
+
+//LISTAR TODAS LAS TAREAS EN UNA TABLA
+function ListarTarea(){
+     var action = 'listar'
+     $.ajax({
+         url: '../../app/controladores/Tareas/tareaController.php',
+         type: 'post',
+         async:true,
+         data:{action:action},
+         success:function(response){
+         let tareas = JSON.parse(response);
+         let template = '';
+
+         tareas.forEach(tareas => {
+            template +=`
+            
+            <div class="card" taskId = "${tareas.id} ">
+            <div class="card-body " > 
+            
+                    <p> ${tareas.nombre} <h6>PRIORIDAD:</h6> ${tareas.prioridad}  </p>
+                    <p> ${tareas.descrip} <h6>ESTADO:</h6> ${tareas.estado}  </p>
+                    <a class="eliminar btn btn-danger" >Eliminar</a>  <a class=" editar btn btn-warning" data-bs-toggle="modal" data-bs-target="#registrar">Editar</a>
+                    
+                 <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+                        <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="modalTitle">Editar Tareas</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                                        </div>
+ 
+                                        <div class="modal-body">
+                                        <form id="registrar_modal" >
+ 
+                                        <input type="hidden"  id="taskId" placeholder="Nombre" required >
+ 
+                                        <div class="form-row d-flex">
+                                          </div>
+                                            
+                                          <div class="form-row d-flex">
+                                                <div class="form-group col-md-6 p-2">
+                                                <label for="nombre">Nombre:</label>
+                                                <input type="text" class="form-control" name="Nonbre" id="Nonbre" placeholder="Nombre" required >
+                                                </div>
+                                            </div>
+                                            <div class="form-row d-flex">
+                                            <div class="form-group col-md-6 p-2">
+                                              <label for="descrip">Descripción:</label>
+                                              <textarea name="Descrip" id="Descrip" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
+                                            </div>
+                                            
+                                            <div class="form-group col-md-6 p-2">
+                                              <label for="direccion">Prioridad:</label>
+                                              <select class="form-select" name="Prioridad" id="Prioridad" required >
+                                                <option selected>Selecciona la prioridad </option>
+                                                <option value="alta">Alta</option>
+                                                <option value="media">Media</option>
+                                                <option value="baja">Baja</option>
+                                                <option value="ninguna">Ninguna</option>
+                                                
+                                              </select>
+                                             
+                                            </div>
+                                            
+                                            </div>
+                                            
+                                          <br>
+                                       
+                                        <button type="submit" class=" editTask btn btn-primary">Registrar Tarea</button>
+                                        <button type="button" class="btn bg-warning" data-bs-dismiss="modal" aria-label="close">Cancelar</button>
+                                      </form>
+                                        </div>
+                                </div>
+                        </div>
+                 </div>
+             </div>
+        </div>
+            
+            
+            `
+         });
+         $('#lista').html(template);
+         }
+     });   
     
-$.ajax({
+}
 
-   url: '../../app/controladores/Tareas/listarTareas.php',
-   type: 'GET',
-   async: true,
-   data:{action:action},
+//EDITAR TAREAS
 
+$(document).on('click','.editTask', function(){
+  let element = $(this)[0].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+  var Id = $(element).attr('taskId');
+  var action ='editar';
+  $.ajax({
+    url:'../../app/controladores/tareas/tareaController.php',
+    type: 'post',
+    async:true,
+    data:{action:action, Id:Id},
+
+    success:function(response){
+
+      console.log(response);
+     const tareas = JSON.parse(response);
+      $('#Nombre').val(tareas.nombre);
+      $('#Descrip').val(tareas.descrip);
+      $('#Prioridad').val(tareas.prioridad);
+}
+
+  })
+});
    
-   success: function(response) {
-       
-   let tarea = JSON.parse(response);
-   
-   let template = '';
-   tarea.forEach(tarea => {
-       template +=` 
-           <div class="card" taskId = " ${tarea.id} ">
-           <div class="card-body " > 
-           
-                   <p> ${tarea.nombre} <h6>PRIORIDAD:</h6> ${tarea.prioridad}  </p>
-                   <p> ${tarea.descrip} <h6>ESTADO:</h6> ${tarea.estado}  </p>
-                   <a class="eliminar btn btn-danger" >Eliminar</a>  <a class=" editar btn btn-warning" data-bs-toggle="modal" data-bs-target="#registrar">Editar</a>
-                   
-                <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
-                       <div class="modal-dialog modal-lg">
-                               <div class="modal-content">
-                                       <div class="modal-header">
-                                       <h5 class="modal-title" id="modalTitle">Editar Tareas</h5>
-                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
-                                       </div>
-
-                                       <div class="modal-body">
-                                       <form id="registrar_modal" >
-
-                                       <input type="hidden"  id="taskId" placeholder="Nombre" required >
-
-                                       <div class="form-row d-flex">
-                                         </div>
-                                           
-                                         <div class="form-row d-flex">
-                                               <div class="form-group col-md-6 p-2">
-                                               <label for="nombre">Nombre:</label>
-                                               <input type="text" class="form-control" name="Nonbre" id="Nonbre" placeholder="Nombre" required >
-                                               </div>
-                                           </div>
-                                           <div class="form-row d-flex">
-                                           <div class="form-group col-md-6 p-2">
-                                             <label for="descrip">Descripción:</label>
-                                             <textarea name="Descrip" id="Descrip" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
-                                           </div>
-                                           
-                                           <div class="form-group col-md-6 p-2">
-                                             <label for="direccion">Prioridad:</label>
-                                             <select class="form-select" name="Prioridad" id="Prioridad" required >
-                                               <option selected>Selecciona la prioridad </option>
-                                               <option value="alta">Alta</option>
-                                               <option value="media">Media</option>
-                                               <option value="baja">Baja</option>
-                                               <option value="ninguna">Ninguna</option>
-                                               
-                                             </select>
-                                             <label for="direccion">Estado:</label>
-                                             <select class="form-select" name="Estado" id="Estado"required >
-                                               <option selected>Selecciona El Rol </option>
-                                               <option value="activo">Activo</option>
-                                               <option value="inactivo">Inactivo</option>
-                                               
-                                             </select>
-                                           </div>
-                                           
-                                           </div>
-                                           
-                                         <br>
-                                      
-                                       <button type="submit" class=" regi_tare btn btn-primary">Registrar Tarea</button>
-                                       <button type="button" class="btn bg-warning" data-bs-dismiss="modal" aria-label="close">Cancelar</button>
-                                     </form>
-                                       </div>
-                               </div>
-                       </div>
-                </div>
-            </div>
-       </div>
-               `
-               });
-               console.log(tarea);
-               $('#lista').html(template);
-               console.log(action);
-           }
-
-       });
-   }

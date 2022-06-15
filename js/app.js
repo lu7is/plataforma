@@ -1,5 +1,6 @@
 
-/*
+
+
 $(document).ready(function () {
     $('#resultado').hide();
     ListarTareas();
@@ -23,14 +24,14 @@ $(document).ready(function () {
             });
         }
     });
-*/
 
 
 
 
 
 
-/*
+
+
 
 
 
@@ -119,7 +120,7 @@ function ListarTareas() {
         });
     }
 
-/*
+
 
 //EDITAR TAREAS 
     $(document).on('click', '.editar', function () {
@@ -169,7 +170,7 @@ function ListarTareas() {
        });
         });
     });
-/*
+
     $(document).on('click', '.eliminar', function () {
 
         Swal.fire({

@@ -122,29 +122,7 @@ $rol = $_SESSION['rol'];
                             </div>
                             <?php } ?>
 
-                            <?php if($rol == 'bodega' || $rol == 'administrador' || $rol== 'cliente') { ?>
-                            <div class="sb-sidenav-menu-heading">Logistico:</div>
-                            <a class="nav-link collapsed" href="#bode" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
-                                Bodegas 
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                   <?php if($rol == 'administrador' || $rol== 'bodega' || $rol== 'cliente'  ) { ?>
-                                    <a class="nav-link" href="bodegas/principal.php">Registrar</a>
-                                    <?php } ?>
-                                    <?php if($rol == 'administrador' || $rol== 'bodega'  ) { ?>
-                                    <a class="nav-link" href="separacion/principal.php">Separacion </a>
-                                    <?php } ?>
-                                    <?php if($rol == 'administrador'  ) { ?>
-                                    <a class="nav-link" href="../despacho/principal.php">Despachos </a>
-                                    <?php } ?>
-                                    
-                                    
-                                 </nav>
-                            </div>
-                            <?php }?>
+                            
                             <?php if($rol == 'administrador' || $rol == 'proveedor' ) { ?>
                             <div class="sb-sidenav-menu-heading">Materia prima:</div>
                             <a class="nav-link collapsed" href="#prove" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
@@ -174,6 +152,7 @@ $rol = $_SESSION['rol'];
                     </div>
                 </nav>
             </div>
+            
             <!-- empieza la pagina principal -->
 <div id="layoutSidenav_content">
     
@@ -181,6 +160,8 @@ $rol = $_SESSION['rol'];
         <div class="container-fluid px-6">
          <h1 class="mt-4">Listado de tareas</h1>
                 <div id="lista">
+                    
+                   
                 </div>   
         </div>
       </main>
@@ -205,8 +186,8 @@ $rol = $_SESSION['rol'];
         <script src="../../js/datatables-simple-demo.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="../../js/tareas.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../../js/tareas.js"></script>
 
 
 

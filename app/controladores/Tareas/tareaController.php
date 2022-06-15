@@ -16,14 +16,21 @@ if($_POST['action'] == 'registrar' ){
    $Agregar->Registrar($Nombre,$Descrip,$Prioridad,$Fecha,$TokenUsu );
     
 }
-
+//LISTAR LAS TAREAS
 if($_POST['action'] == 'listar'){
 
    $listar = new Busca();
    $listar->Listar();
 }
 
+//EDITAR LAS TAREAS
+if($_POST['action'] == 'editar'){
+   $Editar = new Busca();
 
+    $Id = $_POST['Id'];
+    
+   $Editar->Listar_id($Id);
+}
 
 
 ?>

@@ -119,6 +119,7 @@ class Bodega extends BD{
          $statement->rowCount() == 1;
  
          $json= array();
+
          while($row = $statement->fetch()){  
            $json[]  = array( 
              'id' => $row['id'],
@@ -129,8 +130,6 @@ class Bodega extends BD{
            //  'fecha' => $row['fecha'],
             
            );
- 
-          
          }
  
          $jsonstring = json_encode($json);
