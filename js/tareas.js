@@ -58,15 +58,19 @@ function ListarTarea(){
          success:function(response){
          let tareas = JSON.parse(response);
          let template = '';
-
+//console.log(tareas);
+//console.log(response);
          tareas.forEach(tareas => {
             template +=`
             
             <div class="card" taskId = "${tareas.id} ">
             <div class="card-body " > 
-            
-                    <p> ${tareas.nombre} <h6>PRIORIDAD:</h6> ${tareas.prioridad}  </p>
-                    <p> ${tareas.descrip} <h6>ESTADO:</h6> ${tareas.estado}  </p>
+                    <h6>NOMBRE:</h6> 
+                    <p> ${tareas.nombre_tarea} <h6>PRIORIDAD:</h6> ${tareas.prioridad}  </p>
+                    <h6>Descripcion:</h6>          
+                    <p> ${tareas.descrip} </p>
+                    <h6>Usuario:</h6> 
+                    <p> ${tareas.nombre} </p>
                     <a class="eliminar btn btn-danger" >Eliminar</a>  <a class=" editar btn btn-warning" data-bs-toggle="modal" data-bs-target="#registrar">Editar</a>
                     
                  <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
@@ -88,7 +92,7 @@ function ListarTarea(){
                                           <div class="form-row d-flex">
                                                 <div class="form-group col-md-6 p-2">
                                                 <label for="nombre">Nombre:</label>
-                                                <input type="text" class="form-control" name="Nonbre" id="Nonbre" placeholder="Nombre" required >
+                                                <input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Nombre" required >
                                                 </div>
                                             </div>
                                             <div class="form-row d-flex">
@@ -135,9 +139,11 @@ function ListarTarea(){
 
 //EDITAR TAREAS
 
-$(document).on('click','.editTask', function(){
-  let element = $(this)[0].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+$(document).on('click','.editar', function(){
+  let element = $(this)[0].parentElement.parentElement;
   var Id = $(element).attr('taskId');
+  //console.log(element);
+  console.log(Id);
   var action ='editar';
   $.ajax({
     url:'../../app/controladores/tareas/tareaController.php',
@@ -147,11 +153,12 @@ $(document).on('click','.editTask', function(){
 
     success:function(response){
 
-      console.log(response);
+      //console.log(response);
      const tareas = JSON.parse(response);
-      $('#Nombre').val(tareas.nombre);
-      $('#Descrip').val(tareas.descrip);
-      $('#Prioridad').val(tareas.prioridad);
+     
+    $('#Nombre').val(tareas.nombre);
+    $('#Descrip').val(tareas.descrip);
+    $('#Prioridad').val(tareas.prioridad);
 }
 
   })

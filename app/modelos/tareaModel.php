@@ -39,19 +39,22 @@ class Busca extends BD{
         }
 
         public function Listar(){
-            // $rows = null;
-             $statement = $this->db->prepare("CALL listar_Tareas ");
+             $statement = $this->db->prepare("SELECT  tarea.id, tarea.nombre_tarea, tarea.descrip, tarea.prioridad, tarea.fecha, usuarios.nombre
+                                              FROM  tarea, usuarios
+                                              where tarea.id_usuario = usuarios.id AND tarea.estado = 'Activo'
+                                            ");
              $statement->execute();
      
              $json= array();
      
              while($row = $statement->fetch()){  
                $json[]  = array( 
-                     'nombre' => $row['nombre'],
+                     'nombre_tarea' => $row['nombre_tarea'],
                      'descrip' => $row['descrip'],
                      'prioridad' => $row['prioridad'],
-                     'estado' => $row['estado'],
-                     'id' => $row['id']
+                     'fecha' => $row['fecha'],
+                    'nombre' => $row['nombre'],  
+                    'id' => $row['id']
                ); 
              }
              $jsonstring = json_encode($json);
