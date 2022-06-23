@@ -20,6 +20,7 @@ $rol = $_SESSION['rol'];
         <title>Dashboard-MRK</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="../../css/styles.css" rel="stylesheet" />
+        <link href="../../css/task.css" rel="stylesheet" />
        
     </head>
     <body class="sb-nav-fixed">
@@ -159,10 +160,13 @@ $rol = $_SESSION['rol'];
       <main>
         <div class="container-fluid px-6">
          <h1 class="mt-4">Listado de tareas</h1>
-                <div id="lista">
+                <div id="lista" >
                     
                    
                 </div>   
+                <div class="prueba">
+                    <h1>aca estoy</h1>
+                </div>
         </div>
       </main>
                 

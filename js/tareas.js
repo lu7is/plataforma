@@ -58,8 +58,7 @@ function ListarTarea(){
          success:function(response){
          let tareas = JSON.parse(response);
          let template = '';
-//console.log(tareas);
-//console.log(response);
+
          tareas.forEach(tareas => {
             template +=`
             
