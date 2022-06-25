@@ -22,20 +22,27 @@ $('#regi-gasto').submit(function(e){
         })
     e.preventDefault();
 });
-alert("si claro mano")
+
+$(document).ready(function(){
+  Listar_gastos()
+})
 
 //LISTAR GASTOS
 
 function Listar_gastos(){
+   var action = 'listar'
     $.ajax({
-      url:'../../app/controladores/Gastos/listar.php',
-      method:'GET',
+      url:'../../app/controladores/Gastos/gastosController.php',
+      method:'POST',
+      async:true,
+      data:{action:action},
       success: function(response){
-        let gasto = JSON.parse(response);
+       
+       let gasto = JSON.parse(response);
         let template = '';
         gasto.forEach(gasto => {
           template +=` 
-                <h1> casi que no </h1>
+                <h1>${gasto.fecha} casi que no </h1>
           ` 
         });
         $('#listar_gasto').html(template);

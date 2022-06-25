@@ -12,8 +12,8 @@ if($_POST['action'] =='registrar'){
     $regis->Registrar($Fecha, $Concepto, $Valor, $Proveedor);
 }
 
-if($_GET['action'] =='listar'){
-    $regis = new Gasto();
-    $regis->Listar();
+if($_POST['action'] =='listar'){
+    $listar = new Gasto();
+    $listar->Listar();
 }
 ?>

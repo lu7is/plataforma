@@ -22,7 +22,9 @@ class Gasto extends BD{
     }
 
     public function Listar(){
-        $statement = $this->db->prepare("CALL listar_Gasto");
+        $statement = $this->db->prepare("SELECT gasto.fecha, gasto.concepto, gasto.valor, gasto.proveedor
+                                         FROM gasto
+                                         WHERE gasto.estado = 'activo' ");
         $statement -> execute();
 
         $json = array();
