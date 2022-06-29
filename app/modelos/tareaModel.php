@@ -76,11 +76,10 @@ class Busca extends BD{
     }
 
     public function Listar_id($Id){
-        // $rows = null;
+   
          $statement = $this->db->prepare("SELECT *  FROM tarea WHERE id = :Id ");
          $statement->bindParam(':Id', $Id);
          $statement->execute();
- 
          $json= array();
          while($row = $statement->fetch()){  
            $json[]  = array( 
@@ -89,9 +88,7 @@ class Busca extends BD{
              'prioridad' => $row['prioridad'],
              'estado' => $row['estado'],
              'id' => $row['id']
-           );
- 
-          
+           );  
          }
  
          $jsonstring = json_encode($json[0]);

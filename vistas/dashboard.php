@@ -31,7 +31,6 @@ $rol = $_SESSION['rol'];
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
-                    
                 </div>
             </form>
             <!-- Navbar-->
@@ -51,7 +50,6 @@ $rol = $_SESSION['rol'];
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-
                             <div class="sb-sidenav-menu-heading">Inicio:</div>
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -98,12 +96,9 @@ $rol = $_SESSION['rol'];
                                     <?php if($rol == 'administrador'  ) { ?>
                                     <a class="nav-link" href="../despacho/principal.php">Despachos </a>
                                     <?php } ?>
-                                    
-                                    
                                  </nav>
                             </div>
-                            <?php }?>
-                            
+                            <?php }?>  
                             <?php if($rol == 'administrador' || $rol == 'supervisor' ) { ?>
                             <div class="sb-sidenav-menu-heading">Operativo:</div>
                             <a class="nav-link collapsed" href="#opera" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
@@ -147,21 +142,17 @@ $rol = $_SESSION['rol'];
                                  </nav>
                             </div>
                             <?php } ?>
-                            
-                            
-                            
                         </div>
                     </div>
-
-
-
 
                     <div class="sb-sidenav-footer">
                         <div class="small">Login por:</div>
                         <?php echo $nombre, " ", $apellido," ",
                         "Rol:"," ", $rol; ?>
                     </div>
+                    
                 </nav>
+                
             </div>
             <!-- empieza la pagina principal -->
             <div id="layoutSidenav_content">
@@ -229,9 +220,9 @@ $rol = $_SESSION['rol'];
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="../app/assets/demo/chart-area-demo.js"></script>
+        <script src="../app/assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        <script src="../js/datatables-simple-demo.js"></script>
     </body>
 </html>

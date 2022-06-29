@@ -2,7 +2,7 @@
 
 require_once("../../modelos/usuariosModel.php");
 
-if($_POST){
+if($_POST['action'] == 'registrar'){
 
     $control = new Usuarios();
 
@@ -17,7 +17,18 @@ if($_POST){
 
     $control->Registrar($Cedula,$Nombre,$Apellido,$Telefono,$Direccion,$Correo,$Password,$Rol );
     
-}else{
-   
+}
+//LISTAMOS TODOS LOS REGISTROS
+if($_POST['action'] == 'listar'){
+    $listar = new Usuarios();
+    $listar->Listar();
+}
+
+//OPCION PARA EDITAR 
+if($_POST['action'] == 'editar'){
+    $Editar = new Usuarios();
+    $Id = $_POST['Id'];
+
+    $Editar->Listar_Id($Id);
 }
 ?>
