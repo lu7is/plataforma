@@ -237,10 +237,12 @@
                   <thead class="text-center">
                     <tr>
                     <th>Id</th>
+                    <th>Cedula</th>
                       <th>Nombre</th>
                       <th>Apellido</th>
                       <th>Telefono</th>
                       <th>Dirección</th> 
+                      <th>Correo</th> 
                       <th>Rol</th>
                       <th>Acciones</th>
                     </tr>

@@ -58,14 +58,16 @@ class Usuarios extends BD {
         $json = array();
         while($row = $statement->fetch()){
             $json[] = array(
+                'id' => $row['id'],
                 'cedula' => $row['cedula'],
                 'nombre' => $row['nombre'],
                 'apellido' => $row['apellido'],
                 'telefono' => $row['telefono'],
                 'direccion' => $row['direccion'],
                 'correo' => $row['correo'],
+                
                 'rol' => $row['rol'],
-                'id' => $row['id']
+                
             );
         }
         $jsonstring = json_encode([0]);
