@@ -13,7 +13,17 @@ $('#regi-gasto').submit(function(e){
             
             success: function(response){
                 
-                window.location.replace("principal.php");  
+              Swal.fire({
+           
+                icon: 'success',
+                title: 'Registrado Exítosamente!!',
+                showConfirmButton: true,
+                
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.replace("principal.php"); 
+                }
+            }) 
             },
             error: function(error){
                 alert('Error al realizar el registro, por favor intentar nuevamente')
