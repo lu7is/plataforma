@@ -65,11 +65,13 @@ function ListarTarea(){
             <div class="card" taskId = "${tareas.id} ">
             <div class="card-body " > 
                     <h6>NOMBRE:</h6> 
-                    <p> ${tareas.nombre_tarea} <h6>PRIORIDAD:</h6> ${tareas.prioridad}  </p>
-                    <h6>Descripcion:</h6>          
+                    <p> ${tareas.nombre_tarea} <div id="prioridad"><h6>PRIORIDAD:</h6> ${tareas.prioridad}  </p>
+                    <div id="usuario"><h6>USUARIO:</h6> 
+                    <p> ${tareas.nombre} </p> </div>         
+                    </div>
+                    <h6>DESCRIPCIÓN:</h6>          
                     <p> ${tareas.descrip} </p>
-                    <h6>Usuario:</h6> 
-                    <p> ${tareas.nombre} </p>
+                    
                     <a class="eliminar btn btn-danger" >Eliminar</a>  <a class=" editar btn btn-warning" data-bs-toggle="modal" data-bs-target="#registrar">Editar</a>
                     
                  <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
@@ -141,8 +143,6 @@ function ListarTarea(){
 $(document).on('click','.editar', function(){
   let element = $(this)[0].parentElement.parentElement;
   var Id = $(element).attr('taskId');
-  //console.log(element);
-  console.log(Id);
   var action ='editar';
   $.ajax({
     url:'../../app/controladores/tareas/tareaController.php',

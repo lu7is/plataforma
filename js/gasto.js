@@ -52,7 +52,45 @@ function Listar_gastos(){
         let template = '';
         gasto.forEach(gasto => {
           template +=` 
-                <h1>${gasto.fecha} casi que no </h1>
+          <table class="table table-striped">
+          <thead >
+            <tr>
+              
+             
+              
+              <th scope="col">Fecha</th>
+              <th scope="col">Concepto</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Proveedor</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr>
+                
+                
+                <td>${gasto.fecha}</td>
+                <td>${gasto.concepto}</td>
+                <td>${gasto.valor}</td>
+                <td>${gasto.proveedor}</td>
+                
+                <td>
+               
+                <a href=""><button type="button" class= "btn btn-warning">Editar</button></a>
+                <a href=""><button type="button" class= "btn btn-danger" >Eliminar</button></a>
+                <button type="submit" class= "btn btn-primary"  >Ver</button>   
+
+
+                
+              </td>
+                
+              </tr>
+            </tbody>
+    
+    
+ 
+          </table>
+
           ` 
         });
         $('#listar_gasto').html(template);

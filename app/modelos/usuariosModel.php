@@ -27,24 +27,51 @@ class Usuarios extends BD {
     }
 
     public function Listar(){
-        $rows = null;
-        $statement = $this->db->prepare("SELECT * FROM usuarios ");
+        
+        $statement = $this->db->prepare("SELECT *
+                                         FROM usuarios
+                                         ORDER BY usuarios.id DESC ");
         $statement->execute();
-        while($result = $statement->fetch()){
-            $rows[] = $result;
+        $json = array();
+        while($row = $statement->fetch()){
+            $json[] = array(
+                
+                'cedula' => $row['cedula'],
+                'nombre' => $row['nombre'],
+                'apellido' => $row['apellido'],
+                'telefono' => $row['telefono'],
+                'direccion' => $row['direccion'],
+                'correo' => $row['correo'],
+                'rol' => $row['rol'],
+                'id' => $row['id']
+            );
         }
-        return $rows;
+        $jsonstring = json_encode($json);
+        echo $jsonstring;
     }
    
     public function Listar_Id($Id){
-        $rows = null;
+        
         $statement = $this->db->prepare("SELECT * FROM usuarios WHERE id = :Id ");
-        $statement->bindParam(':Id', $Id);
+        $statement->bindParam(':Id',$Id);
         $statement->execute();
-        while($result = $statement->fetch()){
-            $rows[] = $result;
+        $json = array();
+        while($row = $statement->fetch()){
+            $json[] = array(
+                'id' => $row['id'],
+                'cedula' => $row['cedula'],
+                'nombre' => $row['nombre'],
+                'apellido' => $row['apellido'],
+                'telefono' => $row['telefono'],
+                'direccion' => $row['direccion'],
+                'correo' => $row['correo'],
+                
+                'rol' => $row['rol'],
+                
+            );
         }
-        return $rows;
+        $jsonstring = json_encode([0]);
+        echo $jsonstring;
     }
 
     public function Actualizar($Id,$Cedula, $Nombre, $Apellido, $Telefono, $Direccion, $Correo, $Password, $Rol){

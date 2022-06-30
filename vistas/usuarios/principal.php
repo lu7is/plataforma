@@ -25,7 +25,12 @@
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <!-- Icons para importarlos -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+        <!-- estilos de plantilla -->
         <link href="../../css/styles.css" rel="stylesheet" />
+        <!-- estilos propios-->
+        <link href="../../css/usuarios.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -151,10 +156,13 @@
             <!-- empieza la pagina principal -->
             
             <div id="layoutSidenav_content">
+              
               <div class="container-fluid px-4">
               <h1 class="mt-4">Usuarios Registrados</h1>
-                  <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" >Registrar</button>
-                   <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+              <button type="button" class= "mt-5 mx-5 btn btn-success " data-bs-toggle="modal" data-bs-target="#registrar" ><i class="material-icons">library_add</i>  Registrar Usuario</button>
+                 
+                 
+                  <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -194,7 +202,7 @@
                                 <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
                                   <label for="contraseña">Contraseña:</label>
-                                  <input type="password" class="form-control" name="Password" id="Password" placeholder="********">
+                                  <input type="password" class="form-control" name="Password" id="Password" >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                   <label for="direccion">Dirección:</label>
@@ -212,7 +220,7 @@
                               <br>
                            
                             <button type="submit" id="registrar" class="btn btn-primary">Registrar Usuario</button>
-                            
+                            <button type="submit"  data-bs-dismiss="modal"  class=" btn btn-warning">Cancelar</button>
                           </form>
                         </div>
 
@@ -225,53 +233,24 @@
                   
                   <br>
                   <div class="container">
-            
-                <table class="table table-striped">
-                  <thead >
+                  <table class="table table-striped table-bordered table-condensed" style="width:100%" id="tablaUsuarios">
+                  <thead class="text-center">
                     <tr>
-                      
-                      <th scope="col">Nombre</th>
-                      
-                      <th scope="col">Telefono</th>
-                      <th scope="col">Dirección</th>
-                      <th scope="col">Correo</th>
-                      <th scope="col">Rol</th>
-                      <th scope="col">Acciones</th>
+                    <th>Id</th>
+                    <th>Cedula</th>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Telefono</th>
+                      <th>Dirección</th> 
+                      <th>Correo</th> 
+                      <th>Rol</th>
+                      <th>Acciones</th>
                     </tr>
                   </thead>
                     <tbody>
-                        <?php 
-                        $resultado = $modelo->Listar();
-                        if($resultado != null){
-                          foreach($resultado as $resul){ 
-                        ?>
-                      <tr>
-                        
-                        
-                        <td ><?php echo $resul['nombre']  ?></td>
-                        <td ><?php echo $resul['telefono']  ?></td>
-                        <td ><?php echo $resul['direccion']  ?></td>
-                        <td><?php echo $resul['correo'] ?></td>
-                        <td><?php echo $resul['rol']  ?></td>
-                        <td>
-                       
-                        <a href="ediVer.php?id=<?php echo $resul['id'] ?>"><button type="button" class= "btn btn-warning">Editar</button></a>
-                        <a href="php?id=<?php echo $resul['id'] ?>"><button type="button" class= "btn btn-danger" onclick="mostrar();">Eliminar</button></a>
-                        <button type="submit" class= "btn btn-primary"  >Ver</button>   
-
-
-                        
-                      </td>
-                        
-                      </tr>
                     </tbody>
-             <?php  
-                  }
-            } 
-            
-            ?>
                   </table>
-
+                 
                   </div>
 
                 
@@ -289,15 +268,21 @@
                   <script src="../../js/scripts.js"></script>
                   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
                   <script src="../../app/assets/demo/chart-area-demo.js"></script>
-                  <script src="../../assets/demo/chart-bar-demo.js"></script>
+                  <script src="../../app/assets/demo/chart-bar-demo.js"></script>
                   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
                   <script src="../../js/datatables-simple-demo.js"></script>
-                  <script src="../../cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
                   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
                   <!-- AQUI LISTAMOS NUESTRO ARCHIVO JS -->
                   <script src="../../js/usuarios.js"></script>
-       
-       
+                  <!-- aqui importamos css local -->
+                   <!-- jQuery, Popper.js, Bootstrap JS -->
+                  <script src="../../app/assets/jquery/jquery-3.3.1.min.js"></script>
+                  <script src="../../app/assets/popper/popper.min.js"></script>
+                  <script src="../../app/assets/bootstrap/js/bootstrap.min.js"></script>
+                    
+                  <!-- datatables JS -->
+                  <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script>  
+                    
 
       
 
