@@ -23,21 +23,25 @@ $('#form-usu').submit(function (e) {
         data:{action:action, Cedula:Cedula, Nombre:Nombre, Apellido:Apellido, Telefono:Telefono, Direccion:Direccion, 
               Correo:Correo, Password:Password, Rol:Rol},
         success:function(response){
+            tablaUsuarios.ajax.reload(null, false);
             Swal.fire({
            
                 icon: 'success',
                 title: 'Registrado Exítosamente!!',
-                showConfirmButton: true,
+                showConfirmButton: false,
+                timer: 1500
                 
               }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.replace("principal.php"); 
+                    
+                    tablaUsuarios.ajax.reload(null, false);
                 }
             })
         }
+        
      });
 
-
+     $('#registrar').modal('hide');
 
     
 
@@ -118,11 +122,12 @@ $(document).on('click', ".btnEditar", function(e){
                   Correo:Correo, Rol:Rol },
             success: function(response){
                 tablaUsuarios.ajax.reload(null, false);
-                Swal.fire(
-                  'Buen Trabajo!!',
-                  'You clicked the button!',
-                  'success'
-                )
+                Swal.fire({ 
+                    icon: 'success',
+                    title: 'Registrado Exítosamente!!',
+                    showConfirmButton: false,
+                    timer: 1500
+            })
             }
 
         });
