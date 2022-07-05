@@ -5,15 +5,15 @@ $(document).ready(function(){
 
 //REGISTRAR USUARIOS 
 $('#form-usu').submit(function (e) {
-    
-     var Cedula = ('#Cedula').val();
-     var Nombre = ('#Nombre').val();
-     var Apellido = ('#Apellido').val();
-     var Telefono = ('#Telefono').val();
-     var Direccion = ('#Direccion').val();
-     var Correo = ('#Correo').val();
-     var Password = ('#Password').val();
-     var Rol = ('#Rol').val();
+    e.preventDefault()
+     var Cedula = $('#Cedula').val();
+     var Nombre = $('#Nombre').val();
+     var Apellido = $('#Apellido').val();
+     var Telefono = $('#Telefono').val();
+     var Direccion = $('#Direccion').val();
+     var Correo = $('#Correo').val();
+     var Password = $('#Password').val();
+     var Rol = $('#Rol').val();
      var action = 'registrar';
 
      $.ajax({
@@ -23,9 +23,23 @@ $('#form-usu').submit(function (e) {
         data:{action:action, Cedula:Cedula, Nombre:Nombre, Apellido:Apellido, Telefono:Telefono, Direccion:Direccion, 
               Correo:Correo, Password:Password, Rol:Rol},
         success:function(response){
-
+            Swal.fire({
+           
+                icon: 'success',
+                title: 'Registrado Exítosamente!!',
+                showConfirmButton: true,
+                
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.replace("principal.php"); 
+                }
+            })
         }
      });
+
+
+
+    
 
 });  
 
@@ -33,9 +47,6 @@ $('#form-usu').submit(function (e) {
 
 function Listar_Usuarios(){
     var  action = 'listar';
-    var id, nombre;
-
-
     tablaUsuarios = $('#tablaUsuarios').DataTable({
         "ajax":{
             "url":'../../app/controladores/Usuarios/usuariosController.php',
@@ -65,9 +76,8 @@ function Listar_Usuarios(){
 }
 
 //EDITAR LOS USUARIOS
-    var fila;
-
-$(document).on('click',".btnEditar", function(){
+$(document).on('click', ".btnEditar", function(e){
+    e.preventDefault();
     fila = $(this).closest("tr");
     Id = parseInt(fila.find('td:eq(0)').text());
     Cedula = fila.find('td:eq(1)').text();
@@ -77,21 +87,55 @@ $(document).on('click',".btnEditar", function(){
     Direccion = fila.find('td:eq(5)').text();
     Correo = fila.find('td:eq(6)').text();
     Rol = fila.find('td:eq(7)').text();
-    
-    var action = 'editar';
-    
-    $('#Cedula').val(Cedula);
-    $('#Nombre').val(Nombre);
-    $('#Apellido').val(Apellido);
-    $('#Telefono').val(Telefono);
-    $('#Direccion').val(Direccion);
-    $('#Correo').val(Correo);
-    $('#Rol').val(Rol);
-    $('#Password').attr('disabled','disabled');
-    $('#registrar').modal('show');
+
+    $('#id').val(Id);
+    $('#cedula').val(Cedula);
+    $('#nombre').val(Nombre);
+    $('#apellido').val(Apellido);
+    $('#telefono').val(Telefono);
+    $('#direccion').val(Direccion);
+    $('#correo').val(Correo);
+    $('#rol').val(Rol);
+    $('#editar').modal('show');
+
+    $('#form_Edit').submit(function(e){
+        e.preventDefault();
+        var Id = $('#id').val();
+        var Cedula = $('#cedula').val();
+        var Nombre = $('#nombre').val();
+        var Apellido = $('#apellido').val();
+        var Telefono = $('#telefono').val();
+        var Direccion = $('#direccion').val();
+        var Correo = $('#correo').val();
+        var Rol = $('#Rol').val();
+        var action = 'editar';
+
+        $.ajax({
+            url:'../../app/controladores/Usuarios/usuariosController.php',
+            method:'POST',
+            async:true,
+            data:{action:action, Id:Id, Cedula:Cedula, Nombre:Nombre, Apellido:Apellido, Telefono:Telefono, Direccion:Direccion,
+                  Correo:Correo, Rol:Rol },
+            success: function(response){
+                tablaUsuarios.ajax.reload(null, false);
+                Swal.fire(
+                  'Buen Trabajo!!',
+                  'You clicked the button!',
+                  'success'
+                )
+            }
+
+        });
+        $('#editar').modal('hide');
 
     
-    
-});
+       
+        
+        
+    })
+   
+})
+
+
 
 

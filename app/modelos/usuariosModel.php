@@ -20,10 +20,6 @@ class Usuarios extends BD {
         $statement->bindParam(':Rol',$Rol);
 
         $statement->execute();
-           
-        
-
-
     }
 
     public function Listar(){
@@ -65,7 +61,6 @@ class Usuarios extends BD {
                 'telefono' => $row['telefono'],
                 'direccion' => $row['direccion'],
                 'correo' => $row['correo'],
-                
                 'rol' => $row['rol'],
                 
             );
@@ -74,9 +69,9 @@ class Usuarios extends BD {
         echo $jsonstring;
     }
 
-    public function Actualizar($Id,$Cedula, $Nombre, $Apellido, $Telefono, $Direccion, $Correo, $Password, $Rol){
+    public function Actualizar($Id,$Cedula, $Nombre, $Apellido, $Telefono, $Direccion, $Correo, $Rol){
         $statement = $this->db->prepare("UPDATE usuarios SET cedula = :Cedula, nombre =:Nombre, apellido = :Apellido, telefono = :Telefono,
-                                        direccion = :Direccion, correo = :Correo, password = :Password, rol = :Rol WHERE id = :Id");
+                                        direccion = :Direccion, correo = :Correo, rol = :Rol WHERE id = :Id");
         $statement->bindParam(':Id',$Id);
         $statement->bindParam(':Cedula',$Cedula);
         $statement->bindParam(':Nombre',$Nombre);
@@ -84,13 +79,10 @@ class Usuarios extends BD {
         $statement->bindParam(':Telefono',$Telefono);
         $statement->bindParam(':Direccion',$Direccion);
         $statement->bindParam(':Correo',$Correo);
-        $statement->bindParam(':Password',$Password);
         $statement->bindParam(':Rol',$Rol);
-        if($statement->execute()){
-            header("location:../../vistas/usuarios/principal.php ");
-        }else{
-            header("location:../../vistas/dashboard.php ");
-        }
+        $statement->execute();
+            
+        
     }
 
     public function Eliminar($Id){
