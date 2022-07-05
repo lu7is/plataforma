@@ -159,9 +159,8 @@
               
               <div class="container-fluid px-4">
               <h1 class="mt-4">Usuarios Registrados</h1>
+              <!-- EMPIEZA EL FORMULARIO REGISTRAR -->
               <button type="button" class= "mt-5 mx-5 btn btn-success " data-bs-toggle="modal" data-bs-target="#registrar" ><i class="material-icons">library_add</i>  Registrar Usuario</button>
-                 
-                 
                   <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
@@ -232,6 +231,7 @@
                   </div>
                   
                   <br>
+                  <!-- EMPIEZA LA TABLA DE LOS USUARIOS -->
                   <div class="container">
                   <table class="table table-striped table-bordered table-condensed" style="width:100%" id="tablaUsuarios">
                   <thead class="text-center">
@@ -251,6 +251,72 @@
                     </tbody>
                   </table>
                  
+                  </div>
+                  <!-- EMPIEZA FORMULARIO EDITAR USUARIOS-->
+                  <div class="modal fade" id="editar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="modalTitle">Editar Usuarios</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form  id="form_Edit" >
+                          <input type="hidden" id=id>
+                            <div class="form-row d-flex">
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="cedula">Cedula:</label>
+                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cedula" id="cedula" placeholder="Cedula" required >
+                                </div>
+                                <div class="form-group col-md-6 p-2">
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" class="form-control"  name="Nombre" id="nombre" placeholder="Nombre" required >
+                                </div>
+                             </div>
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="apellido">Apellido:</label>
+                                  <input type="text" class="form-control" name="Apellido" id="apellido" placeholder="Apellido"required >
+                                </div>
+                              <div class="form-row d-flex">
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="telefono">Telefono:</label>
+                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Telefono" id="telefono" placeholder="Telefono" required >
+                                </div>
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="direccion">Dirección:</label>
+                                  <input type="text" class="form-control" name="Direccion" id="direccion" placeholder="Dirección" required >
+                                </div>
+                                </div>
+                              <div class="form-group col-md-6 p-2">
+                                  <label for="correo">Correo:</label>
+                                  <input type="email" class="form-control" name="Correo" id="correo" placeholder="Correo@hotmail.com" required >
+                                </div>
+                                <div class="form-row d-flex">
+                                
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="direccion">Dirección:</label>
+                                  <select class="form-select" name="Rol" id="rol"required >
+                                    <option selected>Selecciona El Rol </option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="empleado">Empleado</option>
+                                    <option value="cliente">Cliente</option>
+                                    <option value="proveedor">Proveedor</option>
+                                    <option value="bodega">Bodega</option>
+                                    <option value="supervisor">Supervisor</option>
+                                  </select>
+                                </div>
+                                </div>
+                              <br>
+                           
+                            <button type="submit" id="registrar" class="btn btn-primary">Editar Usuario</button>
+                            <button type="submit"  data-bs-dismiss="modal"  class=" btn btn-warning">Cancelar</button>
+                          </form>
+                        </div>
+
+                      </div>
+
+                    </div>
+
                   </div>
 
                 
@@ -282,6 +348,8 @@
                     
                   <!-- datatables JS -->
                   <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script>  
+                  <!-- sweet alert JS -->
+                  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                     
 
       

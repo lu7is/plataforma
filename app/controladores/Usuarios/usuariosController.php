@@ -27,8 +27,16 @@ if($_POST['action'] == 'listar'){
 //OPCION PARA EDITAR 
 if($_POST['action'] == 'editar'){
     $Editar = new Usuarios();
-    $Id = $_POST['Id'];
 
-    $Editar->Listar_Id($Id);
+    $Id = $_POST['Id'];
+    $Cedula = $_POST['Cedula'];
+    $Nombre = $_POST['Nombre'];
+    $Apellido = $_POST['Apellido'];
+    $Telefono = $_POST['Telefono'];
+    $Direccion = $_POST['Direccion'];
+    $Correo = $_POST['Correo'];
+    $Rol = $_POST['Rol'];
+
+    $Editar->Actualizar($Id, $Cedula, $Nombre, $Apellido, $Telefono, $Direccion, $Correo, $Rol);
 }
 ?>
