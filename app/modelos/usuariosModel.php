@@ -8,8 +8,8 @@ class Usuarios extends BD {
     }
 
     public function Registrar($Cedula, $Nombre, $Apellido, $Telefono, $Direccion, $Correo, $Password, $Rol){
-        $statement = $this->db->prepare("INSERT INTO usuarios (cedula, nombre, apellido, telefono, direccion, correo, password, rol)
-                                        VALUE (:Cedula, :Nombre, :Apellido, :Telefono, :Direccion, :Correo, :Password, :Rol )");
+        $statement = $this->db->prepare("INSERT INTO usuarios (cedula, nombre, apellido, telefono, direccion, correo, password, estado, rol)
+                                        VALUE (:Cedula, :Nombre, :Apellido, :Telefono, :Direccion, :Correo, :Password, 'activo', :Rol )");
         $statement->bindParam(':Cedula',$Cedula);
         $statement->bindParam(':Nombre',$Nombre);
         $statement->bindParam(':Apellido',$Apellido);
@@ -26,7 +26,7 @@ class Usuarios extends BD {
         
         $statement = $this->db->prepare("SELECT *
                                          FROM usuarios
-                                         ORDER BY usuarios.id DESC ");
+                                         WHERE estado = 'activo'");
         $statement->execute();
         $json = array();
         while($row = $statement->fetch()){
@@ -86,15 +86,9 @@ class Usuarios extends BD {
     }
 
     public function Eliminar($Id){
-        $statement = $this->db->prepare("DELETE FROM usuarios WHERE id = :Id ");
+        $statement = $this->db->prepare("UPDATE usuarios SET estado = 'inactivo' WHERE id = :Id");
         $statement->bindParam(':Id', $Id);
-        if($statement->execute()){
-            header("location:../../vistas/usuarios/principal.php ");
-        }else{
-            header("location:../../vistas/dashboard.php ");
-        }
-        
-        return $rows;
+        $statement->execute();
     }
 
     public function List_Clientes(){

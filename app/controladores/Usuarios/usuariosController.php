@@ -39,4 +39,13 @@ if($_POST['action'] == 'editar'){
 
     $Editar->Actualizar($Id, $Cedula, $Nombre, $Apellido, $Telefono, $Direccion, $Correo, $Rol);
 }
+
+//ELIMINAR USUARIOS
+if($_POST['action'] == 'eliminar'){
+    $Eliminar = new Usuarios();
+
+    $Id = $_POST['Id'];
+
+    $Eliminar->Eliminar($Id);
+}
 ?>

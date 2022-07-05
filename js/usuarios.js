@@ -111,7 +111,7 @@ $(document).on('click', ".btnEditar", function(e){
         var Telefono = $('#telefono').val();
         var Direccion = $('#direccion').val();
         var Correo = $('#correo').val();
-        var Rol = $('#Rol').val();
+        var Rol = $('#rol').val();
         var action = 'editar';
 
         $.ajax({
@@ -124,23 +124,60 @@ $(document).on('click', ".btnEditar", function(e){
                 tablaUsuarios.ajax.reload(null, false);
                 Swal.fire({ 
                     icon: 'success',
-                    title: 'Registrado Exítosamente!!',
+                    title: 'Editado Exítosamente!!',
                     showConfirmButton: false,
                     timer: 1500
             })
             }
 
         });
-        $('#editar').modal('hide');
-
-    
-       
-        
-        
+        $('#editar').modal('hide');  
     })
    
 })
 
+// ELIMINAR USUARIOS
+
+$(document).on('click', '.btnBorrar', function(e){
+    e.preventDefault();
+    fila = $(this).closest("tr");
+  var  Id = parseInt(fila.find('td:eq(0)').text());
+    Swal.fire({
+        title: 'Estas seguro?',
+        text: "Esta actividad no tiene regreso!",
+        icon: 'warning',
+        showCancelButton: 'cancelar         ',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+        if(result.isConfirmed){
+           var action = 'eliminar';
+           $.ajax({
+            url:'../../app/controladores/Usuarios/usuariosController.php',
+            method: 'POST',
+            async:true,
+            data:{action:action, Id:Id,},
+
+            success: function(response){
+                tablaUsuarios.ajax.reload(null, false);
+
+            }
+            
+
+           })
+           Swal.fire({ 
+            icon: 'success',
+            title: 'Eliminado Exítosamente!!',
+            showConfirmButton: false,
+            timer: 1500
+    })
+
+        }
+    });
+
+})
+    
 
 
 
