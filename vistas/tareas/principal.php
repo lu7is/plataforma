@@ -41,7 +41,7 @@ $rol = $_SESSION['rol'];
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Configuración</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="auth/cerrar_sesion.php">Cerrar Sesión</a></li>
+                        <li><a class="dropdown-item" href="../auth/cerrar_sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -91,10 +91,10 @@ $rol = $_SESSION['rol'];
                             <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                    <?php if($rol == 'administrador' || $rol== 'bodega' || $rol== 'cliente'  ) { ?>
-                                    <a class="nav-link" href="bodegas/principal.php">Registrar</a>
+                                    <a class="nav-link" href="../bodegas/principal.php">Registrar</a>
                                     <?php } ?>
                                     <?php if($rol == 'administrador' || $rol== 'bodega'  ) { ?>
-                                    <a class="nav-link" href="separacion/principal.php">Separacion </a>
+                                    <a class="nav-link" href="../separacion/principal.php">Separacion </a>
                                     <?php } ?>
                                     <?php if($rol == 'administrador'  ) { ?>
                                     <a class="nav-link" href="../despacho/principal.php">Despachos </a>
@@ -114,11 +114,11 @@ $rol = $_SESSION['rol'];
                             </a>
                             <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="facturacion/principal.php">Facturacion</a>
-                                    <a class="nav-link" href="produccion/principal.php">Producción </a>
-                                    <a class="nav-link" href="nomina/principal.php">Nomina </a>
-                                    <a class="nav-link" href="asistencia/principal.php">Asistencia </a>
-                                    <a class="nav-link" href="gastos/principal.php">Gastos </a>
+                                    <a class="nav-link" href="../facturacion/principal.php">Facturacion</a>
+                                    <a class="nav-link" href="../produccion/principal.php">Producción </a>
+                                    <a class="nav-link" href="../nomina/principal.php">Nomina </a>
+                                    <a class="nav-link" href="../asistencia/principal.php">Asistencia </a>
+                                    <a class="nav-link" href="../gastos/principal.php">Gastos </a>
                                     
                                  </nav>
                             </div>
@@ -136,8 +136,8 @@ $rol = $_SESSION['rol'];
                                 <?php if($rol == 'administrador' ) { ?>
                                     <a class="nav-link" href="proveedores/principal.php">Registrar</a>
                                 <?php } ?>
-                                    <a class="nav-link" href="pedidos/principal.php">Pedidos </a>
-                                    <a class="nav-link" href="inventario/principal.php">Inventario </a>
+                                    <a class="nav-link" href="../pedidos/principal.php">Pedidos </a>
+                                    <a class="nav-link" href="../inventario/principal.php">Inventario </a>
                                    
                                     
                                  </nav>

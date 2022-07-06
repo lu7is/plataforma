@@ -31,6 +31,17 @@ if($_POST['action'] == 'editar'){
     
    $Editar->Listar_id($Id);
 }
+//ACTUALIZAR TAREAS
+if($_POST['action'] == 'actualizar'){
 
+   $control= new Busca();
+    $Id = $_POST['Id'];
+    $Nombre = $_POST['Nombre'];
+    $Descrip = $_POST['Descrip'];
+    $Prioridad = $_POST['Prioridad'];
+
+   $control->Actualizar($Id, $Nombre, $Descrip, $Prioridad);
+   
+}
 
 ?>

@@ -1,7 +1,14 @@
+//LISTAR TAREA
+$(document).ready(function(){
+
+  ListarTarea();
+
+});
 
 //REGISTRAR TAREAS
 $('#regi-tarea').submit(function (e) {
-    
+  e.preventDefault();
+   
    var Nombre = $('#Nombre').val();
    var Descrip = $('#Descrip').val();
    var Prioridad = $('#Prioridad').val();
@@ -9,41 +16,27 @@ $('#regi-tarea').submit(function (e) {
    var action = 'registrar';
 
    $.ajax({
-        url: '../../app/controladores/Tareas/tareaController.php', 
-        method: 'POST',
-        async:true,
-        data:{action:action, Nombre:Nombre, Descrip:Descrip, Prioridad:Prioridad, Fecha:Fecha},
+    url: '../../app/controladores/Tareas/tareaController.php', 
+    method: 'POST',
+    async:true,
+    data:{action:action, Nombre:Nombre, Descrip:Descrip, Prioridad:Prioridad, Fecha:Fecha},
 
-        success: function(response){
-           // 
-          Swal.fire({
-           
-            icon: 'success',
-            title: 'Registrado Exítosamente!!',
-            showConfirmButton: true,
-            
-          }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.replace("tareas.php"); 
-            }
-        })
-          
+    success: function(response){
+      Swal.fire({
+       
+        icon: 'success',
+        title: 'Registrado Exítosamente!!',
+        showConfirmButton: true,
+        
+      }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.replace("tareas.php"); 
         }
-    });
-
-e.preventDefault();
+    })
+      
+    }
 });
 
-
-
-
-//LISTAR TAREA
-$(document).ready(function(){
-
-
-    ListarTarea();
-
-  
 
 });
 
@@ -83,9 +76,9 @@ function ListarTarea(){
                                         </div>
  
                                         <div class="modal-body">
-                                        <form id="registrar_modal" >
+                                        <form id="registrar_tarea" >
  
-                                        <input type="hidden"  id="taskId" placeholder="Nombre" required >
+                                        <input type="hidden"  id="taskId" >
  
                                         <div class="form-row d-flex">
                                           </div>
@@ -119,7 +112,7 @@ function ListarTarea(){
                                             
                                           <br>
                                        
-                                        <button type="submit" class=" editTask btn btn-primary">Registrar Tarea</button>
+                                        <button type="submit" class=" regiTask btn btn-primary">Registrar Tarea</button>
                                         <button type="button" class="btn bg-warning" data-bs-dismiss="modal" aria-label="close">Cancelar</button>
                                       </form>
                                         </div>
@@ -151,15 +144,41 @@ $(document).on('click','.editar', function(){
     data:{action:action, Id:Id},
 
     success:function(response){
-
-      //console.log(response);
      const tareas = JSON.parse(response);
-     
-    $('#Nombre').val(tareas.nombre);
+    $('#taskId').val(tareas.id)
+    $('#Nombre').val(tareas.nombre_tarea);
     $('#Descrip').val(tareas.descrip);
     $('#Prioridad').val(tareas.prioridad);
 }
-
   })
+
+$('#registrar_tarea').submit(function(e){
+  e.preventDefault();
+  var Id = $('#taskId').val();
+  var Nombre = $('#Nombre').val();
+  var Descrip = $('#Descrip').val();
+  var Prioridad = $('#Prioridad').val();
+  var action = 'actualizar';
+
+  $.ajax({
+    url: '../../app/controladores/tareas/tareaController.php',
+    method: 'POST',
+    async:true,
+    data:{action:action, Id:Id, Nombre,Nombre, Descrip:Descrip, Prioridad:Prioridad},
+
+    success:function(response){
+      console.log(response);
+    }
+  });
+
+
+})
+
+
+
+
+
+
+
 });
    

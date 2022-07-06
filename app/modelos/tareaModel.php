@@ -27,7 +27,7 @@ class Busca extends BD{
     }
 
     public function Registrar($Nombre,$Descrip,$Prioridad,$Fecha,$TokenUsu){
-        $statement = $this->db->prepare("INSERT INTO tarea (nombre, descrip, prioridad, estado, fecha, id_usuario)
+        $statement = $this->db->prepare("INSERT INTO tarea (nombre_tarea, descrip, prioridad, estado, fecha, id_usuario)
                                          VALUES (:Nombre, :Descrip, :Prioridad, 'Activo',:Fecha, :TokenUsu )");
         $statement->bindParam(':Nombre',$Nombre);
         $statement->bindParam(':Descrip',$Descrip);
@@ -42,6 +42,7 @@ class Busca extends BD{
              $statement = $this->db->prepare("SELECT  tarea.id, tarea.nombre_tarea, tarea.descrip, tarea.prioridad, tarea.fecha, usuarios.nombre
                                               FROM  tarea, usuarios
                                               where tarea.id_usuario = usuarios.id AND tarea.estado = 'Activo'
+                                              ORDER BY tarea.id DESC
                                             ");
              $statement->execute();
      
@@ -83,10 +84,9 @@ class Busca extends BD{
          $json= array();
          while($row = $statement->fetch()){  
            $json[]  = array( 
-             'nombre' => $row['nombre'],
+             'nombre_tarea' => $row['nombre_tarea'],
              'descrip' => $row['descrip'],
              'prioridad' => $row['prioridad'],
-             'estado' => $row['estado'],
              'id' => $row['id']
            );  
          }
@@ -96,14 +96,13 @@ class Busca extends BD{
      }
 
 
-     public function Actualizar($Id, $Nonbre, $Descrip, $Prioridad, $Estado){
-        $statement = $this->db->prepare("UPDATE tareas SET nombre =:Nonbre, descrip = :Descrip, prioridad = :Prioridad,
-                                        estado = :Estado WHERE id = :Id");
+     public function Actualizar($Id, $Nombre, $Descrip, $Prioridad){
+        $statement = $this->db->prepare("UPDATE tarea SET nombre_tarea =:Nombre, descrip = :Descrip, prioridad = :Prioridad
+                                        WHERE id = :Id");
         $statement->bindParam(':Id',$Id);
-        $statement->bindParam(':Nonbre',$Nonbre);
+        $statement->bindParam(':Nombre',$Nombre);
         $statement->bindParam(':Descrip',$Descrip);
         $statement->bindParam(':Prioridad',$Prioridad);
-        $statement->bindParam(':Estado',$Estado);
         $statement->execute();
           
         
