@@ -44,4 +44,13 @@ if($_POST['action'] == 'actualizar'){
    
 }
 
+//ELIMINAR TAREAS
+if($_POST['action'] == 'eliminar'){
+   $elimina = new Busca();
+
+   $Id = $_POST['Id'];
+
+   $elimina->Eliminar($Id);
+}
+
 ?>

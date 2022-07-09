@@ -38,16 +38,14 @@ class Busca extends BD{
           
         }
 
-        public function Listar(){
+    public function Listar(){
              $statement = $this->db->prepare("SELECT  tarea.id, tarea.nombre_tarea, tarea.descrip, tarea.prioridad, tarea.fecha, usuarios.nombre
                                               FROM  tarea, usuarios
                                               where tarea.id_usuario = usuarios.id AND tarea.estado = 'Activo'
                                               ORDER BY tarea.id DESC
                                             ");
              $statement->execute();
-     
              $json= array();
-     
              while($row = $statement->fetch()){  
                $json[]  = array( 
                      'nombre_tarea' => $row['nombre_tarea'],
@@ -65,16 +63,11 @@ class Busca extends BD{
 
 
     public function Eliminar($Id){
-        $statement = $this->db->prepare("DELETE FROM tareas WHERE id = :Id ");
+        $statement = $this->db->prepare("UPDATE tarea SET estado = 'Inactivo'  WHERE id = :Id ");
         $statement->bindParam(':Id', $Id);
-        if($statement->execute()){
-            die('si claro ');
-        }else{
-           echo "jumm parece que si ";
-        }
-        
-        
+        $statement->execute();
     }
+
 
     public function Listar_id($Id){
    

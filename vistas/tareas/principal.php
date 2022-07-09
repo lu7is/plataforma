@@ -199,7 +199,6 @@ $rol = $_SESSION['rol'];
                               <br>
                            
                             <button type="submit" class="btn btn-primary">Registrar Tarea</button>
-                            <button type="submit" class="btn btn-warning">Cancelar</button>
                           </form>
         </div>
                 </main>

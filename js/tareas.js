@@ -55,7 +55,7 @@ function ListarTarea(){
          tareas.forEach(tareas => {
             template +=`
             
-            <div class="card" taskId = "${tareas.id} ">
+            <div class="card" id="card" taskId = "${tareas.id} " >
             <div class="card-body " > 
                     <h6>NOMBRE:</h6> 
                     <p> ${tareas.nombre_tarea} <div id="prioridad"><h6>PRIORIDAD:</h6> ${tareas.prioridad}  </p>
@@ -113,7 +113,7 @@ function ListarTarea(){
                                           <br>
                                        
                                         <button type="submit" class=" regiTask btn btn-primary">Registrar Tarea</button>
-                                        <button type="button" class="btn bg-warning" data-bs-dismiss="modal" aria-label="close">Cancelar</button>
+                                        <button type="button" class=" elimiTask btn bg-warning" data-bs-dismiss="modal" aria-label="close">Cancelar</button>
                                       </form>
                                         </div>
                                 </div>
@@ -167,18 +167,72 @@ $('#registrar_tarea').submit(function(e){
     data:{action:action, Id:Id, Nombre,Nombre, Descrip:Descrip, Prioridad:Prioridad},
 
     success:function(response){
-      console.log(response);
+     
+      Swal.fire({
+           
+        icon: 'success',
+        title: 'Editado Exítosamente!!',
+        showConfirmButton: false,
+        timer: 1800
+        
+      });
     }
   });
+  $('#registrar').modal('hide');
+  ListarTarea();
+})
+});
 
+//ELIMINAR TAREAS
 
+$(document).on('click','.eliminar', function(e){
+  e.preventDefault();
+  
+  Swal.fire({
+    title: 'Estas seguro?',
+    text: "Esta actividad no tiene regreso!",
+    icon: 'warning',
+    showCancelButton: 'cancelar         ',
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, eliminar!'
+}).then((result) => {
+  if (result.isConfirmed) {
+
+    let element = $(this)[0].parentElement.parentElement;
+    var Id = $(element).attr('taskId');
+    var action = 'eliminar';
+    $.ajax({
+      url:'../../app/controladores/tareas/tareaController.php',
+      method: 'POST',
+      async:true,
+      data:{action:action, Id:Id},
+  
+      success:function(response){
+        ListarTarea();
+      }
+    })
+    Swal.fire({
+           
+      icon: 'success',
+      title: 'Eliminado Exítosamente!!',
+      showConfirmButton: false,
+      timer: 1800
+      
+    });
+      
+  }
+
+  
 })
 
 
 
 
 
-
-
-});
+  
+  
+  
+  
+})
    

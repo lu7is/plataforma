@@ -19,6 +19,8 @@ $rol = $_SESSION['rol'];
         <meta name="author" content="" />
         <title>Dashboard-MRK</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <!-- Icons para importarlos -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="../../css/styles.css" rel="stylesheet" />
         <link href="../../css/task.css" rel="stylesheet" />
        
@@ -31,6 +33,7 @@ $rol = $_SESSION['rol'];
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                
                 <div class="input-group">
                     
                 </div>
@@ -160,7 +163,8 @@ $rol = $_SESSION['rol'];
     
       <main>
         <div class="container-fluid px-6">
-         <h1 class="mt-4">Listado de tareas</h1>
+         <h1 class="mt-4">Listado de tareas</h1> 
+         <a href="principal.php"><button type="button" class="btn btn-success" id="Add_Task" ><i class="material-icons">library_add</i> Registrar Tareas</button></a>
                 <div id="lista" >
                     
                    
@@ -191,6 +195,7 @@ $rol = $_SESSION['rol'];
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../../js/tareas.js"></script>
+        
 
 
 
