@@ -52,6 +52,27 @@ $('#form-usu').submit(function (e) {
 function Listar_Usuarios(){
     var  action = 'listar';
     tablaUsuarios = $('#tablaUsuarios').DataTable({
+        "language": {
+
+            "lengthMenu": "Mostrar "+ 
+                                  `   <select class="custom-select custom-select-sm form-control form-control-sm">
+                                        <option value= "10">10</option>
+                                        <option value= "25">25</option>
+                                        <option value= "50">50</option>
+                                        <option value= "100">100</option>
+                                        <option value= "-1">Todos</option>
+                                    </select> `+
+                                    " registros por pagina",
+            "zeroRecords": "Registro no encontrado",
+            "info": "Mostrando la pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtrado de _MAX_ total registros)",
+            "search": "Buscar:",
+            "paginate":{
+                "next":"Siguiente",
+                "previous": "Anterior"
+            }
+        },
         "ajax":{
             "url":'../../app/controladores/Usuarios/usuariosController.php',
             "method":'POST',
@@ -70,7 +91,8 @@ function Listar_Usuarios(){
             {"data":"correo"},
             {"data":"rol"},
             {"defaultContent": "<div class='text-center'><div class='btn-group'><button  class='btn btn-warning btn-sm btnEditar'><i class='material-icons'>edit</i>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i>Eliminar</button></div></div>"}
-        ]
+        ],
+        
         
        
     });
@@ -78,6 +100,8 @@ function Listar_Usuarios(){
 
     
 }
+
+
 
 //EDITAR LOS USUARIOS
 $(document).on('click', ".btnEditar", function(e){

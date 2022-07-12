@@ -26,6 +26,9 @@ class sesion extends BD{
         }
             return false;
     }
+
+
+    
     public function ValidarInicio(){
         if($_SESSION['id']== null ){
     header("location:../../vistas/dashboard.php");
