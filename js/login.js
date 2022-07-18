@@ -1,5 +1,5 @@
 $(document).ready(function(){
-   
+   alert('hola caro')
 })
 
 //LOGIN DE USUARIOS
@@ -15,17 +15,13 @@ $('#form_login').submit(function(e){
         method:'POST',
         async:true,
         data:{action:action,Correo:Correo, Password:Password},
+
         beforeSend: function(){
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
+               
               })
               
               Toast.fire({
@@ -37,14 +33,21 @@ $('#form_login').submit(function(e){
             window.location.replace("../dashboard.php"); 
            
         },
-        error:function(response){
+        error:function(jqXHR,estado,error){
+            console.log(estado);
+            console.log(error);
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Error inesperado!',
                 showConfirmButton: false
               })
-        }
+        },
+        complete: function(jqXHR,estado){
+            console.log(estado)
+        },
+        timeout: 10000
+
     })
     
 

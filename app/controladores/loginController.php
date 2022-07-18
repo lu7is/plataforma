@@ -8,12 +8,10 @@ if($_POST['action'] == 'login'){
      $Password = $_POST['Password'];
 
   $vamos= new sesion();
-  if( $vamos->login($Correo,$Password)){
-   // header("location:../../vistas/dashboard.php");
+  $vamos->login($Correo,$Password);
+   
   
-  }else{
-    echo "noo mano ";
-  }
+  
 }
 
 ?>

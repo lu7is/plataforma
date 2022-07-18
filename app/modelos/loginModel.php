@@ -22,13 +22,16 @@ class sesion extends BD{
             $_SESSION['direccion'] = $result['direccion'];
             $_SESSION['correo'] = $result['correo'];
             $_SESSION['rol'] = $result['rol'];
-             return true;
+            return true;
+             
         }
-            return false;
+           
+        return false;
+            
     }
 
 
-    
+
     public function ValidarInicio(){
         if($_SESSION['id']== null ){
     header("location:../../vistas/dashboard.php");
