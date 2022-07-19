@@ -1,5 +1,5 @@
 $(document).ready(function(){
-   alert('hola caro')
+   
 })
 
 //LOGIN DE USUARIOS
@@ -9,46 +9,55 @@ $('#form_login').submit(function(e){
     var Correo = $('#inputEmail').val();
     var Password = $('#inputPassword').val();
     var action = 'login';
-
-    $.ajax({
-        url:'../../app/controladores/loginController.php',
-        method:'POST',
-        async:true,
-        data:{action:action,Correo:Correo, Password:Password},
-
-        beforeSend: function(){
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
+    if(Correo == "" || Password ==""){
+        Swal.fire({
+            icon: 'error',
+            title: 'Debes completar los campos!!',
+            timer: 2000,
+            showConfirmButton: false
+          })
+    }else{
+        $.ajax({
+            url:'../../app/controladores/loginController.php',
+            method:'POST',
+            async:true,
+            data:{action:action,Correo:Correo, Password:Password},
+    
+            beforeSend: function(){
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                   
+                  })
+                  
+                  Toast.fire({
+                    icon: 'success',
+                    title: 'Sesión iniciada corractamente'
+                  })
+            },
+            success:function (){
+                window.location.replace("../dashboard.php"); 
                
-              })
-              
-              Toast.fire({
-                icon: 'success',
-                title: 'Sesión iniciada corractamente'
-              })
-        },
-        success:function (){
-            window.location.replace("../dashboard.php"); 
-           
-        },
-        error:function(jqXHR,estado,error){
-            console.log(estado);
-            console.log(error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Error inesperado!',
-                showConfirmButton: false
-              })
-        },
-        complete: function(jqXHR,estado){
-            console.log(estado)
-        },
-        timeout: 10000
-
-    })
+            },
+            error:function(jqXHR,estado,error){
+                console.log(estado);
+                console.log(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error inesperado!',
+                    showConfirmButton: false
+                  })
+            },
+            complete: function(jqXHR,estado){
+                console.log(estado)
+            },
+            timeout: 10000
+    
+        })
+    }
+    
     
 
 })

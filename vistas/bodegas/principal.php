@@ -21,6 +21,8 @@ $clientes = new Usuarios();
         <title>Dashboard-MRK</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="../../css/styles.css" rel="stylesheet" />
+        <!-- ESTILOS PROPIOS-->
+        <link href="../../css/bodega.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -174,26 +176,29 @@ $clientes = new Usuarios();
                         <form  id="regi_bode" >
                             <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
+                            
                                   <label for="cedula">Op:</label>
-                                  <input type="text" class="form-control" id="Op" placeholder="Op" required >
+                                  <input type="text" class="form-control" id="Op" placeholder="Op"  >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                     <label for="Cantidad">Cantidad:</label>
-                                    <input type="number" class="form-control" min="1" pattern="^[0-9]+"  name="Cantidad" id="Cantidad" placeholder="Cantidad" required >
+                                    <input type="number" class="form-control" min="1" pattern="^[0-9]+"  name="Cantidad" id="Cantidad" placeholder="Cantidad"  >
                                 </div>
                              </div>
                                 <div class="form-group col-md-6 p-2">
                                   <label for="apellido">Descripcion:</label>
                                   <textarea name="Descrip" id="Descrip" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
+                                  <span id="danger">Cantidad faltante:</span>
+                                  <input type="text" class="form-control" id="Faltantes" placeholder="Faltantes" disabled  > 
                                 </div>
                               <div class="form-row d-flex">
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="telefono">Fecha:</label>
-                                  <input type="date" class="form-control" name="Fecha" id="Fecha" placeholder="Fecha" required >
+                              <div class="form-group col-md-6 p-2">
+                                  <label for="">Recibido:</label>
+                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+"  name="Recibido" id="Recibido" placeholder="Recibido"  >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                 <label for="direccion">Cliente:</label>
-                                  <select class="form-select" name="Cliente" id="Cliente" required >
+                                  <select class="form-select" name="Cliente" id="Cliente"  >
 
                                     <option selected>Selecciona el cliente </option>
                                     <?php 
@@ -248,7 +253,7 @@ $clientes = new Usuarios();
         <script src="../../js/datatables-simple-demo.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="../../js/app.js"></script>
+        
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../../js/bodegas.js"></script>
     </body>

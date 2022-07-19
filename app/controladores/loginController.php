@@ -10,8 +10,6 @@ if($_POST['action'] == 'login'){
   $vamos= new sesion();
   $vamos->login($Correo,$Password);
    
-  
-  
 }
 
 ?>

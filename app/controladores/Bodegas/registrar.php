@@ -1,5 +1,6 @@
 <?php
-
+date_default_timezone_set("America/Lima");
+echo date("o-m-d ");
 require_once("../../modelos/bodegaModel.php");
 
 if($_POST){
@@ -9,7 +10,7 @@ if($_POST){
       $Op = $_POST['Op'];
       $Cantidad = $_POST['Cantidad'];
       $Descrip = $_POST['Descrip'];
-      $Fecha = $_POST['Fecha'];
+      $Fecha = date("o-m-d ");
       $Cliente = $_POST['Cliente'];
 
    $Agregar->Registrar($Op,$Cantidad,$Descrip,$Fecha,$Cliente);
