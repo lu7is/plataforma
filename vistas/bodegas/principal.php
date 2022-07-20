@@ -26,6 +26,7 @@ $clientes = new Usuarios();
         <!-- ESTILOS PROPIOS-->
         <link href="../../css/bodega.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -166,7 +167,7 @@ $clientes = new Usuarios();
             <main>
             <div class="container-fluid px-4">
               <h1 class="mt-4">Bodegas registradas</h1>
-                  <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" >Registrar</button>
+                  <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" ><i class="material-icons">library_add</i> Registrar</button>
                    <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
@@ -230,10 +231,32 @@ $clientes = new Usuarios();
 
                     </div>
 
+                  </div><br><br><br>
+                  <!-- TABLA PARA LISTAR LAS BODEGAS -->           
+        
+                  <div class="container">
+                  <table class="table table-striped table-bordered table-condensed" style="width:100%" id="tablaBodegas">
+                  <thead class="text-center">
+                    <tr>
+                    <th>Id</th>
+                    <th>Op</th>
+                    <th>Cantidad</th>
+                    <th>Recibido</th>
+                    <th>Faltantes</th>
+                    <th>Descripcion</th> 
+                    <th>Fecha</th> 
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                 
                   </div>
                   </div>
                 </main>
-
+                                    
                
                 
                 <footer class="py-4 bg-grey mt-auto">
@@ -247,22 +270,24 @@ $clientes = new Usuarios();
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../../js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="../../assets/demo/chart-area-demo.js"></script>
-        <script src="../../assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="../../js/datatables-simple-demo.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-         <!-- jQuery, Popper.js, Bootstrap JS -->
-         <script src="../../app/assets/jquery/jquery-3.3.1.min.js"></script>
-         <script src="../../app/assets/popper/popper.min.js"></script>
-         <script src="../../app/assets/bootstrap/js/bootstrap.min.js"></script>
+                  <script src="../../js/scripts.js"></script>
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+                  <script src="../../app/assets/demo/chart-area-demo.js"></script>
+                  <script src="../../app/assets/demo/chart-bar-demo.js"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+                  <script src="../../js/datatables-simple-demo.js"></script>
+                  <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+                  
+                  <!-- aqui importamos css local -->
+                   <!-- jQuery, Popper.js, Bootstrap JS -->
+                  <script src="../../app/assets/jquery/jquery-3.3.1.min.js"></script>
+                  <script src="../../app/assets/popper/popper.min.js"></script>
+                  <script src="../../app/assets/bootstrap/js/bootstrap.min.js"></script>
                     
                   <!-- datatables JS -->
-        <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                  <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script>  
+                  <!-- sweet alert JS -->
+                  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../../js/bodegas.js"></script>
     </body>
 </html>

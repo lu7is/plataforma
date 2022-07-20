@@ -18,6 +18,12 @@ if($_POST['action'] == 'registrar'){
    $Agregar->Registrar($Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Fecha,$Cliente);
     
 }
+//LISTAR BODEGAS}
+if($_POST['action'] == 'listar'){
+
+   $Listar = new Bodega();
+   $Listar->Listar();
+}
 
 
 

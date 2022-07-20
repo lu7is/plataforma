@@ -43,18 +43,20 @@ class Bodega extends BD{
 
     public function Listar(){
        // $rows = null;
-        $statement = $this->db->prepare("SELECT * FROM tareas ");
+        $statement = $this->db->prepare("SELECT * FROM bodega WHERE estado = 'Activo' ");
         $statement->execute();
 
         $json= array();
 
         while($row = $statement->fetch()){  
           $json[]  = array( 
-                'nombre' => $row['nombre'],
-                'descrip' => $row['descrip'],
-                'prioridad' => $row['prioridad'],
+                'op' => $row['op'],
+                'cantidad' => $row['cantidad'],
+                'recibido' => $row['recibido'],
+                'descripcion' => $row['descripcion'],
+                'fecha' => $row['fecha'],
                 'estado' => $row['estado'],
-                'id' => $row['id']
+                'id_cliente' => $row['id_cliente']
           ); 
         }
         $jsonstring = json_encode($json);

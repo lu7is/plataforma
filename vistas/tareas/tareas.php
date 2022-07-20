@@ -93,7 +93,7 @@ $rol = $_SESSION['rol'];
                             </a>
                             <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="bodegas/principal.php">Registrar</a>
+                                    <a class="nav-link" href="../bodegas/principal.php">Registrar</a>
                                     <?php if($rol == 'administrador' || $rol== 'bodega'  ) { ?>
                                     <a class="nav-link" href="separacion/principal.php">Separacion </a>
                                     <?php } ?>
