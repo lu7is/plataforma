@@ -20,6 +20,8 @@ $clientes = new Usuarios();
         <meta name="author" content="" />
         <title>Dashboard-MRK</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <!-- Icons para importarlos -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
         <link href="../../css/styles.css" rel="stylesheet" />
         <!-- ESTILOS PROPIOS-->
         <link href="../../css/bodega.css" rel="stylesheet" />
@@ -220,7 +222,7 @@ $clientes = new Usuarios();
                               <br>
                            
                             <button type="submit" class="btn btn-primary">Registrar </button>
-                            <button type="submit" class="btn btn-warning">Cancelar</button>
+                            <button type="button" data-bs-dismiss="modal" aria-label="close" class="btn btn-warning ">Cancelar</button>
                           </form>
                         </div>
 
@@ -253,7 +255,13 @@ $clientes = new Usuarios();
         <script src="../../js/datatables-simple-demo.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-        
+         <!-- jQuery, Popper.js, Bootstrap JS -->
+         <script src="../../app/assets/jquery/jquery-3.3.1.min.js"></script>
+         <script src="../../app/assets/popper/popper.min.js"></script>
+         <script src="../../app/assets/bootstrap/js/bootstrap.min.js"></script>
+                    
+                  <!-- datatables JS -->
+        <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../../js/bodegas.js"></script>
     </body>

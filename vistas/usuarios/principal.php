@@ -25,8 +25,8 @@
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <!-- Icons para importarlos -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+            <!-- Icons para importarlos -->
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
         <!-- estilos de plantilla -->
         <link href="../../css/styles.css" rel="stylesheet" />
         <!-- estilos propios-->

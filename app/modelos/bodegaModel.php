@@ -26,16 +26,18 @@ class Bodega extends BD{
         echo $jsonstring;  
     }
 
-    public function Registrar($Op,$Cantidad,$Descrip,$Fecha,$Cliente){
-        $statement = $this->db->prepare("INSERT INTO bodega (op, cantidad, descrip, fecha, id_cliente)
-                                         VALUES (:Op, :Cantidad, :Descrip, :Fecha, :Cliente)");
+    public function Registrar($Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Fecha,$Cliente){
+        $statement = $this->db->prepare("INSERT INTO bodega (op, cantidad, recibido, faltantes, descripcion, fecha, estado, id_cliente)
+                                                    VALUES (:Op, :Cantidad, :Recibido, :Faltantes, :Descrip, :Fecha, 'activo', :Cliente)");
         $statement->bindParam(':Op',$Op);
         $statement->bindParam(':Cantidad',$Cantidad);
+        $statement->bindParam(':Recibido',$Recibido);
+        $statement->bindParam(':Faltantes',$Faltantes);
         $statement->bindParam(':Descrip',$Descrip);
         $statement->bindParam(':Fecha',$Fecha);
         $statement->bindParam(':Cliente',$Cliente);
         $statement->execute();
-          
+    
         }
 
 
