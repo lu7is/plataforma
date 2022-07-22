@@ -91,7 +91,7 @@ function Listar_Usuarios(){
             {"data":"correo"},
             {"data":"rol"},
             {"defaultContent": "<div class='text-center'><div class='btn-group'><button  class='btn btn-warning btn-sm btnEditar'><i class='material-icons'>edit</i>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i>Eliminar</button></div></div>"}
-        ],
+        ]
         
         
        

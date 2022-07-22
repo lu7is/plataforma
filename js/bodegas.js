@@ -1,11 +1,11 @@
 
 $(document).ready(function(){
-    ListarBodega();
-    alert('CARLOS');
+   ListarBodega();
+   // alert('CARLOS');
 
 })
 
-alert('LISTO JAVAS')
+//alert('LISTO JAVAS')
 
 //REGISTRAR BODEGAS
 $('#regi_bode').submit(function (e) {
@@ -56,7 +56,8 @@ $('#Recibido').keyup(function(e){
 //LISTAR TODAS LAS MERCANCIAS 
 function ListarBodega(){
     var action = "listar";
-    tablaBodegas = $('#tablaBodegas').DataTable({
+
+    Bodega = $('#Bodega').DataTable({
         "language": {
 
             "lengthMenu": "Mostrar "+ 
@@ -78,7 +79,6 @@ function ListarBodega(){
                 "previous": "Anterior"
             }
         },
-
         "ajax":{
             "url":'../../app/controladores/Bodegas/registrar.php',
             "method":'POST',
@@ -97,8 +97,22 @@ function ListarBodega(){
             {"data":"estado"},
             {"data":"id_cliente"},
             {"defaultContent": "<div class='text-center'><div class='btn-group'><button  class='btn btn-warning btn-sm btnEditar'><i class='material-icons'>edit</i>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i>Eliminar</button></div></div>"}
-        ],
-
+        ]
     });
 
 }
+
+//EDITAR LAS BODEGAS REGISTRADAS
+
+$(document).on('click', ".btnEditar", function(e){
+    e.preventDefault();
+    fila = $(this).closest('tr');
+    Id = parseInt(fila.find('td:eq(0)').text());
+    Op = fila.find('td:eq(1)').text();
+    Cantidad = fila.find('td:eq(2)').text();
+    Recibido = fila.find('td:eq(3)').text();
+    Faltantes = fila.find('td:eq(4)').text();
+    Descrip = fila.find('td:eq(5)').text();
+    Fecha = fila.find('td:eq(6)').text();
+    Rol = fila.find('td:eq(7)').text();
+});

@@ -190,7 +190,7 @@ $clientes = new Usuarios();
                              </div>
                                 <div class="form-group col-md-6 p-2">
                                   <label for="apellido">Descripcion:</label>
-                                  <textarea name="Descrip" id="Descrip" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
+                                  <textarea name="Descrip" id="Descrip" cols="10" rows="10" class="form-control" placeholder="Descripción"></textarea>
                                   <span id="danger">Cantidad faltante:</span>
                                   <input type="text" class="form-control" id="Faltantes" placeholder="Faltantes" disabled  > 
                                 </div>
@@ -235,7 +235,7 @@ $clientes = new Usuarios();
                   <!-- TABLA PARA LISTAR LAS BODEGAS -->           
         
                   <div class="container">
-                  <table class="table table-striped table-bordered table-condensed" style="width:100%" id="tablaBodegas">
+                  <table class="table table-striped table-bordered table-condensed" style="width:100%" id="Bodega">
                   <thead class="text-center">
                     <tr>
                     <th>Id</th>
@@ -246,13 +246,90 @@ $clientes = new Usuarios();
                     <th>Descripcion</th> 
                     <th>Fecha</th> 
                     <th>Estado</th>
+                    <th>Usuario</th>
                     <th>Acciones</th>
                     </tr>
                   </thead>
                     <tbody>
                     </tbody>
                   </table>
-                 
+                 <!-- FORMULARIO PARA EDITAR BODEGAS -->    
+                 <div class="modal fade" id="editar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="modalTitle">Editar Bodegas</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form  id="regi_bode" >
+                            <div class="form-row d-flex">
+                                <div class="form-group col-md-6 p-2">
+                            
+                                  <label for="cedula">Op:</label>
+                                  <input type="text" class="form-control" id="Op"   >
+                                </div>
+                                <div class="form-group col-md-6 p-2">
+                                    <label for="Cantidad">Cantidad:</label>
+                                    <input type="number" class="form-control" min="1" pattern="^[0-9]+" id="Cantidad" placeholder="Cantidad"   >
+                                </div>
+                             </div>
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="apellido">Descripcion:</label>
+                                  <textarea id="Descrip" cols="20" rows="10" class="form-control" placeholder="Descripción"></textarea>
+
+                                  <span id="danger">Cantidad faltante:</span>
+                                  <input type="text" class="form-control" id="Faltantes" placeholder="Faltantes" disabled  > 
+                                </div>
+                              <div class="form-row d-flex">
+                              <div class="form-group col-md-6 p-2">
+                                  <label for="">Recibido:</label>
+                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+"  name="Recibido" id="Recibido" placeholder="Recibido"  >
+                                </div>
+                                <div class="form-group col-md-6 p-2">
+                                <label for="direccion">Cliente:</label>
+                                  <select class="form-select" name="Cliente" id="Cliente"  >
+
+                                    <option selected>Selecciona el cliente </option>
+                                    <?php 
+                                        $cliente = $clientes->List_Clientes();
+                                        if($cliente !=null){ 
+                                            foreach($cliente as $client){ 
+                                    ?>
+                                    <option value="<?php echo $client['id']; ?>"><?php echo $client['nombre']; ?></option>
+                                    <?php 
+                                      }  
+
+                                    }
+                                   ?>
+                                  </select>
+                                </div>
+                                </div>
+                             
+                                
+                              <br>
+                           
+                            <button type="submit" class="btn btn-primary">Registrar </button>
+                            <button type="button" data-bs-dismiss="modal" aria-label="close" class="btn btn-warning ">Cancelar</button>
+                          </form>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>                  
+
+
+
+
+
+
+
+
+
+
+
                   </div>
                   </div>
                 </main>
@@ -270,24 +347,25 @@ $clientes = new Usuarios();
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-                  <script src="../../js/scripts.js"></script>
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-                  <script src="../../app/assets/demo/chart-area-demo.js"></script>
-                  <script src="../../app/assets/demo/chart-bar-demo.js"></script>
-                  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-                  <script src="../../js/datatables-simple-demo.js"></script>
-                  <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-                  
-                  <!-- aqui importamos css local -->
-                   <!-- jQuery, Popper.js, Bootstrap JS -->
-                  <script src="../../app/assets/jquery/jquery-3.3.1.min.js"></script>
-                  <script src="../../app/assets/popper/popper.min.js"></script>
-                  <script src="../../app/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="../../app/assets/demo/chart-area-demo.js"></script>
+        <script src="../../app/assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="../../js/datatables-simple-demo.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <!-- AQUI LISTAMOS NUESTRO ARCHIVO JS -->
+        <script src="../../js/usuarios.js"></script>
+        <!-- aqui importamos css local -->
+        <!-- jQuery, Popper.js, Bootstrap JS -->
+        <script src="../../app/assets/jquery/jquery-3.3.1.min.js"></script>
+        <script src="../../app/assets/popper/popper.min.js"></script>
+        <script src="../../app/assets/bootstrap/js/bootstrap.min.js"></script>
                     
-                  <!-- datatables JS -->
-                  <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script>  
-                  <!-- sweet alert JS -->
-                  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- datatables JS -->
+        <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script>  
+        <!-- sweet alert JS -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../../js/bodegas.js"></script>
     </body>
 </html>
