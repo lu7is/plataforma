@@ -55,6 +55,8 @@ class Bodega extends BD{
           $json[]  = array( 
                 'id' => $row['id'],
                 'op' => $row['op'],
+                'nombre' => $row['nombre'],
+                'apellido'=> $row['apellido'],
                 'cantidad' => $row['cantidad'],
                 'recibido' => $row['recibido'],
                 'faltantes' => $row['faltantes'],

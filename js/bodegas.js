@@ -89,6 +89,8 @@ function ListarBodega(){
            
             {"data":"id"},
             {"data":"op"},
+            {"data":"nombre"},
+            {"data":"apellido"},
             {"data":"cantidad"},
             {"data":"recibido"},
             {"data":"faltantes"},

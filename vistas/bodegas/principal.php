@@ -240,6 +240,8 @@ $clientes = new Usuarios();
                     <tr>
                     <th>Id</th>
                     <th>Op</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
                     <th>Cantidad</th>
                     <th>Recibido</th>
                     <th>Faltantes</th>
