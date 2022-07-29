@@ -41,7 +41,7 @@ class Busca extends BD{
     public function Listar(){
              $statement = $this->db->prepare("SELECT  tarea.id, tarea.nombre_tarea, tarea.descrip, tarea.prioridad, tarea.fecha, usuarios.nombre
                                               FROM  tarea, usuarios
-                                              where tarea.id_usuario = usuarios.id AND tarea.estado = 'Activo'
+                                              where tarea.id_usuario = usuarios.id_usuario AND tarea.estado = 'Activo'
                                               ORDER BY tarea.id DESC
                                             ");
              $statement->execute();

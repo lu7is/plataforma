@@ -39,7 +39,7 @@ class Usuarios extends BD {
                 'direccion' => $row['direccion'],
                 'correo' => $row['correo'],
                 'rol' => $row['rol'],
-                'id' => $row['id']
+                'id_usuario' => $row['id_usuario']
             );
         }
         $jsonstring = json_encode($json);
@@ -71,7 +71,7 @@ class Usuarios extends BD {
 
     public function Actualizar($Id,$Cedula, $Nombre, $Apellido, $Telefono, $Direccion, $Correo, $Rol){
         $statement = $this->db->prepare("UPDATE usuarios SET cedula = :Cedula, nombre =:Nombre, apellido = :Apellido, telefono = :Telefono,
-                                        direccion = :Direccion, correo = :Correo, rol = :Rol WHERE id = :Id");
+                                        direccion = :Direccion, correo = :Correo, rol = :Rol WHERE id_usuario = :Id");
         $statement->bindParam(':Id',$Id);
         $statement->bindParam(':Cedula',$Cedula);
         $statement->bindParam(':Nombre',$Nombre);

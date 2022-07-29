@@ -116,11 +116,11 @@ $clientes = new Usuarios();
                             </a>
                             <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="facturacion/principal.php">Facturacion</a>
-                                    <a class="nav-link" href="produccion/principal.php">Producción </a>
-                                    <a class="nav-link" href="nomina/principal.php">Nomina </a>
-                                    <a class="nav-link" href="asistencia/principal.php">Asistencia </a>
-                                    <a class="nav-link" href="gastos/principal.php">Gastos </a>
+                                    <a class="nav-link" href="../facturacion/principal.php">Facturacion</a>
+                                    <a class="nav-link" href="../produccion/principal.php">Producción </a>
+                                    <a class="nav-link" href="../nomina/principal.php">Nomina </a>
+                                    <a class="nav-link" href="../asistencia/principal.php">Asistencia </a>
+                                    <a class="nav-link" href="../gastos/principal.php">Gastos </a>
                                     
                                  </nav>
                             </div>
@@ -136,9 +136,9 @@ $clientes = new Usuarios();
                             </a>
                             <div class="collapse" id="prove" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="proveedores/principal.php">Registrar</a>
-                                    <a class="nav-link" href="pedidos/principal.php">Pedidos </a>
-                                    <a class="nav-link" href="inventario/principal.php">Inventario </a>
+                                    <a class="nav-link" href="../proveedores/principal.php">Registrar</a>
+                                    <a class="nav-link" href="../pedidos/principal.php">Pedidos </a>
+                                    <a class="nav-link" href="../inventario/principal.php">Inventario </a>
                                    
                                     
                                  </nav>
@@ -209,7 +209,7 @@ $clientes = new Usuarios();
                                         if($cliente !=null){ 
                                             foreach($cliente as $client){ 
                                     ?>
-                                    <option value="<?php echo $client['id']; ?>"><?php echo $client['nombre']; ?></option>
+                                    <option value="<?php echo $client['id_usuario']; ?>"><?php echo $client['nombre']; ?></option>
                                     <?php 
                                       }  
 
@@ -240,8 +240,6 @@ $clientes = new Usuarios();
                     <tr>
                     <th>Id</th>
                     <th>Op</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
                     <th>Cantidad</th>
                     <th>Recibido</th>
                     <th>Faltantes</th>
@@ -264,41 +262,42 @@ $clientes = new Usuarios();
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                         </div>
                         <div class="modal-body">
-                        <form  id="regi_bode" >
+                        <form  id="edi_bode" >
+                          <input type="hidden" id="id">
                             <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
                             
                                   <label for="cedula">Op:</label>
-                                  <input type="text" class="form-control" id="Op"   >
+                                  <input type="text" class="form-control" id="op"   >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                     <label for="Cantidad">Cantidad:</label>
-                                    <input type="number" class="form-control" min="1" pattern="^[0-9]+" id="Cantidad" placeholder="Cantidad"   >
+                                    <input type="number" class="form-control" min="1" pattern="^[0-9]+" id="cantidad" placeholder="Cantidad"   >
                                 </div>
                              </div>
                                 <div class="form-group col-md-6 p-2">
                                   <label for="apellido">Descripcion:</label>
-                                  <textarea id="Descrip" cols="20" rows="10" class="form-control" placeholder="Descripción"></textarea>
+                                  <textarea id="descrip" cols="20" rows="10" class="form-control" placeholder="Descripción"></textarea>
 
                                   <span id="danger">Cantidad faltante:</span>
-                                  <input type="text" class="form-control" id="Faltantes" placeholder="Faltantes" disabled  > 
+                                  <input type="text" class="form-control" id="faltantes" placeholder="Faltantes" disabled  > 
                                 </div>
                               <div class="form-row d-flex">
                               <div class="form-group col-md-6 p-2">
                                   <label for="">Recibido:</label>
-                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+"  name="Recibido" id="Recibido" placeholder="Recibido"  >
+                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+"  name="Recibido" id="recibido" placeholder="Recibido"  >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                 <label for="direccion">Cliente:</label>
-                                  <select class="form-select" name="Cliente" id="Cliente"  >
+                                  <select class="form-select" name="Cliente" id="cliente_edit"  >
 
-                                    <option selected>Selecciona el cliente </option>
+                                    <option id="deBD" selected>Selecciona el cliente </option>
                                     <?php 
                                         $cliente = $clientes->List_Clientes();
                                         if($cliente !=null){ 
                                             foreach($cliente as $client){ 
                                     ?>
-                                    <option value="<?php echo $client['id']; ?>"><?php echo $client['nombre']; ?></option>
+                                    <option value="<?php echo $client['id_usuario']; ?>"><?php echo $client['nombre']; ?></option>
                                     <?php 
                                       }  
 

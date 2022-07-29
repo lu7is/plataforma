@@ -49,8 +49,7 @@ $('#Recibido').keyup(function(e){
     e.preventDefault();
     //CALCULAMOS EL VALOR INGRESADO MENOS LO QUE RECIBIO
     var CanTotal = $('#Cantidad').val() -  $(this).val();
-    $('#Faltantes').val(CanTotal);
-   
+    $('#Faltantes').val(CanTotal); 
 })
 
 //LISTAR TODAS LAS MERCANCIAS 
@@ -86,18 +85,15 @@ function ListarBodega(){
             "dataSrc":""
         },
         "columns":[
-           
             {"data":"id"},
             {"data":"op"},
-            {"data":"nombre"},
-            {"data":"apellido"},
             {"data":"cantidad"},
             {"data":"recibido"},
             {"data":"faltantes"},
             {"data":"descripcion"},
             {"data":"fecha"},
             {"data":"estado"},
-            {"data":"id_cliente"},
+            {"data":"nombre"},
             {"defaultContent": "<div class='text-center'><div class='btn-group'><button  class='btn btn-warning btn-sm btnEditar'><i class='material-icons'>edit</i>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i>Eliminar</button></div></div>"}
         ]
     });
@@ -105,16 +101,64 @@ function ListarBodega(){
 }
 
 //EDITAR LAS BODEGAS REGISTRADAS
-
+var fila;
 $(document).on('click', ".btnEditar", function(e){
     e.preventDefault();
-    fila = $(this).closest('tr');
-    Id = parseInt(fila.find('td:eq(0)').text());
-    Op = fila.find('td:eq(1)').text();
-    Cantidad = fila.find('td:eq(2)').text();
-    Recibido = fila.find('td:eq(3)').text();
-    Faltantes = fila.find('td:eq(4)').text();
-    Descrip = fila.find('td:eq(5)').text();
-    Fecha = fila.find('td:eq(6)').text();
-    Rol = fila.find('td:eq(7)').text();
+   var action ="editar";
+        fila = $(this).closest('tr');
+   var  Id = parseInt(fila.find('td:eq(0)').text());
+   $.ajax({
+        url:'../../app/controladores/Bodegas/registrar.php',
+        method:'POST',
+        async:true,
+        data:{action:action, Id:Id},
+        success:function(response){
+            const bodega = JSON.parse(response);
+            $('#id').val(bodega.id);
+            $('#op').val(bodega.op);
+            $('#cantidad').val(bodega.cantidad);
+            $('#recibido').val(bodega.recibido);
+            $('#faltantes').val(bodega.faltantes);
+            $('#descrip').val(bodega.descripcion);
+            $('#cliente_edit').val(bodega.id_cliente);
+        }
+   }); 
+
+$('#edi_bode').submit(function(e){
+    e.preventDefault();
+    var Id = $('#id').val();
+    var Op = $('#op').val();
+    var Cantidad = $('#cantidad').val();
+    var Recibido = $('#recibido').val();
+    var Faltantes = $('#faltantes').val();
+    var Descrip = $('#descrip').val();
+    var Id_client = $('#cliente_edit').val();
+    var action = 'actualizar';
+    console.log(Id,Op,Cantidad,Recibido,Faltantes,Descrip,Id_client)
+    $.ajax({
+        url:'../../app/controladores/Bodegas/registrar.php',
+        method:'POST',
+        async:true,
+        data:{action:action, Id:Id, Op:Op, Cantidad:Cantidad, Recibido:Recibido, Faltantes:Faltantes, Descrip:Descrip, Id_client:Id_client},
+        success:function(response){
+            Bodega.ajax.reload(null, false);
+            Swal.fire({
+                icon: 'success',
+                title: 'Editado Exítosamente!!',
+                showConfirmButton: false,
+                timer: 1800
+                
+              });
+        }
+    });
+    $('#editar').modal('hide'); 
+});  
+    
 });
+//CALCULA LO ENVIADO SOBRE LO RECIBIDO
+$('#recibido').keyup(function(e){
+    e.preventDefault();
+    //CALCULAMOS EL VALOR INGRESADO MENOS LO QUE RECIBIO
+    var CanTotal = $('#cantidad').val() -  $(this).val();
+    $('#faltantes').val(CanTotal); 
+})

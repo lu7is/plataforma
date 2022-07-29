@@ -14,7 +14,7 @@ class sesion extends BD{
         $statement->execute();
         if($statement->rowCount() == 1){
             $result = $statement->fetch();
-            $_SESSION['id'] = $result['id'];
+            $_SESSION['id_usuario'] = $result['id_usuario'];
             $_SESSION['cedula'] = $result['cedula'];
             $_SESSION['nombre'] = $result['nombre'];
             $_SESSION['apellido'] = $result['apellido'];

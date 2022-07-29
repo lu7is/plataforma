@@ -144,7 +144,7 @@ $(document).on('click','.editar', function(){
     data:{action:action, Id:Id},
 
     success:function(response){
-     const tareas = JSON.parse(response);
+    const tareas = JSON.parse(response);
     $('#taskId').val(tareas.id)
     $('#Nombre').val(tareas.nombre_tarea);
     $('#Descrip').val(tareas.descrip);
@@ -222,17 +222,6 @@ $(document).on('click','.eliminar', function(e){
     });
       
   }
-
-  
 })
-
-
-
-
-
-  
-  
-  
-  
 })
-   
+//TAREAS EN BOOBMERAN

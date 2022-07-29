@@ -82,7 +82,7 @@ function Listar_Usuarios(){
         },
         "columns":[
            
-            {"data":"id"},
+            {"data":"id_usuario"},
             {"data":"cedula"},
             {"data":"nombre"},
             {"data":"apellido"},

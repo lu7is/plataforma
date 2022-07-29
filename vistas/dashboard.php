@@ -1,6 +1,6 @@
 <?php
 session_start();
-$id= $_SESSION['id'];
+$id= $_SESSION['id_usuario'];
 if($id == null ){
     header("location:auth/index.php");
 }

@@ -24,6 +24,27 @@ if($_POST['action'] == 'listar'){
    $Listar = new Bodega();
    $Listar->Listar();
 }
+//EDITAR BODEGAS
+if($_POST['action'] == 'editar'){
+   
+   $Editar = new Bodega();
+   $Id = $_POST['Id'];
+   $Editar->Listar_id($Id);
+}
+if($_POST['action'] == 'actualizar'){
+
+   $control= new Bodega();
+    $Id = $_POST['Id'];
+    $Op = $_POST['Op'];
+    $Cantidad = $_POST['Cantidad'];
+    $Recibido = $_POST['Recibido'];
+    $Faltantes = $_POST['Faltantes'];
+    $Descrip = $_POST['Descrip'];
+    $Id_client = $_POST['Id_client'];
+
+   $control->Actualizar($Id,$Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Id_client );
+   
+}
 
 
 

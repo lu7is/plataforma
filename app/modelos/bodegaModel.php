@@ -46,7 +46,7 @@ class Bodega extends BD{
         $statement = $this->db->prepare("SELECT *
                                           FROM bodega
                                           INNER JOIN usuarios
-                                          WHERE bodega.id_cliente = usuarios.id AND bodega.estado = 'Activo'");
+                                          WHERE bodega.id_cliente = usuarios.id_usuario AND bodega.estado = 'Activo'");
         $statement->execute();
 
         $json= array();
@@ -85,18 +85,20 @@ class Bodega extends BD{
 
     public function Listar_id($Id){
         // $rows = null;
-         $statement = $this->db->prepare("SELECT *  FROM tareas WHERE id = :Id ");
+         $statement = $this->db->prepare("SELECT *  FROM bodega WHERE id = :Id ");
          $statement->bindParam(':Id', $Id);
          $statement->execute();
  
          $json= array();
          while($row = $statement->fetch()){  
            $json[]  = array( 
-             'nombre' => $row['nombre'],
-             'descrip' => $row['descrip'],
-             'prioridad' => $row['prioridad'],
-             'estado' => $row['estado'],
-             'id' => $row['id']
+             'id' => $row['id'],
+             'op' => $row['op'],
+             'cantidad' => $row['cantidad'],
+             'recibido' => $row['recibido'],
+             'faltantes' => $row['faltantes'],
+             'descripcion' => $row['descripcion'],
+             'id_cliente' => $row['id_cliente']
            );
  
           
@@ -107,14 +109,16 @@ class Bodega extends BD{
      }
 
 
-     public function Actualizar($Id, $Nonbre, $Descrip, $Prioridad, $Estado){
-        $statement = $this->db->prepare("UPDATE tareas SET nombre =:Nonbre, descrip = :Descrip, prioridad = :Prioridad,
-                                        estado = :Estado WHERE id = :Id");
+     public function Actualizar($Id,$Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Id_client){
+        $statement = $this->db->prepare("UPDATE bodega SET op=:Op, cantidad=:Cantidad, recibido = :Recibido,
+                                        faltantes = :Faltantes, descripcion = :Descrip, id_cliente=:Id_client WHERE id = :Id");
         $statement->bindParam(':Id',$Id);
-        $statement->bindParam(':Nonbre',$Nonbre);
+        $statement->bindParam(':Op',$Op);
+        $statement->bindParam(':Cantidad',$Cantidad);
+        $statement->bindParam(':Recibido',$Recibido);
+        $statement->bindParam(':Faltantes',$Faltantes);
         $statement->bindParam(':Descrip',$Descrip);
-        $statement->bindParam(':Prioridad',$Prioridad);
-        $statement->bindParam(':Estado',$Estado);
+        $statement->bindParam(':Id_client',$Id_client);
         $statement->execute();
           
         
