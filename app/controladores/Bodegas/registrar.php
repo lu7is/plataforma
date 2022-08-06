@@ -12,10 +12,11 @@ if($_POST['action'] == 'registrar'){
       $Recibido = $_POST['Recibido'];
       $Faltantes =$_POST['Faltantes'];
       $Descrip = $_POST['Descrip'];
+      $Condicion = $_POST['Condicion'];
       $Fecha = date("o-m-d ");
       $Cliente = $_POST['Cliente'];
 
-   $Agregar->Registrar($Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Fecha,$Cliente);
+   $Agregar->Registrar($Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Condicion,$Fecha,$Cliente);
     
 }
 //LISTAR BODEGAS}
@@ -40,9 +41,10 @@ if($_POST['action'] == 'actualizar'){
     $Recibido = $_POST['Recibido'];
     $Faltantes = $_POST['Faltantes'];
     $Descrip = $_POST['Descrip'];
+    $Condicion = $_POST['Condicion'];
     $Id_client = $_POST['Id_client'];
 
-   $control->Actualizar($Id,$Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Id_client );
+   $control->Actualizar($Id,$Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Condicion,$Id_client );
    
 }
 

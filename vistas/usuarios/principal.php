@@ -6,7 +6,7 @@
 
  
  session_start();
- $id= $_SESSION['id'];
+ $id= $_SESSION['id_usuario'];
  if($id == null ){
      header("location:auth/index.php");
  }
@@ -173,30 +173,30 @@
                             <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
                                   <label for="cedula">Cedula:</label>
-                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cedula" id="Cedula" placeholder="Cedula" required >
+                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cedula" id="Cedula" placeholder="Cedula"  >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                     <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control"  name="Nombre" id="Nombre" placeholder="Nombre" required >
+                                    <input type="text" class="form-control"  name="Nombre" id="Nombre" placeholder="Nombre"  >
                                 </div>
                              </div>
                                 <div class="form-group col-md-6 p-2">
                                   <label for="apellido">Apellido:</label>
-                                  <input type="text" class="form-control" name="Apellido" id="Apellido" placeholder="Apellido"required >
+                                  <input type="text" class="form-control" name="Apellido" id="Apellido" placeholder="Apellido" >
                                 </div>
                               <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
                                   <label for="telefono">Telefono:</label>
-                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Telefono" id="Telefono" placeholder="Telefono" required >
+                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Telefono" id="Telefono" placeholder="Telefono"  >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                   <label for="direccion">Dirección:</label>
-                                  <input type="text" class="form-control" name="Direccion" id="Direccion" placeholder="Dirección" required >
+                                  <input type="text" class="form-control" name="Direccion" id="Direccion" placeholder="Dirección"  >
                                 </div>
                                 </div>
                               <div class="form-group col-md-6 p-2">
                                   <label for="correo">Correo:</label>
-                                  <input type="email" class="form-control" name="Correo" id="Correo" placeholder="Correo@hotmail.com" required >
+                                  <input type="email" class="form-control" name="Correo" id="Correo" placeholder="Correo@hotmail.com"  >
                                 </div>
                                 <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
@@ -205,7 +205,7 @@
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                   <label for="direccion">Dirección:</label>
-                                  <select class="form-select" name="Rol" id="Rol"required >
+                                  <select class="form-select" name="Rol" id="Rol" >
                                     <option selected>Selecciona El Rol </option>
                                     <option value="administrador">Administrador</option>
                                     <option value="empleado">Empleado</option>

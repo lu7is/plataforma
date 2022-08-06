@@ -1,8 +1,46 @@
 //APENAS LA PAGINA CARGUE LLAMA A LAS FUNCIONES REGISTRADAS
 $(document).ready(function(){
     Listar_Usuarios();
+
+  
 })
 
+if ($('#Cedula').val().length != 1 || isNaN($('#Cedula').val())) {
+    $('#Cedula').css('border-color','#FF0000');
+    alert('El número de teléfono debe tener al menos 9 números.');
+
+}
+else {
+    alert('OK');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$("#Nombre,#Apellido ").bind('keypress', function(event) {
+    var regex = new RegExp("^[a-zA-Z ]+$");
+    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+    if (!regex.test(key)) {
+      event.preventDefault();
+      Swal.fire({
+        icon: 'error',
+        title: 'Solo puedes ingresar letras!!',
+        timer: 1500,
+        showConfirmButton: false
+      })
+      return false;
+    }
+  });
 //REGISTRAR USUARIOS 
 $('#form-usu').submit(function (e) {
     e.preventDefault()
@@ -16,39 +54,45 @@ $('#form-usu').submit(function (e) {
      var Rol = $('#Rol').val();
      var action = 'registrar';
 
-     $.ajax({
-        url:'../../app/controladores/Usuarios/usuariosController.php',
-        method:'POST',
-        async:true,
-        data:{action:action, Cedula:Cedula, Nombre:Nombre, Apellido:Apellido, Telefono:Telefono, Direccion:Direccion, 
-              Correo:Correo, Password:Password, Rol:Rol},
-        success:function(response){
-            tablaUsuarios.ajax.reload(null, false);
-            Swal.fire({
-           
-                icon: 'success',
-                title: 'Registrado Exítosamente!!',
-                showConfirmButton: false,
-                timer: 1500
-                
-              }).then((result) => {
-                if (result.isConfirmed) {
+     if(Cedula == "" || Cedula < 3   || Nombre == "" || Apellido == "" ||Telefono == "" || Direccion == "" || Correo == "" || Password == "" || Rol ==""){
+        Swal.fire({
+            icon: 'error',
+            title: 'Debes completar los campos!!',
+            timer: 2000,
+            showConfirmButton: false
+          })
+    }else{
+        $.ajax({
+            url:'../../app/controladores/Usuarios/usuariosController.php',
+            method:'POST',
+            async:true,
+            data:{action:action, Cedula:Cedula, Nombre:Nombre, Apellido:Apellido, Telefono:Telefono, Direccion:Direccion, 
+                  Correo:Correo, Password:Password, Rol:Rol},
+            success:function(response){
+                tablaUsuarios.ajax.reload(null, false);
+                Swal.fire({
+               
+                    icon: 'success',
+                    title: 'Registrado Exítosamente!!',
+                    showConfirmButton: false,
+                    timer: 1500
                     
-                    tablaUsuarios.ajax.reload(null, false);
-                }
-            })
-        }
-        
-     });
-
-     $('#registrar').modal('hide');
-
-    
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                        
+                        tablaUsuarios.ajax.reload(null, false);
+                        $('#registrar').modal('hide');
+                        $('#form-usu').trigger('reset')
+                    }
+                })
+            }
+            
+         });
+    }
 
 });  
 
 //LISTAR USUARIOS REGISTRADOS
-
 function Listar_Usuarios(){
     var  action = 'listar';
     tablaUsuarios = $('#tablaUsuarios').DataTable({
@@ -92,16 +136,8 @@ function Listar_Usuarios(){
             {"data":"rol"},
             {"defaultContent": "<div class='text-center'><div class='btn-group'><button  class='btn btn-warning btn-sm btnEditar'><i class='material-icons'>edit</i>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i>Eliminar</button></div></div>"}
         ]
-        
-        
-       
     });
-  
-
-    
 }
-
-
 
 //EDITAR LOS USUARIOS
 $(document).on('click', ".btnEditar", function(e){
@@ -161,7 +197,6 @@ $(document).on('click', ".btnEditar", function(e){
 })
 
 // ELIMINAR USUARIOS
-
 $(document).on('click', '.btnBorrar', function(e){
     e.preventDefault();
     fila = $(this).closest("tr");
@@ -187,8 +222,6 @@ $(document).on('click', '.btnBorrar', function(e){
                 tablaUsuarios.ajax.reload(null, false);
 
             }
-            
-
            })
            Swal.fire({ 
             icon: 'success',
@@ -201,7 +234,8 @@ $(document).on('click', '.btnBorrar', function(e){
     });
 
 })
-    
+//VALIDACIONES
+
 
 
 

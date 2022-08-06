@@ -16,11 +16,12 @@ $('#regi_bode').submit(function (e) {
         var Recibido = $('#Recibido').val();
         var Faltantes = $('#Faltantes').val();
         var Descrip = $('#Descrip').val();
+        var Condicion = $('#Condicion').val();
         var Cliente = $('#Cliente').val();
         var action = 'registrar';
 
 
-    if(Op == "" || Cantidad == "" || Descrip == "" || Faltantes == "" || Recibido == "" || Cliente == ""){
+    if(Op == "" || Cantidad == "" || Condicion == "" ||Descrip == "" || Faltantes == "" || Recibido == "" || Cliente == ""){
         Swal.fire({
             icon: 'error',
             title: 'Debes completar los campos!!',
@@ -33,11 +34,20 @@ $('#regi_bode').submit(function (e) {
             url:'../../app/controladores/Bodegas/registrar.php',
             method:'POST',
             async:true,
-            data:{action:action, Op:Op, Cantidad:Cantidad, Recibido:Recibido, Faltantes:Faltantes, Descrip:Descrip, Cliente:Cliente},
+            data:{action:action, Op:Op, Cantidad:Cantidad, Recibido:Recibido, Faltantes:Faltantes, Descrip:Descrip, Condicion:Condicion, Cliente:Cliente},
 
         success:function(response){
-            console.log(response);
+            Swal.fire({
+           
+                icon: 'success',
+                title: 'Registrado Exítosamente!!',
+                showConfirmButton: false,
+                timer: 1500
+                
+              })
+            Bodega.ajax.reload(null, false);
             $('#registrar').modal('hide');
+            $('#regi_bode').trigger('reset')
         }
         })
     }
@@ -92,7 +102,7 @@ function ListarBodega(){
             {"data":"faltantes"},
             {"data":"descripcion"},
             {"data":"fecha"},
-            {"data":"estado"},
+            {"data":"condicion"},
             {"data":"nombre"},
             {"defaultContent": "<div class='text-center'><div class='btn-group'><button  class='btn btn-warning btn-sm btnEditar'><i class='material-icons'>edit</i>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i>Eliminar</button></div></div>"}
         ]
@@ -120,6 +130,7 @@ $(document).on('click', ".btnEditar", function(e){
             $('#recibido').val(bodega.recibido);
             $('#faltantes').val(bodega.faltantes);
             $('#descrip').val(bodega.descripcion);
+            $('#condicion').val(bodega.condicion);
             $('#cliente_edit').val(bodega.id_cliente);
         }
    }); 
@@ -132,14 +143,15 @@ $('#edi_bode').submit(function(e){
     var Recibido = $('#recibido').val();
     var Faltantes = $('#faltantes').val();
     var Descrip = $('#descrip').val();
+    var Condicion = $('#condicion').val();
     var Id_client = $('#cliente_edit').val();
     var action = 'actualizar';
-    console.log(Id,Op,Cantidad,Recibido,Faltantes,Descrip,Id_client)
+    console.log(Id,Op,Cantidad,Recibido,Faltantes,Descrip,Condicion,Id_client)
     $.ajax({
         url:'../../app/controladores/Bodegas/registrar.php',
         method:'POST',
         async:true,
-        data:{action:action, Id:Id, Op:Op, Cantidad:Cantidad, Recibido:Recibido, Faltantes:Faltantes, Descrip:Descrip, Id_client:Id_client},
+        data:{action:action, Id:Id, Op:Op, Cantidad:Cantidad, Recibido:Recibido, Faltantes:Faltantes, Descrip:Descrip, Condicion:Condicion, Id_client:Id_client},
         success:function(response){
             Bodega.ajax.reload(null, false);
             Swal.fire({
@@ -162,3 +174,19 @@ $('#recibido').keyup(function(e){
     var CanTotal = $('#cantidad').val() -  $(this).val();
     $('#faltantes').val(CanTotal); 
 })
+//VALIDACION DE CAMPÓS AL INGRESAR CANTIDADES
+$('#Recibido').keyup(function(e){
+    e.preventDefault();
+   // let element = $(this)[0].parentElement;
+   // var cant0 = parseInt($(element).attr('cant'));
+   //var cant0 = $(this).val();
+   var recibido = $('#Recibido').val();
+   var cantidad =  $('#Cantidad').val();
+    console.log(cantidad, recibido);
+
+    if(recibido < cantidad){
+      //  alert('marica no se jajaj')
+    }else{
+      //  alert('aca estoy')
+    }
+});

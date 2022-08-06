@@ -26,14 +26,15 @@ class Bodega extends BD{
         echo $jsonstring;  
     }
 
-    public function Registrar($Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Fecha,$Cliente){
-        $statement = $this->db->prepare("INSERT INTO bodega (op, cantidad, recibido, faltantes, descripcion, fecha, estado, id_cliente)
-                                                    VALUES (:Op, :Cantidad, :Recibido, :Faltantes, :Descrip, :Fecha, 'activo', :Cliente)");
+    public function Registrar($Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Condicion,$Fecha,$Cliente){
+        $statement = $this->db->prepare("INSERT INTO bodega (op, cantidad, recibido, faltantes, descripcion, fecha, condicion, estado, id_cliente)
+                                                    VALUES (:Op, :Cantidad, :Recibido, :Faltantes, :Descrip, :Fecha, :Condicion, 'activo', :Cliente)");
         $statement->bindParam(':Op',$Op);
         $statement->bindParam(':Cantidad',$Cantidad);
         $statement->bindParam(':Recibido',$Recibido);
         $statement->bindParam(':Faltantes',$Faltantes);
         $statement->bindParam(':Descrip',$Descrip);
+        $statement->bindParam(':Condicion',$Condicion);
         $statement->bindParam(':Fecha',$Fecha);
         $statement->bindParam(':Cliente',$Cliente);
         $statement->execute();
@@ -62,7 +63,7 @@ class Bodega extends BD{
                 'faltantes' => $row['faltantes'],
                 'descripcion' => $row['descripcion'],
                 'fecha' => $row['fecha'],
-                'estado' => $row['estado'],
+                'condicion' => $row['condicion'],
 
                 'id_cliente' => $row['id_cliente']
           ); 
@@ -98,6 +99,7 @@ class Bodega extends BD{
              'recibido' => $row['recibido'],
              'faltantes' => $row['faltantes'],
              'descripcion' => $row['descripcion'],
+             'condicion' => $row['condicion'],
              'id_cliente' => $row['id_cliente']
            );
  
@@ -109,15 +111,16 @@ class Bodega extends BD{
      }
 
 
-     public function Actualizar($Id,$Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Id_client){
+     public function Actualizar($Id,$Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Condicion,$Id_client){
         $statement = $this->db->prepare("UPDATE bodega SET op=:Op, cantidad=:Cantidad, recibido = :Recibido,
-                                        faltantes = :Faltantes, descripcion = :Descrip, id_cliente=:Id_client WHERE id = :Id");
+                                        faltantes = :Faltantes, descripcion = :Descrip, condicion = :Condicion, id_cliente=:Id_client WHERE id = :Id");
         $statement->bindParam(':Id',$Id);
         $statement->bindParam(':Op',$Op);
         $statement->bindParam(':Cantidad',$Cantidad);
         $statement->bindParam(':Recibido',$Recibido);
         $statement->bindParam(':Faltantes',$Faltantes);
         $statement->bindParam(':Descrip',$Descrip);
+        $statement->bindParam(':Condicion',$Condicion);
         $statement->bindParam(':Id_client',$Id_client);
         $statement->execute();
           

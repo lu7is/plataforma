@@ -93,7 +93,7 @@ class Usuarios extends BD {
 
     public function List_Clientes(){
         $rows = null;
-        $statement = $this->db->prepare("SELECT * FROM usuarios WHERE rol = 'cliente'");
+        $statement = $this->db->prepare("SELECT * FROM usuarios WHERE rol = 'cliente' AND estado = 'activo'");
         $statement->execute();
         while($result = $statement->fetch()){
             $rows[] = $result;

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../../app/modelos/usuariosModel.php');
-$id= $_SESSION['id'];
+$id= $_SESSION['id_usuario'];
 if($id == null ){
     header("location:auth/index.php");
 }
@@ -183,17 +183,36 @@ $clientes = new Usuarios();
                                   <label for="cedula">Op:</label>
                                   <input type="text" class="form-control" id="Op" placeholder="Op"  >
                                 </div>
-                                <div class="form-group col-md-6 p-2">
+                                <div class="form-group col-md-4 p-3">
                                     <label for="Cantidad">Cantidad:</label>
                                     <input type="number" class="form-control" min="1" pattern="^[0-9]+"  name="Cantidad" id="Cantidad" placeholder="Cantidad"  >
                                 </div>
                              </div>
-                                <div class="form-group col-md-6 p-2">
+                             
+                             <div class="form-row d-flex"> 
+
+                              <div class="form-group col-md-6 p-2">
                                   <label for="apellido">Descripcion:</label>
-                                  <textarea name="Descrip" id="Descrip" cols="10" rows="10" class="form-control" placeholder="Descripción"></textarea>
-                                  <span id="danger">Cantidad faltante:</span>
-                                  <input type="text" class="form-control" id="Faltantes" placeholder="Faltantes" disabled  > 
-                                </div>
+                                    <textarea id="Descrip" cols="20" rows="10" class="form-control" placeholder="Descripción"></textarea>
+
+                              </div>
+
+                              <div class="form-group col-md-6 p-2">
+                                <label for="apellido">Etapa:</label>
+                                  <select  class="form-select" name="" id="Condicion">
+                                    <option selected>Seleccione la etapa </option>
+                                    <option value="separado">Separación</option>
+                                    <option value="proceso">En proceso</option>
+                                    <option value="finalizado">Finalizado</option>
+                                  </select>
+                              </div>
+
+                              </div>
+                              <div class="col-md-6 p-2">
+                              <span id="danger">Cantidad faltante:</span>
+                                <input type="text" class="form-control" id="Faltantes" placeholder="Faltantes" disabled  > 
+
+                              </div>
                               <div class="form-row d-flex">
                               <div class="form-group col-md-6 p-2">
                                   <label for="">Recibido:</label>
@@ -245,8 +264,8 @@ $clientes = new Usuarios();
                     <th>Faltantes</th>
                     <th>Descripcion</th> 
                     <th>Fecha</th> 
-                    <th>Estado</th>
-                    <th>Usuario</th>
+                    <th>Etapa</th>
+                    <th>Cliente</th>
                     <th>Acciones</th>
                     </tr>
                   </thead>
@@ -275,13 +294,32 @@ $clientes = new Usuarios();
                                     <input type="number" class="form-control" min="1" pattern="^[0-9]+" id="cantidad" placeholder="Cantidad"   >
                                 </div>
                              </div>
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="apellido">Descripcion:</label>
-                                  <textarea id="descrip" cols="20" rows="10" class="form-control" placeholder="Descripción"></textarea>
+                             <div class="form-row d-flex"> 
 
-                                  <span id="danger">Cantidad faltante:</span>
-                                  <input type="text" class="form-control" id="faltantes" placeholder="Faltantes" disabled  > 
+                                <div class="form-group col-md-6 p-2">
+                                    <label for="apellido">Descripcion:</label>
+                                      <textarea id="descrip" cols="20" rows="10" class="form-control" placeholder="Descripción"></textarea>
+
                                 </div>
+
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="apellido">Etapa:</label>
+                                    <select  class="form-select" name="" id="condicion">
+                                      <option selected>Seleccione la etapa </option>
+                                      <option value="separado">Separación</option>
+                                      <option value="proceso">En proceso</option>
+                                      <option value="finalizado">Finalizado</option>
+                                    </select>
+                                </div>
+                                
+                                </div>
+                                <div class="col-md-6 p-2">
+                                <span id="danger">Cantidad faltante:</span>
+                                  <input type="text" class="form-control" id="faltantes" placeholder="Faltantes" disabled  > 
+                               
+                                </div>
+                                
+                                
                               <div class="form-row d-flex">
                               <div class="form-group col-md-6 p-2">
                                   <label for="">Recibido:</label>
