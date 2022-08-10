@@ -2,8 +2,58 @@
 $(document).ready(function(){
 
   ListarTarea();
+  $('#regi-tarea').validate({
+    rules:{
+        Nombre:{
+            required:true,
+            minlength: 3,
+            maxlength: 20,
+            number:false
+        },
+        Descrip:{
+            required:true,
+            minlength: 10,
+            maxlength: 50
+        }
+       
 
+
+    },
+
+    messages: {  
+                
+        Nombre: {
+           required: "Por favor ingresa el nombre de la tarea ",
+           minlength: "Tu nombre debe ser de no menos de 3 caracteres",
+           maxlength: "Tu nombre no debe ser de mas de 20 caracteres",
+           number: "Solo letras"
+        },
+        Descrip: {
+           required: "Por favor ingresa una descripcion",
+           minlength: "Tu descripcion debe ser de no menos de 5 caracteres de longitud"
+        }
+    }
 });
+
+})
+//VALIDAR SOLO LETRAS
+$("#Nomb ").bind('keypress', function(event) {
+  var regex = new RegExp("^[a-zA-Z ]+$");
+  var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+  if (!regex.test(key)) {
+    event.preventDefault();
+    Swal.fire({
+      icon: 'error',
+      title: 'Solo puedes ingresar letras!!',
+      timer: 1500,
+      showConfirmButton: false
+    })
+    return false;
+  }
+});
+
+
+
 
 //REGISTRAR TAREAS
 $('#regi-tarea').submit(function (e) {
@@ -12,16 +62,24 @@ $('#regi-tarea').submit(function (e) {
    var Nombre = $('#Nombre').val();
    var Descrip = $('#Descrip').val();
    var Prioridad = $('#Prioridad').val();
-   var Fecha = $('#Fecha').val();
    var action = 'registrar';
 
-   $.ajax({
+if( Nombre == "" || Descrip == "" || Prioridad == ""){
+  Swal.fire({
+    icon: 'error',
+    title: 'Debes completar los campos!!',
+    timer: 2000,
+    showConfirmButton: false
+  })
+}else{
+  $.ajax({
     url: '../../app/controladores/Tareas/tareaController.php', 
     method: 'POST',
     async:true,
-    data:{action:action, Nombre:Nombre, Descrip:Descrip, Prioridad:Prioridad, Fecha:Fecha},
+    data:{action:action, Nombre:Nombre, Descrip:Descrip, Prioridad:Prioridad},
 
     success: function(response){
+      console.log(response);
       Swal.fire({
        
         icon: 'success',
@@ -36,6 +94,7 @@ $('#regi-tarea').submit(function (e) {
       
     }
 });
+}
 
 
 });
@@ -49,6 +108,7 @@ function ListarTarea(){
          async:true,
          data:{action:action},
          success:function(response){
+          console.log(response);
          let tareas = JSON.parse(response);
          let template = '';
 
@@ -60,7 +120,9 @@ function ListarTarea(){
                     <h6>NOMBRE:</h6> 
                     <p> ${tareas.nombre_tarea} <div id="prioridad"><h6>PRIORIDAD:</h6> ${tareas.prioridad}  </p>
                     <div id="usuario"><h6>USUARIO:</h6> 
-                    <p> ${tareas.nombre} </p> </div>         
+                    <p> ${tareas.nombre} </p> </div> 
+                    <div id="usuario"><h6>FECHA:</h6> 
+                    <p> ${tareas.fecha} </p> </div>        
                     </div>
                     <h6>DESCRIPCIÓN:</h6>          
                     <p> ${tareas.descrip} </p>
@@ -222,6 +284,6 @@ $(document).on('click','.eliminar', function(e){
     });
       
   }
-})
-})
-//TAREAS EN BOOBMERAN
+});
+});
+

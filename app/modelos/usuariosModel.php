@@ -48,7 +48,7 @@ class Usuarios extends BD {
    
     public function Listar_Id($Id){
         
-        $statement = $this->db->prepare("SELECT * FROM usuarios WHERE id = :Id ");
+        $statement = $this->db->prepare("SELECT * FROM usuarios WHERE id_usuario = :Id ");
         $statement->bindParam(':Id',$Id);
         $statement->execute();
         $json = array();
@@ -86,7 +86,7 @@ class Usuarios extends BD {
     }
 
     public function Eliminar($Id){
-        $statement = $this->db->prepare("UPDATE usuarios SET estado = 'inactivo' WHERE id = :Id");
+        $statement = $this->db->prepare("UPDATE usuarios SET estado = 'inactivo' WHERE id_usuario = :Id");
         $statement->bindParam(':Id', $Id);
         $statement->execute();
     }
@@ -94,6 +94,16 @@ class Usuarios extends BD {
     public function List_Clientes(){
         $rows = null;
         $statement = $this->db->prepare("SELECT * FROM usuarios WHERE rol = 'cliente' AND estado = 'activo'");
+        $statement->execute();
+        while($result = $statement->fetch()){
+            $rows[] = $result;
+        }
+        return $rows;
+    }
+
+    public function List_Proveedor(){
+        $rows = null;
+        $statement = $this->db->prepare("SELECT * FROM usuarios WHERE rol = 'proveedor' AND estado = 'activo'");
         $statement->execute();
         while($result = $statement->fetch()){
             $rows[] = $result;

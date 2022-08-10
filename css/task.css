@@ -12,6 +12,13 @@
     left: 320px;
     top: -40px;
 }
-#card{
-    background-color: red;
+label.error{
+    margin: 0;
+    display: block;
+    color: red;
+
+}
+input.error{
+    border: 1px solid red;
+    color: red;
 }

@@ -16,6 +16,12 @@ if($_POST['action'] == 'registrar'){
      $Rol = $_POST['Rol'];
 
     $control->Registrar($Cedula,$Nombre,$Apellido,$Telefono,$Direccion,$Correo,$Password,$Rol );
+
+    if(empty($Cedula)){
+        $error = "Ingrese su numero de cedula";
+        header('Location:../../../vistas/usuarios/principal.php');
+    }
+
     
 }
 //LISTAMOS TODOS LOS REGISTROS

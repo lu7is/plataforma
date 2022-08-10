@@ -1,7 +1,9 @@
 <?php
+date_default_timezone_set("America/Lima");
+date("o-m-d ");
 require_once("../../modelos/tareaModel.php");
 session_start();
-$TokenUsu = $_SESSION['id'];
+$TokenUsu = $_SESSION['id_usuario'];
 
 if($_POST['action'] == 'registrar' ){
 
@@ -10,8 +12,8 @@ if($_POST['action'] == 'registrar' ){
       $Nombre = $_POST['Nombre'];
       $Descrip = $_POST['Descrip'];
       $Prioridad = $_POST['Prioridad'];
-      $Fecha = $_POST['Fecha'];
-      $TokenUsu = $_SESSION['id'];
+      $Fecha = date("o-m-d ");
+      $TokenUsu = $_SESSION['id_usuario'];
 
    $Agregar->Registrar($Nombre,$Descrip,$Prioridad,$Fecha,$TokenUsu );
     

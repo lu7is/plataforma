@@ -1,32 +1,103 @@
 //APENAS LA PAGINA CARGUE LLAMA A LAS FUNCIONES REGISTRADAS
 $(document).ready(function(){
     Listar_Usuarios();
+//validacion para formulario registrar
+    $('#form-usu').validate({
+        rules:{
+            Cedula:{
+                required:true,
+                minlength: 8,
+                maxlength: 10
+            },
+            Nombre:{
+                required:true,
+                minlength: 3,
+                maxlength: 20
+            },
+            Apellido:{
+                required:true,
+                minlength: 3,
+                maxlength: 20
+            },
+            Telefono:{
+                required:true,
+                maxlength: 10
+            },
+            Direccion:{
+                required:true,
+                minlength: 3,
+                maxlength: 20
+            },
+            Correo:{
+                required:true,
+                maxlength: 20,
+                email:true
+            },
+            Password:{
+                required:true,
+                minlength: 5,
+                maxlength: 10
 
-  
+            },
+            Rol:{
+                required:true,
+            }
+
+
+        },
+
+        messages: {  
+            Cedula: {
+                required: "Por favor ingresa tu cedula completo",
+                minlength: "Tu cedula debe ser de no menos de 5 caracteres",
+                maxlength: "Tu cedula no debe ser de mas de 10 caracteres",
+                number: "Solo caracteres numericos"
+             },         
+            Nombre: {
+               required: "Por favor ingresa tu nombre ",
+               minlength: "Tu nombre debe ser de no menos de 3 caracteres",
+               maxlength: "Tu nombre no debe ser de mas de 20 caracteres"
+            },
+            Apellido: {
+                required: "Por favor ingresa tu apellido ",
+                minlength: "Tu apellido debe ser de no menos de 3 caracteres",
+                maxlength: "Tu apellido no debe ser de mas de 10 caracteres"
+            },
+            Telefono:{
+                required: "Por favor ingresa tu telefono ",
+                maxlength: "Tu Telefono no debe ser de mas de 10 caracteres",
+                minlength: "Tu cedula debe ser de no menos de 20 caracteres",
+                number: "Solo caracteres numericos"
+            },
+            Direccion:{
+                required: "Por favor ingresa tu direccion ",
+                minlength: "Tu direccion debe ser de no menos de 3 caracteres",
+                maxlength: "Tu direccion no debe ser de mas de 10 caracteres"
+            },
+            Correo:{
+                required: "Por favor ingresa tu correo ",
+                email: "Por favor ingresa un correo válido",
+            },
+            Password: {
+               required: "Por favor ingresa una contraseña",
+               minlength: "Tu contraseña debe ser de no menos de 5 caracteres de longitud"
+            },
+            Rol:{
+                required:"Selecciona un rol"
+            }
+        },
+       
+
+
+        
+      
+           
+            
+    });
+    
 })
 
-if ($('#Cedula').val().length != 1 || isNaN($('#Cedula').val())) {
-    $('#Cedula').css('border-color','#FF0000');
-    alert('El número de teléfono debe tener al menos 9 números.');
-
-}
-else {
-    alert('OK');
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//VALIDANDO DOLO CAMPOS DE LETRAS 
 $("#Nombre,#Apellido ").bind('keypress', function(event) {
     var regex = new RegExp("^[a-zA-Z ]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
@@ -77,18 +148,20 @@ $('#form-usu').submit(function (e) {
                     showConfirmButton: false,
                     timer: 1500
                     
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                        
+                  }) 
                         tablaUsuarios.ajax.reload(null, false);
                         $('#registrar').modal('hide');
                         $('#form-usu').trigger('reset')
-                    }
-                })
+                 
             }
             
          });
     }
+   // $('#registrar').modal('hide');
+    $('#form-usu').trigger('reset')
+    $('#form-usu').removeClass()
+       
+   
 
 });  
 
@@ -138,6 +211,21 @@ function Listar_Usuarios(){
         ]
     });
 }
+//VALIDANDO DOLO CAMPOS DE LETRAS 
+$("#nombre,#apellido ").bind('keypress', function(event) {
+    var regex = new RegExp("^[a-zA-Z ]+$");
+    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+    if (!regex.test(key)) {
+      event.preventDefault();
+      Swal.fire({
+        icon: 'error',
+        title: 'Solo puedes ingresar letras!!',
+        timer: 1500,
+        showConfirmButton: false
+      })
+      return false;
+    }
+  });
 
 //EDITAR LOS USUARIOS
 $(document).on('click', ".btnEditar", function(e){
@@ -200,7 +288,7 @@ $(document).on('click', ".btnEditar", function(e){
 $(document).on('click', '.btnBorrar', function(e){
     e.preventDefault();
     fila = $(this).closest("tr");
-  var  Id = parseInt(fila.find('td:eq(0)').text());
+    var  Id = parseInt(fila.find('td:eq(0)').text());
     Swal.fire({
         title: 'Estas seguro?',
         text: "Esta actividad no tiene regreso!",
@@ -220,7 +308,6 @@ $(document).on('click', '.btnBorrar', function(e){
 
             success: function(response){
                 tablaUsuarios.ajax.reload(null, false);
-
             }
            })
            Swal.fire({ 
@@ -234,7 +321,12 @@ $(document).on('click', '.btnBorrar', function(e){
     });
 
 })
-//VALIDACIONES
+
+$('#cancelar').on('click', function(e){
+    $('#form-usu').trigger('reset')
+    $('#form-usu').removeClass()
+    $('#form-usu').reset();
+})
 
 
 

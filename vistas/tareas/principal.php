@@ -1,6 +1,6 @@
 <?php
 session_start();
-$id= $_SESSION['id'];
+$id= $_SESSION['id_usuario'];
 if($id == null ){
     header("location:auth/index.php");
 }
@@ -20,6 +20,7 @@ $rol = $_SESSION['rol'];
         <title>Dashboard-MRK</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="../../css/styles.css" rel="stylesheet" />
+        <link href="../../css/task.css" rel="stylesheet" />
        
     </head>
     <body class="sb-nav-fixed">
@@ -134,7 +135,7 @@ $rol = $_SESSION['rol'];
                             <div class="collapse" id="prove" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                 <?php if($rol == 'administrador' ) { ?>
-                                    <a class="nav-link" href="proveedores/principal.php">Registrar</a>
+                                    <a class="nav-link" href="../proveedores/principal.php">Registrar</a>
                                 <?php } ?>
                                     <a class="nav-link" href="../pedidos/principal.php">Pedidos </a>
                                     <a class="nav-link" href="../inventario/principal.php">Inventario </a>
@@ -167,8 +168,8 @@ $rol = $_SESSION['rol'];
                                 
                               <div class="form-row d-flex">
                                     <div class="form-group col-md-6 p-2">
-                                    <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Nombre" required >
+                                    <label for="nombre">Nombre de la tarea:</label>
+                                    <input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Nombre"  >
                                     </div>
                                 </div>
                                 <div class="form-row d-flex">
@@ -179,7 +180,7 @@ $rol = $_SESSION['rol'];
                                 
                                 <div class="form-group col-md-6 p-2">
                                   <label for="direccion">Prioridad:</label>
-                                  <select class="form-select" name="Prioridad" id="Prioridad"required >
+                                  <select class="form-select" name="Prioridad" id="Prioridad" >
                                     <option selected>Selecciona la prioridad </option>
                                     <option value="alta">Alta</option>
                                     <option value="media">Media</option>
@@ -188,8 +189,7 @@ $rol = $_SESSION['rol'];
                                     
                                   </select>
                                   <br>              
-                                  <label for="direccion">Fecha:</label>
-                                  <input type="date" class="form-control" name="Fecha" id="Fecha" placeholder="" required >
+                                  
                                     
                                  
                                 </div>
@@ -225,6 +225,10 @@ $rol = $_SESSION['rol'];
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="../../js/tareas.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+         <!-- jquery validate --> 
+         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+         <script type="text/javascript" src="../../app/assets/jquery/jquery.validate.min.js"></script>   
       
         
 

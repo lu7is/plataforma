@@ -6,13 +6,14 @@
 
  
  session_start();
- $id= $_SESSION['id'];
+ $id= $_SESSION['id_usuario'];
  if($id == null ){
      header("location:auth/index.php");
  }
  $nombre = $_SESSION['nombre'];
  $apellido = $_SESSION['apellido'];
  $rol = $_SESSION['rol'];
+ $proveedores = new Usuarios();
  
 ?>
 <!DOCTYPE html>
@@ -25,6 +26,8 @@
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <!-- Icons para importarlos -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="../../css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -85,21 +88,7 @@
                                     <a class="nav-link" href="../tareas/tareas.php">Tareas </a>
                                  </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">logistico:</div>
-                            <a class="nav-link collapsed" href="#logis" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
-                                Bodegas 
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="logis" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../bodegas/principal.php">Registro </a>
-                                    <a class="nav-link" href="../separacion/principal.php">Separacion </a>
-                                    <a class="nav-link" href="../despacho/principal.php">Despachos </a>
-                                    
-                                    
-                                 </nav>
-                            </div>
+                           
                             
 
                             <?php if($rol == 'bodega' || $rol == 'administrador' || $rol== 'cliente') { ?>
@@ -112,7 +101,7 @@
                             <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                    <?php if($rol == 'administrador' || $rol== 'bodega' || $rol== 'cliente'  ) { ?>
-                                    <a class="nav-link" href="bodegas/principal.php">Registrar</a>
+                                    <a class="nav-link" href="../bodegas/principal.php">Registrar</a>
                                     <?php } ?>
                                     <?php if($rol == 'administrador' || $rol== 'bodega'  ) { ?>
                                     <a class="nav-link" href="separacion/principal.php">Separacion </a>
@@ -126,6 +115,24 @@
                             </div>
                             <?php }?>
 
+                            <?php if($rol == 'administrador' ) { ?>
+                            <div class="sb-sidenav-menu-heading">Operativo:</div>
+                            <a class="nav-link collapsed" href="#opera" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
+                                Productividad 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="../facturacion/principal.php">Facturacion</a>
+                                    <a class="nav-link" href="../produccion/principal.php">Producción </a>
+                                    <a class="nav-link" href="../nomina/principal.php">Nomina </a>
+                                    <a class="nav-link" href="../asistencia/principal.php">Asistencia </a>
+                                    <a class="nav-link" href="../gastos/principal.php">Gastos </a>
+                                    
+                                 </nav>
+                            </div>
+                            <?php } ?>
                             <div class="sb-sidenav-menu-heading">Materia prima:</div>
                             <a class="nav-link collapsed" href="#mate" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-pen"></i></div>
@@ -155,7 +162,7 @@
             <div id="layoutSidenav_content">
               <div class="container-fluid px-4">
               <h1 class="mt-4">Gastos</h1>
-                  <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#modal_registrar" >Registrar</button>
+                  <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#modal_registrar" > <i class="material-icons">library_add</i> Registrar</button>
                    <div class="modal fade" id="modal_registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
@@ -167,8 +174,8 @@
                         <form id="regi-gasto">
                             <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
-                                  <label for="fecha">Fecha:</label>
-                                  <input type="date" class="form-control" name="Fecha" id="Fecha" placeholder="" required >
+                                <label for="valor">Valor:</label>
+                                  <input type="number" class="form-control" name="Valor" id="Valor" min="1" pattern="^[0-9]+" placeholder="$Valor"required >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                 <label for="categoria">Concepto:</label>
@@ -185,10 +192,23 @@
                              </div>
                              <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
-                                  <label for="valor">Valor:</label>
-                                  <input type="number" class="form-control" name="Valor" id="Valor" min="1" pattern="^[0-9]+" placeholder="$Valor"required ><br>
-                                  <label for="proveedor">Poveedor:</label>
-                                  <input type="text" class="form-control" name="Proveedor" id="Proveedor" placeholder="Proveedor"required ><br>
+                                 
+                                <label for="direccion">Proveedor:</label>
+                                  <select class="form-select" name="Cliente" id="Proveedor"  >
+
+                                    <option selected>Selecciona el cliente </option>
+                                    <?php 
+                                        $proveedor = $proveedores->List_Proveedor();
+                                        if($proveedor !=null){ 
+                                            foreach($proveedor as $provee){ 
+                                    ?>
+                                    <option value="<?php echo $provee['id_usuario']; ?>"><?php echo $provee['nombre']; ?></option>
+                                    <?php 
+                                      }  
+
+                                    }
+                                   ?>
+                                  </select>
                                 </div>
                                 </div>        
                 
@@ -197,31 +217,94 @@
                             <button type="submit"  id="registrar" class="btn btn-primary" >Registrar Gasto </button>
                             <button type="submit" class="btn btn-warning">Cancelar</button>
                           </form>
-
-
-
-
-                          
                         </div>
-                        
-                        </div>
-                        
-                        </div>  
-                        
-                        </div>  
-                         <div id="listar_gasto">
-                          aca estoy
-                         </div>
-
-                        
-                               <div>
-                        
-
-                        
                     </div>
+                </div>  
+            </div>     
+        <div><br>
+             <!-- EMPIEZA LA TABLA DE LOS GASTOS -->            
+             <div class="container">
+                  <table class="table table-striped table-bordered table-condensed" style="width:100%" id="tablaGasto">
+                  <thead class="text-center">
+                    <tr>
+                    <th>Id</th>
+                    <th>Fecha</th>
+                    <th>Concepto</th>
+                      <th>Valor</th>
+                      <th>Proveedor</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                 
+                  </div>
+                        <!-- TERMINA LA TABLA GASTO --> 
+                    </div>
+                    <div class="modal fade" id="modal_editar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header"><br>
+                          <h5 class="modal-title" id="modalTitle">Editar Usuarios</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form id="edit-gasto">
+                          <input type="hidden" id="id">
+                            <div class="form-row d-flex">
+                                <div class="form-group col-md-6 p-2">
+                                <label for="valor">Valor:</label>
+                                  <input type="number" class="form-control" name="Valor" id="valor" min="1" pattern="^[0-9]+" placeholder="$Valor"required >
+                                </div>
+                                <div class="form-group col-md-6 p-2">
+                                <label for="categoria">Concepto:</label>
+                                  <select class="form-select" name="Concepto" id="concepto"required >
+                                    <option selected>Selecciona Concepto </option>
+                                    <option value="pinturas">Pinturas</option>
+                                    <option value="bolsas">Bolsas</option>
+                                    <option value="fijo">Fijo</option>
+                                    <option value="varios">Varios</option>
+                                    <option value="insumos">Insumos</option>
+                                    
+                                  </select>
+                                </div>
+                             </div>
+                             <div class="form-row d-flex">
+                                <div class="form-group col-md-6 p-2">
+                                 
+                                <label for="direccion">Proveedor:</label>
+                                  <select class="form-select" name="Cliente" id="proveedor"  >
+
+                                    <option selected>Selecciona el cliente </option>
+                                    <?php 
+                                        $proveedor = $proveedores->List_Proveedor();
+                                        if($proveedor !=null){ 
+                                            foreach($proveedor as $provee){ 
+                                    ?>
+                                    <option value="<?php echo $provee['id_usuario']; ?>"><?php echo $provee['nombre']; ?></option>
+                                    <?php 
+                                      }  
+
+                                    }
+                                   ?>
+                                  </select>
+                                </div>
+                                </div>        
+                
+                              <br>
+                           
+                            <button type="submit"  id="registrar" class="btn btn-primary" >Registrar Gasto </button>
+                            <button type="submit" class="btn btn-warning">Cancelar</button>
+                          </form>
+                        </div>
+                    </div>
+                </div>  
+            </div>     
+        <div><br>
                         </div>  
                        
-                                     
+                                
 
                   
 
@@ -253,6 +336,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="../../js/gasto.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        
+        <script src="../../js/datatables-simple-demo.js"></script>
+        <!-- datatables JS -->
+        <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script>                                        
+    
+    
     </body>
 </html>

@@ -25,8 +25,8 @@
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-            <!-- Icons para importarlos -->
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+        <!-- Icons para importarlos -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
         <!-- estilos de plantilla -->
         <link href="../../css/styles.css" rel="stylesheet" />
         <!-- estilos propios-->
@@ -117,11 +117,11 @@
                             </a>
                             <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="facturacion/principal.php">Facturacion</a>
-                                    <a class="nav-link" href="produccion/principal.php">Producción </a>
-                                    <a class="nav-link" href="nomina/principal.php">Nomina </a>
-                                    <a class="nav-link" href="asistencia/principal.php">Asistencia </a>
-                                    <a class="nav-link" href="gastos/principal.php">Gastos </a>
+                                    <a class="nav-link" href="../facturacion/principal.php">Facturacion</a>
+                                    <a class="nav-link" href="../produccion/principal.php">Producción </a>
+                                    <a class="nav-link" href="../nomina/principal.php">Nomina </a>
+                                    <a class="nav-link" href="../asistencia/principal.php">Asistencia </a>
+                                    <a class="nav-link" href="../gastos/principal.php">Gastos </a>
                                     
                                  </nav>
                             </div>
@@ -172,15 +172,15 @@
                         <form  id="form-usu" >
                             <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
-                                  <label for="cedula">Cedula:</label>
-                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cedula" id="Cedula" placeholder="Cedula"  >
+                                  <label for="cedula" class="control-label">Cedula:</label>
+                                  <input type="number" class="form-control" minlength="8"  pattern="^[0-9]+" name="Cedula" id="Cedula" placeholder="Cedula"  >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                     <label for="nombre">Nombre:</label>
                                     <input type="text" class="form-control"  name="Nombre" id="Nombre" placeholder="Nombre"  >
                                 </div>
                              </div>
-                                <div class="form-group col-md-6 p-2">
+                                <div class=" col-md-6 p-2">
                                   <label for="apellido">Apellido:</label>
                                   <input type="text" class="form-control" name="Apellido" id="Apellido" placeholder="Apellido" >
                                 </div>
@@ -206,7 +206,7 @@
                                 <div class="form-group col-md-6 p-2">
                                   <label for="direccion">Dirección:</label>
                                   <select class="form-select" name="Rol" id="Rol" >
-                                    <option selected>Selecciona El Rol </option>
+                                    <option selected id="Rol" >Selecciona El Rol </option>
                                     <option value="administrador">Administrador</option>
                                     <option value="empleado">Empleado</option>
                                     <option value="cliente">Cliente</option>
@@ -219,7 +219,7 @@
                               <br>
                            
                             <button type="submit" id="registrar" class="btn btn-primary">Registrar Usuario</button>
-                            <button type="submit"  data-bs-dismiss="modal"  class=" btn btn-warning">Cancelar</button>
+                            <button type="button" id="cancelar"  data-bs-dismiss="modal" aria-label="close"  class=" btn btn-warning">Cancelar</button>
                           </form>
                         </div>
 
@@ -266,7 +266,7 @@
                             <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
                                   <label for="cedula">Cedula:</label>
-                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cedula" id="cedula" placeholder="Cedula" required >
+                                  <input type="number" class="form-control" minlength="8" pattern="^[0-9]+" name="Cedula" id="cedula" placeholder="Cedula" required >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                     <label for="nombre">Nombre:</label>
@@ -330,13 +330,15 @@
                 </footer>
             </div>
         </div>
+                   <!-- boopstrap para los tooglews -->           
                   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
                   <script src="../../js/scripts.js"></script>
                   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
                   <script src="../../app/assets/demo/chart-area-demo.js"></script>
                   <script src="../../app/assets/demo/chart-bar-demo.js"></script>
-                  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+                  
                   <script src="../../js/datatables-simple-demo.js"></script>
+                  <!-- script para el jquery -->
                   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
                   <!-- AQUI LISTAMOS NUESTRO ARCHIVO JS -->
                   <script src="../../js/usuarios.js"></script>
@@ -347,9 +349,18 @@
                   <script src="../../app/assets/bootstrap/js/bootstrap.min.js"></script>
                     
                   <!-- datatables JS -->
-                  <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script>  
+                  <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script> 
+
+                  <!-- jquery validate --> 
+                  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+                  <script type="text/javascript" src="../../app/assets/jquery/jquery.validate.min.js"></script>             
                   <!-- sweet alert JS -->
                   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                 
+                  <!-- Include all compiled plugins (below), or include individual files as needed -->
+                  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
                     
 
       

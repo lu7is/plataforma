@@ -146,7 +146,6 @@ $('#edi_bode').submit(function(e){
     var Condicion = $('#condicion').val();
     var Id_client = $('#cliente_edit').val();
     var action = 'actualizar';
-    console.log(Id,Op,Cantidad,Recibido,Faltantes,Descrip,Condicion,Id_client)
     $.ajax({
         url:'../../app/controladores/Bodegas/registrar.php',
         method:'POST',

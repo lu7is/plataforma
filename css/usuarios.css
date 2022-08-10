@@ -1,13 +1,10 @@
-. {
-    border-collapse: collapse;
-    width: 100%;
-}
+label.error{
+    margin: 0;
+    display: block;
+    color: red;
 
-. {
-    border:1px solid;
-    text-align: left;
 }
-. {
-    border:1px solid;
-    
+input.error{
+    border: 1px solid red;
+    color: red;
 }

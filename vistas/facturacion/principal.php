@@ -110,11 +110,11 @@ $clientes = new Usuarios();
                             </a>
                             <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="facturacion/principal.php">Facturacion</a>
-                                    <a class="nav-link" href="produccion/principal.php">Producción </a>
-                                    <a class="nav-link" href="nomina/principal.php">Nomina </a>
-                                    <a class="nav-link" href="asistencia/principal.php">Asistencia </a>
-                                    <a class="nav-link" href="gastos/principal.php">Gastos </a>
+                                    <a class="nav-link" href="../facturacion/principal.php">Facturacion</a>
+                                    <a class="nav-link" href="../produccion/principal.php">Producción </a>
+                                    <a class="nav-link" href="../nomina/principal.php">Nomina </a>
+                                    <a class="nav-link" href="../asistencia/principal.php">Asistencia </a>
+                                    <a class="nav-link" href="../gastos/principal.php">Gastos </a>
                                     
                                  </nav>
                             </div>
