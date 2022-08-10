@@ -6,7 +6,7 @@
 
  
  session_start();
- $id= $_SESSION['id'];
+ $id= $_SESSION['id_usuario'];
  if($id == null ){
      header("location:auth/index.php");
  }
@@ -24,6 +24,8 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
+        <!-- Icons para importarlos -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="../../css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -173,48 +175,33 @@
                         <div class="modal-body">
                         <form method="post" action="" >
                             <div class="form-row d-flex">
+                                
                                 <div class="form-group col-md-6 p-2">
-                                  <label for="cedula">Cedula:</label>
-                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Cedula" id="Cedula" placeholder="Cedula" required >
+                                    <label for="nombre">Cantidad:</label>
+                                    <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="" id="Cantidad" placeholder="Cantidad" required >
                                 </div>
                                 <div class="form-group col-md-6 p-2">
-                                    <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control"  name="Nombre" id="Nombre" placeholder="Nombre" required >
+                                  <label for="direccion">Opservacion:</label>
+                                  <select class="form-select" name="" id="" >
+                                    <option >Selecciona un campo</option>
+                                    <option value="">Contado</option>
+                                    <option value="">Credito</option>
+                                    
+                                  </select>
                                 </div>
                              </div>
                                 <div class="form-group col-md-6 p-2">
-                                  <label for="apellido">Apellido:</label>
-                                  <input type="text" class="form-control" name="Apellido" id="Apellido" placeholder="Apellido"required >
+                                  <label for="apellido">Descripción:</label>
+                                  <textarea id="Descripcion" cols="20" rows="10" class="form-control" placeholder="Descripción"></textarea>
                                 </div>
-                              <div class="form-row d-flex">
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="telefono">Telefono:</label>
-                                  <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="Telefono" id="Telefono" placeholder="Telefono" required >
-                                </div>
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="direccion">Dirección:</label>
-                                  <input type="text" class="form-control" name="Direccion" id="Direccion" placeholder="Dirección" required >
-                                </div>
-                                </div>
-                              <div class="form-group col-md-6 p-2">
-                                  <label for="correo">Correo:</label>
-                                  <input type="email" class="form-control" name="Correo" id="Correo" placeholder="Correo@hotmail.com" required >
-                                </div>
+                              <div class="form-row d-flex">                                
+                               
+                                </div>                             
                                 <div class="form-row d-flex">
                                 <div class="form-group col-md-6 p-2">
-                                  <label for="contraseña">Contraseña:</label>
-                                  <input type="password" class="form-control" name="Password" id="Password" placeholder="********">
+                                  
                                 </div>
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="direccion">Dirección:</label>
-                                  <select class="form-select" name="Rol" id="Rol"required >
-                                    <option selected>Selecciona El Rol </option>
-                                    <option value="administrador">Administrador</option>
-                                    <option value="empleado">Empleado</option>
-                                    <option value="cliente">Cliente</option>
-                                    <option value="proveedor">Proveedor</option>
-                                  </select>
-                                </div>
+                                
                                 </div>
                               <br>
                            
@@ -248,21 +235,39 @@
                 </footer>
             </div>
         </div>
+        <!-- boopstrap para los tooglews --> 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../../js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="../../app/assets/demo/chart-area-demo.js"></script>
-        <script src="../../assets/demo/chart-bar-demo.js"></script>
+        <script src="../../app/assets/demo/chart-bar-demo.js"></script>
+
+        <script src="../../js/datatables-simple-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="../../js/datatables-simple-demo.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         
       
-      </script>
+      
         
         <script src="../../js/java.js"></script>
-       
-        
+       <!-- datatables JS -->
+       <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script> 
+        <!-- jquery validate --> 
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+        <script type="text/javascript" src="../../app/assets/jquery/jquery.validate.min.js"></script>             
+        <!-- sweet alert JS -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                 
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+        <!-- aqui importamos css local -->
+        <!-- jQuery, Popper.js, Bootstrap JS -->
+        <script src="../../app/assets/jquery/jquery-3.3.1.min.js"></script>
+        <script src="../../app/assets/popper/popper.min.js"></script>
+        <script src="../../app/assets/bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>
