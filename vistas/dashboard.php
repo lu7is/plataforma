@@ -91,7 +91,7 @@ $rol = $_SESSION['rol'];
                                    <?php if($rol == 'administrador' || $rol== 'bodega' || $rol== 'cliente' || $rol == 'supervisor'  ) { ?>
                                     <a class="nav-link" href="bodegas/principal.php">Registrar</a>
                                     <?php } ?>
-                                    <?php if($rol == 'administrador' || $rol== 'bodega' || $rol == 'supervisor'   ) { ?>
+                                    <?php if($rol == 'super' || $rol== '' || $rol == ''   ) { ?>
                                     <a class="nav-link" href="separacion/principal.php">Separacion </a>
                                     <?php } ?>
                                     <?php if($rol == 'administrador'  ) { ?>
@@ -112,10 +112,10 @@ $rol = $_SESSION['rol'];
                                     <?php if($rol == 'administrador' ) { ?>
                                     <a class="nav-link" href="facturacion/principal.php">Facturacion</a>
                                     <?php } ?>
-                                    <?php if($rol == 'supervisor' ) { ?>
+                                    <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="produccion/principal.php">Producción </a>
                                     <?php } ?>
-                                    <?php if($rol == 'administrador' ) { ?>
+                                    <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="nomina/principal.php">Nomina </a>
                                     <?php } ?>
                                     <a class="nav-link" href="asistencia/principal.php">Asistencia </a>

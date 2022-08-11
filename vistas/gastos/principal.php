@@ -196,7 +196,7 @@
                                 <label for="direccion">Proveedor:</label>
                                   <select class="form-select" name="Cliente" id="Proveedor"  >
 
-                                    <option selected>Selecciona el cliente </option>
+                                    <option selected>Selecciona el proveedor </option>
                                     <?php 
                                         $proveedor = $proveedores->List_Proveedor();
                                         if($proveedor !=null){ 

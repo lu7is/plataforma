@@ -2,7 +2,7 @@
   
  require_once "../../app/modelos/usuariosModel.php";
    
- $modelo = new Usuarios();
+
 
  
  session_start();
@@ -13,7 +13,7 @@
  $nombre = $_SESSION['nombre'];
  $apellido = $_SESSION['apellido'];
  $rol = $_SESSION['rol'];
- 
+ $proveedores = new Usuarios();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -169,38 +169,47 @@
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="modalTitle">Registrar Usuarios</h5>
+                          <h5 class="modal-title" id="modalTitle">Registrar Pedido</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                         </div>
                         <div class="modal-body">
-                        <form method="post" action="" >
+                        <form  >
                             <div class="form-row d-flex">
                                 
                                 <div class="form-group col-md-6 p-2">
-                                    <label for="nombre">Cantidad:</label>
-                                    <input type="number" class="form-control" min="1" pattern="^[0-9]+" name="" id="Cantidad" placeholder="Cantidad" required >
-                                </div>
-                                <div class="form-group col-md-6 p-2">
                                   <label for="direccion">Opservacion:</label>
-                                  <select class="form-select" name="" id="" >
+                                  <select class="form-select" name="" id="Opservacion" >
                                     <option >Selecciona un campo</option>
-                                    <option value="">Contado</option>
-                                    <option value="">Credito</option>
+                                    <option value="contado">Contado</option>
+                                    <option value="credito">Credito</option>
                                     
                                   </select>
                                 </div>
-                             </div>
-                                <div class="form-group col-md-6 p-2">
-                                  <label for="apellido">Descripción:</label>
-                                  <textarea id="Descripcion" cols="20" rows="10" class="form-control" placeholder="Descripción"></textarea>
-                                </div>
-                              <div class="form-row d-flex">                                
-                               
-                                </div>                             
+                             </div>                                                         
                                 <div class="form-row d-flex">
-                                <div class="form-group col-md-6 p-2">
-                                  
-                                </div>
+                                    <div class="form-group col-md-6 p-2">
+                                        <label for="apellido">Descripción:</label>
+                                        <textarea id="Descripcion" cols="20" rows="10" class="form-control" placeholder="Descripción"></textarea>
+                                    </div>
+                                
+
+                                    <div class="form-group col-md-6 p-2">                                
+                                        <label for="direccion">Proveedor:</label>
+                                        <select class="form-select" name="Cliente" id="Proveedor">
+                                        <option selected>Selecciona el proveedor </option>
+                                            <?php 
+                                                $proveedor = $proveedores->List_Proveedor();
+                                                if($proveedor !=null){ 
+                                                    foreach($proveedor as $provee){ 
+                                            ?>
+                                            <option value="<?php echo $provee['id_usuario']; ?>"><?php echo $provee['nombre']; ?></option>
+                                            <?php 
+                                            }  
+
+                                            }
+                                   ?>
+                                        </select>
+                                    </div>
                                 
                                 </div>
                               <br>
@@ -211,20 +220,40 @@
                         </div>
 
                       </div>
+                      
 
                     </div>
-
-                  </div>
-                  </div>
-                  
-                  <br>
+                                    
+                  </div><br><br>
+                  <!-- EMPIEZA LA TABLA DE LOS PEDIDOS -->
                   <div class="container">
-            
-                
-
+                  <table class="table table-striped table-bordered table-condensed" style="width:100%" id="tablaPedido">
+                  <thead class="text-center">
+                    <tr>
+                    <th>Id</th>
+                    <th>Cedula</th>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Telefono</th>
+                      <th>Dirección</th> 
+                      <th>Correo</th> 
+                      <th>Rol</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                 
                   </div>
 
-                
+
+
+
+
+
+
+                  </div>
                 <footer class="py-4 bg-grey mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -251,7 +280,7 @@
       
       
         
-        <script src="../../js/java.js"></script>
+        <script src="../../js/pedido.js"></script>
        <!-- datatables JS -->
        <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script> 
         <!-- jquery validate --> 
