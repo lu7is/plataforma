@@ -195,7 +195,8 @@ function ListarTarea(){
 
 //EDITAR TAREAS
 
-$(document).on('click','.editar', function(){
+$(document).on('click','.editar', function(e){
+  e.preventDefault();
   let element = $(this)[0].parentElement.parentElement;
   var Id = $(element).attr('taskId');
   var action ='editar';

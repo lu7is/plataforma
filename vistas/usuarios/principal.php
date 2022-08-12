@@ -23,7 +23,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
+        <title>Usuarios - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <!-- Icons para importarlos -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
@@ -347,17 +347,14 @@
                   <script src="../../app/assets/jquery/jquery-3.3.1.min.js"></script>
                   <script src="../../app/assets/popper/popper.min.js"></script>
                   <script src="../../app/assets/bootstrap/js/bootstrap.min.js"></script>
-                    
                   <!-- datatables JS -->
                   <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script> 
-
                   <!-- jquery validate --> 
                   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
                   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
                   <script type="text/javascript" src="../../app/assets/jquery/jquery.validate.min.js"></script>             
                   <!-- sweet alert JS -->
                   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                 
                   <!-- Include all compiled plugins (below), or include individual files as needed -->
                   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
                   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>

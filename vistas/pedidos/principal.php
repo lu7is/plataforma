@@ -23,11 +23,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
-        <!-- Icons para importarlos -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Pedidos - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <!-- Icons para importarlos -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+        <!-- estilos de plantilla -->
         <link href="../../css/styles.css" rel="stylesheet" />
+        <!-- estilos propios-->
+        <link href="../../css/usuarios.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -97,7 +100,7 @@
                             <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                    <?php if($rol == 'administrador' || $rol== 'bodega' || $rol== 'cliente'  ) { ?>
-                                    <a class="nav-link" href="bodegas/principal.php">Registrar</a>
+                                    <a class="nav-link" href="../bodegas/principal.php">Registrar</a>
                                     <?php } ?>
                                     <?php if($rol == 'administrador' || $rol== 'bodega'  ) { ?>
                                     <a class="nav-link" href="separacion/principal.php">Separacion </a>
@@ -125,7 +128,7 @@
                                     <a class="nav-link" href="produccion/principal.php">Producción </a>
                                     <a class="nav-link" href="nomina/principal.php">Nomina </a>
                                     <a class="nav-link" href="asistencia/principal.php">Asistencia </a>
-                                    <a class="nav-link" href="gastos/principal.php">Gastos </a>
+                                    <a class="nav-link" href="../gastos/principal.php">Gastos </a>
                                     
                                  </nav>
                             </div>
@@ -163,8 +166,8 @@
             
             <div id="layoutSidenav_content">
               <div class="container-fluid px-4">
-              <h1 class="mt-4">Pedidos</h1>
-                  <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" >Registrar</button>
+              <h1 class="mt-4"> <i class="material-icons">import_contacts</i> Pedidos</h1>
+                  <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" ><i class="material-icons">library_add</i>Registrar</button>
                    <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
@@ -173,16 +176,14 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                         </div>
                         <div class="modal-body">
-                        <form  >
+                        <form id="regi_pedi" >
                             <div class="form-row d-flex">
-                                
                                 <div class="form-group col-md-6 p-2">
                                   <label for="direccion">Opservacion:</label>
                                   <select class="form-select" name="" id="Opservacion" >
                                     <option >Selecciona un campo</option>
                                     <option value="contado">Contado</option>
                                     <option value="credito">Credito</option>
-                                    
                                   </select>
                                 </div>
                              </div>                                                         
@@ -191,8 +192,6 @@
                                         <label for="apellido">Descripción:</label>
                                         <textarea id="Descripcion" cols="20" rows="10" class="form-control" placeholder="Descripción"></textarea>
                                     </div>
-                                
-
                                     <div class="form-group col-md-6 p-2">                                
                                         <label for="direccion">Proveedor:</label>
                                         <select class="form-select" name="Cliente" id="Proveedor">
@@ -204,18 +203,15 @@
                                             ?>
                                             <option value="<?php echo $provee['id_usuario']; ?>"><?php echo $provee['nombre']; ?></option>
                                             <?php 
-                                            }  
-
+                                            } 
                                             }
                                    ?>
                                         </select>
                                     </div>
-                                
                                 </div>
                               <br>
-                           
-                            <button type="button" onclick="Validacion();" class="btn btn-primary">Registrar Usuario</button>
-                            <button type="submit" class="btn btn-warning">Cancelar</button>
+                            <button type="submit"  class="btn btn-primary">Registrar Usuario</button>
+                            <button type="button" class="btn btn-warning">Cancelar</button>
                           </form>
                         </div>
 
@@ -231,20 +227,78 @@
                   <thead class="text-center">
                     <tr>
                     <th>Id</th>
-                    <th>Cedula</th>
-                      <th>Nombre</th>
-                      <th>Apellido</th>
-                      <th>Telefono</th>
-                      <th>Dirección</th> 
-                      <th>Correo</th> 
-                      <th>Rol</th>
+                    <th>Opservación</th>
+                      <th>Descripción</th>
+                      <th>Fecha</th>
+                      <th>Hora</th>
+                      <th>Proveedor</th>                   
                       <th>Acciones</th>
                     </tr>
                   </thead>
                     <tbody>
                     </tbody>
                   </table>
-                 
+
+                  <!-- EMPIEZA LA TABLA DE editar LOS PEDIDOS -->
+                  <div class="modal fade" id="editar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="modalTitle">Editar Pedido</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form id="edi_pedido" >
+                          <input type="hidden" id="id">
+                            <div class="form-row d-flex">
+                                <div class="form-group col-md-6 p-2">
+                                  <label for="direccion">Opservacion:</label>
+                                  <select class="form-select" name="" id="opservacion" >
+                                    <option >Selecciona un campo</option>
+                                    <option value="contado">Contado</option>
+                                    <option value="credito">Credito</option>
+                                  </select>
+                                </div>
+                             </div>                                                         
+                                <div class="form-row d-flex">
+                                    <div class="form-group col-md-6 p-2">
+                                        <label for="apellido">Descripción:</label>
+                                        <textarea id="descripcion" cols="20" rows="10" class="form-control" placeholder="Descripción"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-6 p-2">                                
+                                        <label for="direccion">Proveedor:</label>
+                                        <select class="form-select" name="Cliente" id="proveedor">
+                                        <option selected>Selecciona el proveedor </option>
+                                            <?php 
+                                                $proveedor = $proveedores->List_Proveedor();
+                                                if($proveedor !=null){ 
+                                                    foreach($proveedor as $provee){ 
+                                            ?>
+                                            <option value="<?php echo $provee['id_usuario']; ?>"><?php echo $provee['nombre']; ?></option>
+                                            <?php 
+                                            } 
+                                            }
+                                   ?>
+                                        </select>
+                                    </div>
+                                </div>
+                              <br>
+                            <button type="submit"  class="btn btn-primary">Registrar Usuario</button>
+                            <button type="button" class="btn btn-warning">Cancelar</button>
+                          </form>
+                        </div>
+
+                      </div>
+                      
+
+                    </div>
+                                    
+                  </div>
+                  
+
+
+
+
                   </div>
 
 
@@ -264,39 +318,33 @@
                 </footer>
             </div>
         </div>
-        <!-- boopstrap para los tooglews --> 
+        <!-- boopstrap para los tooglews -->           
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../../js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="../../app/assets/demo/chart-area-demo.js"></script>
-        <script src="../../app/assets/demo/chart-bar-demo.js"></script>
-
-        <script src="../../js/datatables-simple-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="../../js/datatables-simple-demo.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        
-      
-      
-        
-        <script src="../../js/pedido.js"></script>
-       <!-- datatables JS -->
-       <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script> 
-        <!-- jquery validate --> 
-        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
-        <script type="text/javascript" src="../../app/assets/jquery/jquery.validate.min.js"></script>             
-        <!-- sweet alert JS -->
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                 
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
-        <!-- aqui importamos css local -->
-        <!-- jQuery, Popper.js, Bootstrap JS -->
-        <script src="../../app/assets/jquery/jquery-3.3.1.min.js"></script>
-        <script src="../../app/assets/popper/popper.min.js"></script>
-        <script src="../../app/assets/bootstrap/js/bootstrap.min.js"></script>
+                  <script src="../../js/scripts.js"></script>
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+                  <script src="../../app/assets/demo/chart-area-demo.js"></script>
+                  <script src="../../app/assets/demo/chart-bar-demo.js"></script>
+                  
+                  <script src="../../js/datatables-simple-demo.js"></script>
+                  <!-- script para el jquery -->
+                  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+                  <!-- AQUI LISTAMOS NUESTRO ARCHIVO JS -->
+                  <script src="../../js/pedido.js"></script>
+                  <!-- aqui importamos css local -->
+                   <!-- jQuery, Popper.js, Bootstrap JS -->
+                  <script src="../../app/assets/jquery/jquery-3.3.1.min.js"></script>
+                  <script src="../../app/assets/popper/popper.min.js"></script>
+                  <script src="../../app/assets/bootstrap/js/bootstrap.min.js"></script>
+                  <!-- datatables JS -->
+                  <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script> 
+                  <!-- jquery validate --> 
+                  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+                  <script type="text/javascript" src="../../app/assets/jquery/jquery.validate.min.js"></script>             
+                  <!-- sweet alert JS -->
+                  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                  <!-- Include all compiled plugins (below), or include individual files as needed -->
+                  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+                  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
     </body>
 </html>

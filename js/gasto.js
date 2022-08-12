@@ -95,7 +95,7 @@ $(document).on('click', ".btnEditar", function(e){
   $('#id').val(Id);
   $('#concepto').val(Concepto);
   $('#valor').val(Valor);
-  $('#proveedor').val(Proveedor);
+  $('#proveedor').val(nombre);
   $('#modal_editar').modal('show');
 
 
