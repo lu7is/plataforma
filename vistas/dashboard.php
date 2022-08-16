@@ -1,4 +1,5 @@
 <?php
+require_once "../app/modelos/usuariosModel.php";
 session_start();
 $id= $_SESSION['id_usuario'];
 if($id == null ){
@@ -7,6 +8,8 @@ if($id == null ){
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $rol = $_SESSION['rol'];
+
+$count = new Usuarios();
 
 ?>
 <!DOCTYPE html>
@@ -168,7 +171,11 @@ $rol = $_SESSION['rol'];
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Primary Card</div>
+                                    <div class="card-body">Usuarios registrados <h1>
+                                    <?php  $registros = $count->Contar(); ?>
+                                    <h1> <?php  $registros ?></h1>
+                                    </h1></div>
+                                    
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>

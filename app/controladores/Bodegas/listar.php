@@ -2,7 +2,7 @@
 require_once("../../modelos/bodegaModel.php");
 
 $Listar = new Bodega();
-$Listar->Listar();
+$Listar->Listar_id(4);
 
 
 ?>

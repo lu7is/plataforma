@@ -123,6 +123,7 @@ $(document).on('click', ".btnEditar", function(e){
         async:true,
         data:{action:action, Id:Id},
         success:function(response){
+            
             const bodega = JSON.parse(response);
             $('#id').val(bodega.id);
             $('#op').val(bodega.op);
@@ -132,6 +133,7 @@ $(document).on('click', ".btnEditar", function(e){
             $('#descrip').val(bodega.descripcion);
             $('#condicion').val(bodega.condicion);
             $('#cliente_edit').val(bodega.id_cliente);
+            
         }
    }); 
 

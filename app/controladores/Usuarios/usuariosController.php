@@ -30,6 +30,14 @@ if($_POST['action'] == 'listar'){
     $listar->Listar();
 }
 
+//LISTAR POR ID A LOS USUARIOS
+if($_POST['action'] == 'listar_Id'){
+   
+    $listar = new Usuarios();
+    $Id = $_POST['Id'];
+    $listar->Listar_Id($Id);
+ }
+
 //OPCION PARA EDITAR 
 if($_POST['action'] == 'editar'){
     $Editar = new Usuarios();
@@ -47,6 +55,14 @@ if($_POST['action'] == 'editar'){
 }
 
 //ELIMINAR USUARIOS
+if($_POST['action'] == 'eliminar'){
+    $Eliminar = new Usuarios();
+
+    $Id = $_POST['Id'];
+
+    $Eliminar->Eliminar($Id);
+}
+//CONTAR
 if($_POST['action'] == 'eliminar'){
     $Eliminar = new Usuarios();
 

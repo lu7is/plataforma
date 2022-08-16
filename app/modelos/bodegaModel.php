@@ -85,7 +85,7 @@ class Bodega extends BD{
     }
 
     public function Listar_id($Id){
-        // $rows = null;
+        
          $statement = $this->db->prepare("SELECT *  FROM bodega WHERE id = :Id ");
          $statement->bindParam(':Id', $Id);
          $statement->execute();

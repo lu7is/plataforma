@@ -169,6 +169,7 @@ $('#form-usu').submit(function (e) {
 function Listar_Usuarios(){
     var  action = 'listar';
     tablaUsuarios = $('#tablaUsuarios').DataTable({
+        responsive: true,
         "language": {
 
             "lengthMenu": "Mostrar "+ 
@@ -230,25 +231,35 @@ $("#nombre,#apellido ").bind('keypress', function(event) {
 //EDITAR LOS USUARIOS
 $(document).on('click', ".btnEditar", function(e){
     e.preventDefault();
-    fila = $(this).closest("tr");
-    Id = parseInt(fila.find('td:eq(0)').text());
-    Cedula = fila.find('td:eq(1)').text();
-    Nombre = fila.find('td:eq(2)').text();
-    Apellido = fila.find('td:eq(3)').text();
-    Telefono = fila.find('td:eq(4)').text();
-    Direccion = fila.find('td:eq(5)').text();
-    Correo = fila.find('td:eq(6)').text();
-    Rol = fila.find('td:eq(7)').text();
+    var action ="listar_Id";
+    var Id;
+    if($(this).parents("tr").hasClass('child')){ 
+         Id = $(this).parents("tr").prev().find('td:eq(0)').text(); 
+    } else {
+         Id = $(this).closest("tr").find('td:eq(0)').text(); 
+    }
 
-    $('#id').val(Id);
-    $('#cedula').val(Cedula);
-    $('#nombre').val(Nombre);
-    $('#apellido').val(Apellido);
-    $('#telefono').val(Telefono);
-    $('#direccion').val(Direccion);
-    $('#correo').val(Correo);
-    $('#rol').val(Rol);
-    $('#editar').modal('show');
+    
+    $.ajax({
+        url:'../../app/controladores/Usuarios/usuariosController.php',
+        method:'POST',
+        async:true,
+        data:{action:action, Id:Id},
+        success:function(response){
+          
+            const usuarios = JSON.parse(response);
+
+            $('#id').val(usuarios.id_usuario);
+            $('#cedula').val(usuarios.cedula);
+            $('#nombre').val(usuarios.nombre);
+            $('#apellido').val(usuarios.apellido);
+            $('#telefono').val(usuarios.telefono);
+            $('#direccion').val(usuarios.direccion);
+            $('#correo').val(usuarios.correo);
+            $('#rol').val(usuarios.rol);
+            $('#editar').modal('show');
+        }
+   }); 
 
     $('#form_Edit').submit(function(e){
         e.preventDefault();

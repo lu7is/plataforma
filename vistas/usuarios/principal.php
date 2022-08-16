@@ -31,18 +31,20 @@
         <link href="../../css/styles.css" rel="stylesheet" />
         <!-- estilos propios-->
         <link href="../../css/usuarios.css" rel="stylesheet" />
+        <!--  extension responsive  -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="../dashboard.php">Meraki-Brand</a>
+            <a class="navbar-brand ps-3" href="">Meraki_Brand</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
-                    
                 </div>
             </form>
             <!-- Navbar-->
@@ -52,7 +54,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Configuración</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="../auth/cerrar_sesion.php">Cerrar Sesión</a></li>
+                        <li><a class="dropdown-item" href="auth/cerrar_sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -62,9 +64,9 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Inicio:</div>
+                            <div class="sb-sidenav-menu-heading">Inicio:</div>
                             <a class="nav-link" href="../dashboard.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i id="taco" class="fas fa-tachometer-alt"></i></div>
                                 Pagina Principal
                             </a>
                             <?php if($rol == 'administrador' || $rol == 'supervisor' ) { ?>
@@ -76,7 +78,7 @@
                             <?php } ?>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Usuarios Registrados</a>
+                                    <a class="nav-link" href="usuarios/principal.php">Usuarios Registrados</a>
                                  </nav>
                             </div>
                             <a class="nav-link collapsed" href="#tarea" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
@@ -86,29 +88,32 @@
                             </a>
                             <div class="collapse" id="tarea" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../tareas/principal.php">Registrar</a>
-                                    <a class="nav-link" href="../tareas/tareas.php">Tareas </a>
+                                    <a class="nav-link" href="tareas/principal.php">Registrar</a>
+                                    <a class="nav-link" href="tareas/tareas.php">Tareas </a>
                                  </nav>
                             </div>
-                            
-                            <div class="sb-sidenav-menu-heading">logistico:</div>
-                            <a class="nav-link collapsed" href="#logist" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                            <?php if($rol == 'bodega' || $rol == 'administrador' || $rol== 'cliente' || $rol == 'supervisor')  { ?>
+                            <div class="sb-sidenav-menu-heading">Logistico:</div>
+                            <a class="nav-link collapsed" href="#bode" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
                                 Bodegas 
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="logist" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                   <?php if($rol == 'administrador' || $rol== 'bodega' || $rol== 'cliente' || $rol == 'supervisor'  ) { ?>
                                     <a class="nav-link" href="../bodegas/principal.php">Registrar</a>
-                                    <a class="nav-link" href="../separacion/principal.php">Separacion </a>
+                                    <?php } ?>
+                                    <?php if($rol == 'super' || $rol== '' || $rol == ''   ) { ?>
+                                    <a class="nav-link" href="separacion/principal.php">Separacion </a>
+                                    <?php } ?>
+                                    <?php if($rol == 'administrador'  ) { ?>
                                     <a class="nav-link" href="../despacho/principal.php">Despachos </a>
-                                    
-                                    
+                                    <?php } ?>
                                  </nav>
                             </div>
-                            
-
-                            <?php if($rol == 'administrador' ) { ?>
+                            <?php }?>  
+                            <?php if($rol == 'administrador' || $rol == 'supervisor' ) { ?>
                             <div class="sb-sidenav-menu-heading">Operativo:</div>
                             <a class="nav-link collapsed" href="#opera" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
@@ -117,49 +122,59 @@
                             </a>
                             <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../facturacion/principal.php">Facturacion</a>
-                                    <a class="nav-link" href="../produccion/principal.php">Producción </a>
-                                    <a class="nav-link" href="../nomina/principal.php">Nomina </a>
-                                    <a class="nav-link" href="../asistencia/principal.php">Asistencia </a>
-                                    <a class="nav-link" href="../gastos/principal.php">Gastos </a>
+                                    <?php if($rol == 'administrador' ) { ?>
+                                    <a class="nav-link" href="facturacion/principal.php">Facturacion</a>
+                                    <?php } ?>
+                                    <?php if($rol == 'super' ) { ?>
+                                    <a class="nav-link" href="produccion/principal.php">Producción </a>
+                                    <?php } ?>
+                                    <?php if($rol == 'super' ) { ?>
+                                    <a class="nav-link" href="nomina/principal.php">Nomina </a>
+                                    <?php } ?>
+                                    <a class="nav-link" href="asistencia/principal.php">Asistencia </a>
+                                    <a class="nav-link" href="gastos/principal.php">Gastos </a>
                                     
                                  </nav>
                             </div>
                             <?php } ?>
+                            <?php if($rol == 'administrador' || $rol == 'proveedor' || $rol == 'supervisor') { ?>
                             <div class="sb-sidenav-menu-heading">Materia prima:</div>
-                            <a class="nav-link collapsed" href="#mate" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link collapsed" href="#prove" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-pen"></i></div>
                                 Proveedores 
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="mate" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="prove" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="../proveedores/principal.php">Registrar</a>
-                                    <a class="nav-link" href="../pedidos/principal.php">Pedidos </a>
-                                    <a class="nav-link" href="../inventario/principal.php">Inventario </a>
-                                    
+                                <?php if($rol == 'administrador' ) { ?>
+                                    <a class="nav-link" href="proveedores/principal.php">Registrar</a>
+                                <?php } ?>
+                                    <a class="nav-link" href="pedidos/principal.php">Pedidos </a>
+                                    <a class="nav-link" href="inventario/principal.php">Inventario </a>
+                                   
                                     
                                  </nav>
                             </div>
-                            
-                            
-                           
+                            <?php } ?>
                         </div>
                     </div>
+
                     <div class="sb-sidenav-footer">
-                    <div class="small">Login por:</div>
+                        <div class="small">Login por:</div>
                         <?php echo $nombre, " ", $apellido," ",
                         "Rol:"," ", $rol; ?>
                     </div>
+                    
                 </nav>
+                
             </div>
             <!-- empieza la pagina principal -->
-            
             <div id="layoutSidenav_content">
+            <main>
+                    <div class="container-fluid px-4">                     
+                        <h1 class="mt-4"><i class="material-icons">group_add</i> Usuarios Registrados</h1>
               
-              <div class="container-fluid px-4">
-              <h1 class="mt-4">Usuarios Registrados</h1>
-              <!-- EMPIEZA EL FORMULARIO REGISTRAR -->
+                        <!-- EMPIEZA EL FORMULARIO REGISTRAR -->
               <button type="button" class= "mt-5 mx-5 btn btn-success " data-bs-toggle="modal" data-bs-target="#registrar" ><i class="material-icons">library_add</i>  Registrar Usuario</button>
                   <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
@@ -228,8 +243,7 @@
                     </div>
 
                   </div>
-                  </div>
-                  
+                  <!-- TERMINA EL FORMULARIO REGISTRAR -->
                   <br>
                   <!-- EMPIEZA LA TABLA DE LOS USUARIOS -->
                   <div class="container">
@@ -238,20 +252,22 @@
                     <tr>
                     <th>Id</th>
                     <th>Cedula</th>
-                      <th>Nombre</th>
-                      <th>Apellido</th>
-                      <th>Telefono</th>
-                      <th>Dirección</th> 
-                      <th>Correo</th> 
-                      <th>Rol</th>
-                      <th>Acciones</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Telefono</th>
+                    <th>Dirección</th> 
+                    <th>Correo</th> 
+                    <th>Rol</th>
+                    <th>Acciones</th>
                     </tr>
                   </thead>
                     <tbody>
                     </tbody>
                   </table>
-                 
                   </div>
+                 <!-- TERMINA LA TABLA DE LOS USUARIOS -->
+
+                 <!-- Empieza formulario editrar? -->
                   <!-- EMPIEZA FORMULARIO EDITAR USUARIOS-->
                   <div class="modal fade" id="editar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
@@ -319,6 +335,17 @@
 
                   </div>
 
+                  <!-- DIGAMOS QUE TERMINA-->
+                         
+                            
+                        
+                        
+                       
+                        
+                      
+                        
+                   
+                </main>
                 
                 <footer class="py-4 bg-grey mt-auto">
                     <div class="container-fluid px-4">
@@ -358,10 +385,12 @@
                   <!-- Include all compiled plugins (below), or include individual files as needed -->
                   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
                   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
-                    
+                   <!-- extension responsive -->
+                  <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>  
 
-      
 
+
+            
       
         
         

@@ -48,25 +48,28 @@ class Usuarios extends BD {
    
     public function Listar_Id($Id){
         
-        $statement = $this->db->prepare("SELECT * FROM usuarios WHERE id_usuario = :Id ");
-        $statement->bindParam(':Id',$Id);
+        $statement = $this->db->prepare("SELECT *  FROM usuarios WHERE id_usuario = :Id ");
+        $statement->bindParam(':Id', $Id);
         $statement->execute();
-        $json = array();
-        while($row = $statement->fetch()){
-            $json[] = array(
-                'id' => $row['id'],
-                'cedula' => $row['cedula'],
-                'nombre' => $row['nombre'],
-                'apellido' => $row['apellido'],
-                'telefono' => $row['telefono'],
-                'direccion' => $row['direccion'],
-                'correo' => $row['correo'],
-                'rol' => $row['rol'],
-                
-            );
+
+        $json= array();
+        while($row = $statement->fetch()){  
+          $json[]  = array( 
+            'cedula' => $row['cedula'],
+            'nombre' => $row['nombre'],
+            'apellido' => $row['apellido'],
+            'telefono' => $row['telefono'],
+            'direccion' => $row['direccion'],
+            'correo' => $row['correo'],
+            'rol' => $row['rol'],
+            'id_usuario' => $row['id_usuario']
+          );
+
+         
         }
-        $jsonstring = json_encode([0]);
-        echo $jsonstring;
+
+        $jsonstring = json_encode($json[0]);
+         echo $jsonstring;
     }
 
     public function Actualizar($Id,$Cedula, $Nombre, $Apellido, $Telefono, $Direccion, $Correo, $Rol){
@@ -109,6 +112,21 @@ class Usuarios extends BD {
             $rows[] = $result;
         }
         return $rows;
+    }
+
+    public function Contar(){
+        $rows = null;
+        
+        $statement = $this->db->prepare("SELECT COUNT(*) FROM usuarios WHERE estado= 'activo'");
+        $statement->execute();
+
+        while($result = $statement->fetch()){
+            $rows[] = $result;
+        }
+        
+
+        echo $rows;
+        
     }
 
     
