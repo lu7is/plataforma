@@ -22,7 +22,7 @@ $rol = $_SESSION['rol'];
         <!-- Icons para importarlos -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="../../css/styles.css" rel="stylesheet" />
-        <link href="../../css/task.css" rel="stylesheet" />
+        <link href="" rel="stylesheet" />
        
     </head>
     <body class="sb-nav-fixed">

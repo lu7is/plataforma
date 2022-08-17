@@ -88,8 +88,8 @@
                             </a>
                             <div class="collapse" id="tarea" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="tareas/principal.php">Registrar</a>
-                                    <a class="nav-link" href="tareas/tareas.php">Tareas </a>
+                                    <a class="nav-link" href="../tareas/principal.php">Registrar</a>
+                                    <a class="nav-link" href="../tareas/tareas.php">Tareas </a>
                                  </nav>
                             </div>
                             <?php if($rol == 'bodega' || $rol == 'administrador' || $rol== 'cliente' || $rol == 'supervisor')  { ?>

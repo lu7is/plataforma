@@ -117,16 +117,27 @@ function ListarTarea(){
             
             <div class="card" id="card" taskId = "${tareas.id} " >
             <div class="card-body " > 
+            <div class="form-row d-flex">
+               <div class="form-group col-md-6 p-2">
                     <h6>NOMBRE:</h6> 
-                    <p> ${tareas.nombre_tarea} <div id="prioridad"><h6>PRIORIDAD:</h6> ${tareas.prioridad}  </p>
+                    <p> ${tareas.nombre_tarea} 
+
+                    <div id="prioridad"><h6>PRIORIDAD:</h6> ${tareas.prioridad}  </p>
+                </div>
+                <div class="form-group col-md-6 p-2">
                     <div id="usuario"><h6>USUARIO:</h6> 
                     <p> ${tareas.nombre} </p> </div> 
-                    <div id="usuario"><h6>FECHA:</h6> 
-                    <p> ${tareas.fecha} </p> </div>        
-                    </div>
+                      
+                </div>
+            </div>  
+                <div class="form-group col-md-6 p-2">
                     <h6>DESCRIPCIÓN:</h6>          
                     <p> ${tareas.descrip} </p>
-                    
+                    <div id="usuario"><h6>FECHA:</h6> 
+                    <p> ${tareas.fecha} </p> 
+                  </div>
+                </div>
+                </div>
                     <a class="eliminar btn btn-danger" >Eliminar</a>  <a class=" editar btn btn-warning" data-bs-toggle="modal" data-bs-target="#registrar">Editar</a>
                     
                  <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
