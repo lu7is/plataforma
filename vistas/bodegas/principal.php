@@ -27,7 +27,9 @@ $clientes = new Usuarios();
         <link href="../../css/bodega.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    </head>
+        <!--  extension responsive  -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+      </head>
     <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
@@ -166,7 +168,7 @@ $clientes = new Usuarios();
 
             <main>
             <div class="container-fluid px-4">
-              <h1 class="mt-4">Bodegas registradas</h1>
+              <h1 class="mt-4"> <i class="material-icons">store_mall_directory</i> Mercancia registrada</h1>
                   <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" ><i class="material-icons">library_add</i> Registrar</button>
                    <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
@@ -406,5 +408,7 @@ $clientes = new Usuarios();
         <!-- sweet alert JS -->
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../../js/bodegas.js"></script>
+        <!-- extension responsive -->
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     </body>
 </html>

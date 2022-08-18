@@ -21,6 +21,8 @@ $rol = $_SESSION['rol'];
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="../../css/styles.css" rel="stylesheet" />
         <link href="../../css/task.css" rel="stylesheet" />
+        <!-- Icons para importarlos -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
        
     </head>
     <body class="sb-nav-fixed">
@@ -160,7 +162,7 @@ $rol = $_SESSION['rol'];
       <main>
         <div class="container-fluid px-6">
         
-                <h1 class="mt-4">Registrar tareas</h1>
+                <h1 class="mt-4"><i class="material-icons">class</i> Registrar tareas</h1>
 
                 <form id="regi-tarea" >
                             <div class="form-row d-flex">
@@ -198,7 +200,7 @@ $rol = $_SESSION['rol'];
                                 
                               <br>
                            
-                            <button type="submit" class="btn btn-primary">Registrar Tarea</button>
+                            <button type="submit" class="btn btn-primary"><i class="material-icons">library_add</i> Registrar Tarea</button>
                           </form>
         </div>
                 </main>

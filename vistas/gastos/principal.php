@@ -29,6 +29,8 @@
         <!-- Icons para importarlos -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="../../css/styles.css" rel="stylesheet" />
+         <!--  extension responsive  -->
+         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -338,7 +340,9 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../../js/datatables-simple-demo.js"></script>
         <!-- datatables JS -->
-        <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script>                                        
+        <script type="text/javascript" src="../../app/assets/datatables/datatables.min.js"></script>     
+        <!-- extension responsive -->
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>                                   
     
     
     </body>

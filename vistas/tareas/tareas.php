@@ -139,7 +139,7 @@ $rol = $_SESSION['rol'];
                                 <?php if($rol == 'administrador' ) { ?>
                                     <a class="nav-link" href="proveedores/principal.php">Registrar</a>
                                 <?php } ?>
-                                    <a class="nav-link" href="pedidos/principal.php">Pedidos </a>
+                                    <a class="nav-link" href="../pedidos/principal.php">Pedidos </a>
                                     <a class="nav-link" href="inventario/principal.php">Inventario </a>
                                    
                                     
@@ -163,7 +163,7 @@ $rol = $_SESSION['rol'];
     
       <main>
         <div class="container-fluid px-6">
-         <h1 class="mt-4">Listado de tareas</h1> 
+         <h1 class="mt-4"><i class="material-icons">chrome_reader_mode</i> Listado de tareas</h1> <br>
          <a href="principal.php"><button type="button" class="btn btn-success" id="Add_Task" ><i class="material-icons">library_add</i> Registrar Tareas</button></a>
                 <div id="lista" >
                     

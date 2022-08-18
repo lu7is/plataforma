@@ -247,7 +247,7 @@ $(document).on('click', ".btnEditar", function(e){
         data:{action:action, Id:Id},
         success:function(response){
           
-            const usuarios = JSON.parse(response);
+           const usuarios = JSON.parse(response);
 
             $('#id').val(usuarios.id_usuario);
             $('#cedula').val(usuarios.cedula);
@@ -299,7 +299,12 @@ $(document).on('click', ".btnEditar", function(e){
 $(document).on('click', '.btnBorrar', function(e){
     e.preventDefault();
     fila = $(this).closest("tr");
-    var  Id = parseInt(fila.find('td:eq(0)').text());
+    var Id;
+    if($(this).parents("tr").hasClass('child')){ 
+         Id = $(this).parents("tr").prev().find('td:eq(0)').text(); 
+    } else {
+         Id = $(this).closest("tr").find('td:eq(0)').text(); 
+    }
     Swal.fire({
         title: 'Estas seguro?',
         text: "Esta actividad no tiene regreso!",

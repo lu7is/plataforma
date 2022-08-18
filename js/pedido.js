@@ -24,8 +24,8 @@ $('#regi_pedi').submit(function(e){
             timer: 1600
             
           })
-          $('#modal_registrar').modal('hide');
-          $('#regi-gasto').trigger('reset')
+          $('#registrar').modal('hide');
+          $('#regi_pedi').trigger('reset')
         }
 
     })
@@ -37,6 +37,7 @@ e.preventDefault();
 function Listar_Pedidos(){
   var  action = 'listar';
   tablaPedido = $('#tablaPedido').DataTable({
+    responsive: true,
       "language": {
 
           "lengthMenu": "Mostrar "+ 
@@ -83,7 +84,12 @@ $(document).on('click', ".btnEditar", function(e){
   e.preventDefault();
     var action = "editar";
     fila = $(this).closest("tr");
-    var  Id = parseInt(fila.find('td:eq(0)').text());
+    var Id;
+    if($(this).parents("tr").hasClass('child')){ 
+         Id = $(this).parents("tr").prev().find('td:eq(0)').text(); 
+    } else {
+         Id = $(this).closest("tr").find('td:eq(0)').text(); 
+    }
     $.ajax({
       url:'../../app/controladores/Pedidos/pedidoController.php',
       method: 'POST',
@@ -96,7 +102,10 @@ $(document).on('click', ".btnEditar", function(e){
            $('#descripcion').val(pedido.descripcion);
            $('#proveedor').val(pedido.id_prove);
            $('#editar').modal('show');
+
+
         }
+       
     })
 
 
@@ -135,7 +144,12 @@ $(document).on('click', ".btnEditar", function(e){
 $(document).on('click', '.btnBorrar', function(e){
   e.preventDefault();
   fila = $(this).closest("tr");
-  var Id = parseInt(fila.find('td:eq(0)').text());
+  var Id;
+    if($(this).parents("tr").hasClass('child')){ 
+         Id = $(this).parents("tr").prev().find('td:eq(0)').text(); 
+    } else {
+         Id = $(this).closest("tr").find('td:eq(0)').text(); 
+    }
     Swal.fire({
       title: 'Estas seguro?',
       text: "Esta actividad no tiene regreso!",

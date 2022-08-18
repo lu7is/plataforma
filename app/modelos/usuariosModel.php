@@ -62,7 +62,7 @@ class Usuarios extends BD {
             'direccion' => $row['direccion'],
             'correo' => $row['correo'],
             'rol' => $row['rol'],
-            'id_usuario' => $row['id_usuario']
+            'id_usuario' => $row['id_usuario'],
           );
 
          

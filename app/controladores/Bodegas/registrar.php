@@ -48,6 +48,14 @@ if($_POST['action'] == 'actualizar'){
    
 }
 
+if($_POST['action'] == 'eliminar'){
+   $Eliminar = new Bodega();
+
+   $Id = $_POST['Id'];
+
+   $Eliminar->Eliminar($Id);
+}
+
 
 
 

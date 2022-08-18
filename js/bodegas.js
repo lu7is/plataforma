@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 })
 
-//alert('LISTO JAVAS')
+
 
 //REGISTRAR BODEGAS
 $('#regi_bode').submit(function (e) {
@@ -29,7 +29,7 @@ $('#regi_bode').submit(function (e) {
             showConfirmButton: false
           })
     }else{
-        //console.log(Op,Cantidad,Descrip,Faltantes,Recibido,Cliente,action);
+       // console.log(Op,Cantidad,Descrip,Faltantes,Recibido,Cliente,action);
         $.ajax({
             url:'../../app/controladores/Bodegas/registrar.php',
             method:'POST',
@@ -37,8 +37,8 @@ $('#regi_bode').submit(function (e) {
             data:{action:action, Op:Op, Cantidad:Cantidad, Recibido:Recibido, Faltantes:Faltantes, Descrip:Descrip, Condicion:Condicion, Cliente:Cliente},
 
         success:function(response){
+            Bodega.ajax.reload(null, false);
             Swal.fire({
-           
                 icon: 'success',
                 title: 'Registrado Exítosamente!!',
                 showConfirmButton: false,
@@ -67,6 +67,7 @@ function ListarBodega(){
     var action = "listar";
 
     Bodega = $('#Bodega').DataTable({
+        responsive: true,
         "language": {
 
             "lengthMenu": "Mostrar "+ 
@@ -115,8 +116,12 @@ var fila;
 $(document).on('click', ".btnEditar", function(e){
     e.preventDefault();
    var action ="editar";
-        fila = $(this).closest('tr');
-   var  Id = parseInt(fila.find('td:eq(0)').text());
+   var Id;
+   if($(this).parents("tr").hasClass('child')){ 
+        Id = $(this).parents("tr").prev().find('td:eq(0)').text(); 
+   } else {
+        Id = $(this).closest("tr").find('td:eq(0)').text(); 
+   }
    $.ajax({
         url:'../../app/controladores/Bodegas/registrar.php',
         method:'POST',
@@ -162,7 +167,9 @@ $('#edi_bode').submit(function(e){
                 timer: 1800
                 
               });
+              Bodega.ajax.reload(null, false);
         }
+        
     });
     $('#editar').modal('hide'); 
 });  
@@ -191,3 +198,54 @@ $('#Recibido').keyup(function(e){
       //  alert('aca estoy')
     }
 });
+
+
+//ELIMINAR 
+$(document).on('click', '.btnBorrar', function(e){
+    e.preventDefault();
+    fila = $(this).closest("tr");
+    var Id;
+    if($(this).parents("tr").hasClass('child')){ 
+         Id = $(this).parents("tr").prev().find('td:eq(0)').text(); 
+    } else {
+         Id = $(this).closest("tr").find('td:eq(0)').text(); 
+    }
+    Swal.fire({
+        title: 'Estas seguro?',
+        text: "Esta actividad no tiene regreso!",
+        icon: 'warning',
+        showCancelButton: 'cancelar         ',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+        if(result.isConfirmed){
+           var action = 'eliminar';
+           $.ajax({
+            url:'../../app/controladores/Bodegas/registrar.php',
+            method: 'POST',
+            async:true,
+            data:{action:action, Id:Id,},
+
+            success: function(response){
+                Bodega.ajax.reload(null, false);
+                console.log(response);
+            }
+           })
+           Swal.fire({ 
+            icon: 'success',
+            title: 'Eliminado Exítosamente!!',
+            showConfirmButton: false,
+            timer: 1500
+    })
+
+        }
+    });
+
+})
+
+$('#cancelar').on('click', function(e){
+    $('#form-usu').trigger('reset')
+    $('#form-usu').removeClass()
+    $('#form-usu').reset();
+})

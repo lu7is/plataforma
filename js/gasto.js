@@ -39,6 +39,7 @@ $('#regi-gasto').submit(function(e){
 function Listar_gastos(){
    var action = 'listar'
    tablaGasto = $('#tablaGasto').DataTable({
+    responsive: true,
     "language": {
 
       "lengthMenu": "Mostrar "+ 
@@ -87,15 +88,20 @@ function Listar_gastos(){
 $(document).on('click', ".btnEditar", function(e){
   e.preventDefault();
   fila = $(this).closest("tr");
-  Id = parseInt(fila.find('td:eq(0)').text());
+  var Id;
+    if($(this).parents("tr").hasClass('child')){ 
+         Id = $(this).parents("tr").prev().find('td:eq(0)').text(); 
+    } else {
+         Id = $(this).closest("tr").find('td:eq(0)').text(); 
+    }
   Concepto = fila.find('td:eq(2)').text();
   Valor = fila.find('td:eq(3)').text();
   Proveedor = fila.find('td:eq(4)').text();
-
+  console.log(proveedor);
   $('#id').val(Id);
   $('#concepto').val(Concepto);
   $('#valor').val(Valor);
-  $('#proveedor').val(nombre);
+  $('#proveedor').val(Proveedor);
   $('#modal_editar').modal('show');
 
 

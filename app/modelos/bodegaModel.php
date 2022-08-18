@@ -7,24 +7,7 @@ class Bodega extends BD{
         $this->db = parent::__construct();
     }
 
-    public function Buscar($Nombre){
-        //$statement = $this->db->prepare("SELECT * FROM tareas WHERE nombre LIKE ':Nombre%'");
-        $statement = $this->db->prepare("SELECT * FROM tareas WHERE nombre = :Nombre");
-        $statement->bindParam(':Nombre',$Nombre);
-        $statement->execute();
-        $statement->rowCount() == 1;
-     
-        $json = array();
-        while($row =  $statement->fetch()){
-            $json[] = array(
-                'nombre' => $row['nombre'],
-                'descrip' => $row['descrip'],
-                'id' => $row['id']
-            );
-        }
-        $jsonstring = json_encode($json);
-        echo $jsonstring;  
-    }
+   
 
     public function Registrar($Op,$Cantidad,$Recibido,$Faltantes,$Descrip,$Condicion,$Fecha,$Cliente){
         $statement = $this->db->prepare("INSERT INTO bodega (op, cantidad, recibido, faltantes, descripcion, fecha, condicion, estado, id_cliente)
@@ -72,17 +55,7 @@ class Bodega extends BD{
          echo $jsonstring;
     }
 
-    public function Eliminar($Id){
-        $statement = $this->db->prepare("DELETE FROM tareas WHERE id = :Id ");
-        $statement->bindParam(':Id', $Id);
-        if($statement->execute()){
-            die('si claro ');
-        }else{
-           echo "jumm parece que si ";
-        }
-        
-        
-    }
+    
 
     public function Listar_id($Id){
         
@@ -156,6 +129,13 @@ class Bodega extends BD{
      }
 
 
+
+
+     public function Eliminar($Id){
+      $statement = $this->db->prepare("UPDATE bodega SET estado = 'inactivo' WHERE id = :Id");
+      $statement->bindParam(':Id', $Id);
+      $statement->execute();
+  } 
 
 
 }
