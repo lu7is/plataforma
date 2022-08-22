@@ -463,12 +463,88 @@ body{
     background-color: #fff;
     border-radius: 6px;
 
-    
 }
 .footer__icons{
     padding-left: 10px;
     display: inline-flex;
     margin-bottom: 10px;
 }
+/*media queris  */
+
+@media (max-width:800px){
+    .nav__menu{
+        display: block;
+    }
+
+    .nav__link--menu{
+        position: fixed;
+        color:rgb(0, 0, 0);
+ 
+  background-color: rgba(0,0,0,0.9);
+
+        transition: all500ms ease;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        z-index: 100;
+        opacity: 0;
+        pointer-events:none ;
+        transition: .7s opacity;
 
 
+    }
+    .nav__link--show{
+        --show:block;
+        opacity: 1;
+        pointer-events: unset;
+    }
+
+    .nav__close{
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        width: 30px;
+        cursor: pointer;
+    }
+
+    .hero__tittle{
+        font-size: 2.5rem;
+    }
+
+    .about__main{
+        gap:2em;
+    }
+    .about__icons:last-of-type{
+        grid-column: 1/-1;
+    }
+    .knowledge__container{
+        grid-template-columns: 1fr;
+        grid-template-rows: max-content 1fr;
+        gap: 3em;
+        text-align: center;
+    }
+    .knowledge__picture{
+        grid-row:1/2;
+        justify-self: center;
+    }
+    .testimony__container{
+        grid-template-columns: 30px 1fr 30px;
+
+    }
+    .testimony__body{
+        grid-template-columns: 1fr;
+        grid-template-rows: max-content max-content;
+        gap:3em;
+        justify-items: center;
+    }
+    .testimony__img{
+        width: 200px;
+        height: 200px;
+    }
+
+}

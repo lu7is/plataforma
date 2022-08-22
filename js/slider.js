@@ -1,5 +1,6 @@
 //METODO PARA MOVER LOS SLIDERS DEL FRONTEND
 (function(){
+    
     const sliders = [...document.querySelectorAll('.testimony__body')];
     const buttonNext = document.querySelector('#next');
     const buttonBefore = document.querySelector('#before');
@@ -49,7 +50,21 @@ const tittleQuestions = [...document.querySelectorAll('.questions__tittle')];
         });
     });
 
+//MENU RESPONSIVE   
+const openButton = document.querySelector('.nav__menu');
+const menu = document.querySelector('.nav__link');
+const closeMenu = document.querySelector('.nav__close');
 
+
+openButton.addEventListener('click', ()=>{
+   menu.classList.add('nav__link--show');   
+});
+
+closeMenu.addEventListener('click', ()=>{
+   menu.classList.remove('nav__link--show'); 
+});
+
+   
 
 
 
