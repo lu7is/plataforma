@@ -3,7 +3,13 @@ session_start();
 require_once('../../app/modelos/usuariosModel.php');
 echo $id= md5($_SESSION['id']);
 if($id == null ){
+    echo' 
     header("location:auth/index.php");
+    <script> 
+                alert("Correo o contraseña Errado");
+                window.location = "auth/index.php";
+    </script>
+    ';
 }
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
@@ -44,7 +50,7 @@ $clientes = new Usuarios();
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Configuración</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="auth/cerrar_sesion.php">Cerrar Sesión</a></li>
+                        <li><a class="dropdown-item" href="../auth/cerrar_sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>

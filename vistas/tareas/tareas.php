@@ -2,7 +2,13 @@
 session_start();
 $id= $_SESSION['id_usuario'];
 if($id == null ){
+    echo' 
     header("location:auth/index.php");
+    <script> 
+                alert("Correo o contraseña Errado");
+                window.location = "auth/index.php";
+    </script>
+    ';
 }
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
@@ -45,7 +51,7 @@ $rol = $_SESSION['rol'];
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Configuración</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="auth/cerrar_sesion.php">Cerrar Sesión</a></li>
+                        <li><a class="dropdown-item" href="../auth/cerrar_sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>

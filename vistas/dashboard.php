@@ -3,13 +3,22 @@ require_once "../app/modelos/usuariosModel.php";
 session_start();
 $id= $_SESSION['id_usuario'];
 if($id == null ){
+    echo' 
     header("location:auth/index.php");
+    <script> 
+                alert("Correo o contraseña Errado");
+                window.location = "auth/index.php";
+    </script>
+    ';
 }
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
 $rol = $_SESSION['rol'];
 
 $count = new Usuarios();
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -97,7 +106,7 @@ $count = new Usuarios();
                                     <?php if($rol == 'super' || $rol== '' || $rol == ''   ) { ?>
                                     <a class="nav-link" href="separacion/principal.php">Separacion </a>
                                     <?php } ?>
-                                    <?php if($rol == 'administrador'  ) { ?>
+                                    <?php if($rol == 'super'  ) { ?>
                                     <a class="nav-link" href="../despacho/principal.php">Despachos </a>
                                     <?php } ?>
                                  </nav>
@@ -112,7 +121,7 @@ $count = new Usuarios();
                             </a>
                             <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <?php if($rol == 'administrador' ) { ?>
+                                    <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="facturacion/principal.php">Facturacion</a>
                                     <?php } ?>
                                     <?php if($rol == 'super' ) { ?>
@@ -121,7 +130,9 @@ $count = new Usuarios();
                                     <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="nomina/principal.php">Nomina </a>
                                     <?php } ?>
+                                    <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="asistencia/principal.php">Asistencia </a>
+                                    <?php } ?>
                                     <a class="nav-link" href="gastos/principal.php">Gastos </a>
                                     
                                  </nav>
@@ -137,11 +148,11 @@ $count = new Usuarios();
                             <div class="collapse" id="prove" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                 <?php if($rol == 'administrador' ) { ?>
-                                    <a class="nav-link" href="proveedores/principal.php">Registrar</a>
-                                <?php } ?>
                                     <a class="nav-link" href="pedidos/principal.php">Pedidos </a>
+                                <?php } ?>
+                                <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="inventario/principal.php">Inventario </a>
-                                   
+                                    <?php } ?>
                                     
                                  </nav>
                             </div>
@@ -168,48 +179,7 @@ $count = new Usuarios();
                         </ol>
                         
  
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Usuarios registrados <h1>
-                                    <?php  $registros = $count->Contar(); ?>
-                                    <h1> <?php  $registros ?></h1>
-                                    </h1></div>
-                                    
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Warning Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                        
                         
                     </div>

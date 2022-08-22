@@ -1,5 +1,6 @@
+
 <?php
-require_once("../../bd/conexion.php");
+require_once("conexion.php");
 session_start();
 class sesion extends BD{
 
@@ -8,7 +9,7 @@ class sesion extends BD{
     }
     public function login($Correo, $Password){
 
-        $statement = $this->db->prepare("SELECT * FROM usuarios WHERE correo =:Correo AND password = :Password ");
+        $statement = $this->db->prepare("SELECT * FROM usuarios WHERE correo =:Correo AND password = :Password AND estado = 'activo' ");
         $statement->bindParam(':Correo',$Correo);
         $statement->bindParam(':Password',$Password);
         $statement->execute();
@@ -24,7 +25,17 @@ class sesion extends BD{
             $_SESSION['rol'] = $result['rol'];
             return true;
              
+        }else{
+         if($statement->rowCount() < 0 ){
+        echo '
+            <script> 
+                alert("Este correo ya esta registrado en la base de datos");
+                window.location = "google.com";
+            </script>
+        
+        ';
         }
+    }
            
         return false;
             
@@ -46,8 +57,6 @@ class sesion extends BD{
 }
 
 ?>
-
-
 
 
 

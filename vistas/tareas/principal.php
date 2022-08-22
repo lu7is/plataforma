@@ -2,7 +2,13 @@
 session_start();
 $id= $_SESSION['id_usuario'];
 if($id == null ){
+    echo' 
     header("location:auth/index.php");
+    <script> 
+                alert("Correo o contraseña Errado");
+                window.location = "auth/index.php";
+    </script>
+    ';
 }
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];

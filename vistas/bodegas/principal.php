@@ -3,7 +3,13 @@ session_start();
 require_once('../../app/modelos/usuariosModel.php');
 $id= $_SESSION['id_usuario'];
 if($id == null ){
-    header("location:auth/index.php");
+  echo' 
+  header("location:auth/index.php");
+  <script> 
+              alert("Correo o contraseña Errado");
+              window.location = "auth/index.php";
+  </script>
+  ';
 }
 $nombre = $_SESSION['nombre'];
 $apellido = $_SESSION['apellido'];
@@ -49,7 +55,7 @@ $clientes = new Usuarios();
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Configuración</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="auth/cerrar_sesion.php">Cerrar Sesión</a></li>
+                        <li><a class="dropdown-item" href="../auth/cerrar_sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -169,8 +175,10 @@ $clientes = new Usuarios();
             <main>
             <div class="container-fluid px-4">
               <h1 class="mt-4"> <i class="material-icons">store_mall_directory</i> Mercancia registrada</h1>
+              <?php if($rol == 'bodega' || $rol == 'administrador'  || $rol == 'supervisor')  { ?>
                   <button type="button" class= "mt-5 mx-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#registrar" ><i class="material-icons">library_add</i> Registrar</button>
-                   <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+                  <?php  } ?>    
+                  <div class="modal fade" id="registrar" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
                         <div class="modal-header">

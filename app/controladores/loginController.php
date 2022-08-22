@@ -1,15 +1,22 @@
 <?php
 
-require_once("../modelos/loginModel.php");
 
-if($_POST['action'] == 'login'){
 
-     $Correo = $_POST['Correo'];
-     $Password = $_POST['Password'];
 
-  $vamos= new sesion();
-  $vamos->login($Correo,$Password);
+
+  
+  if(!empty( $_POST['Correo']) && !empty( $_POST['Password'])){
+    require_once("../modelos/loginModel.php");
+    $vamos= new sesion();
+    $vamos->login($_POST['Correo'],$_POST['Password']);
+
+  }else{
+    $error = "Correo Electronico o contraseña no son validos";
+  }
+     
+
+  
    
-}
+
 
 ?>

@@ -8,7 +8,7 @@ $('#form_login').submit(function(e){
     e.preventDefault();
     var Correo = $('#inputEmail').val();
     var Password = $('#inputPassword').val();
-    var action = 'login';
+    
     if(Correo == "" || Password ==""){
         Swal.fire({
             icon: 'error',
@@ -21,7 +21,7 @@ $('#form_login').submit(function(e){
             url:'../../app/controladores/loginController.php',
             method:'POST',
             async:true,
-            data:{action:action,Correo:Correo, Password:Password},
+            data:{Correo:Correo, Password:Password},
     
             beforeSend: function(){
                 const Toast = Swal.mixin({
@@ -36,8 +36,9 @@ $('#form_login').submit(function(e){
                     title: 'Sesión iniciada corractamente'
                   })
             },
-            success:function (){
+            success:function (response){
                 window.location.replace("../dashboard.php"); 
+                console.log(response)
                
             },
             error:function(jqXHR,estado,error){
