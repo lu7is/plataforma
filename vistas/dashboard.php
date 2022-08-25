@@ -121,7 +121,7 @@ $count = new Usuarios();
                             </a>
                             <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <?php if($rol == 'super' ) { ?>
+                                    <?php if($rol == 'administrador' ) { ?>
                                     <a class="nav-link" href="facturacion/principal.php">Facturacion</a>
                                     <?php } ?>
                                     <?php if($rol == 'super' ) { ?>
@@ -147,7 +147,7 @@ $count = new Usuarios();
                             </a>
                             <div class="collapse" id="prove" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                <?php if($rol == 'administrador' ) { ?>
+                                <?php if($rol == 'administrador' || $rol == 'supervisor' || $rol == 'proveedor' ) { ?>
                                     <a class="nav-link" href="pedidos/principal.php">Pedidos </a>
                                 <?php } ?>
                                 <?php if($rol == 'super' ) { ?>

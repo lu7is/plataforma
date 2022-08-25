@@ -68,14 +68,14 @@
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
+                <div class="sb-sidenav-menu">
                         <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Inicio:</div>
+                            <div class="sb-sidenav-menu-heading">Inicio:</div>
                             <a class="nav-link" href="../dashboard.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i id="taco" class="fas fa-tachometer-alt"></i></div>
                                 Pagina Principal
                             </a>
-                            <?php if($rol == 'administrador' ) { ?>
+                            <?php if($rol == 'administrador' || $rol == 'supervisor' ) { ?>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Usuarios
@@ -98,7 +98,7 @@
                                     <a class="nav-link" href="../tareas/tareas.php">Tareas </a>
                                  </nav>
                             </div>
-                            <?php if($rol == 'bodega' || $rol == 'administrador' || $rol== 'cliente') { ?>
+                            <?php if($rol == 'bodega' || $rol == 'administrador' || $rol== 'cliente' || $rol == 'supervisor') { ?>
                             <div class="sb-sidenav-menu-heading">Logistico:</div>
                             <a class="nav-link collapsed" href="#bode" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
@@ -107,23 +107,19 @@
                             </a>
                             <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                   <?php if($rol == 'administrador' || $rol== 'bodega' || $rol== 'cliente'  ) { ?>
+                                   <?php if($rol == 'administrador' || $rol== 'bodega' || $rol== 'cliente' || $rol == 'supervisor'  ) { ?>
                                     <a class="nav-link" href="../bodegas/principal.php">Registrar</a>
                                     <?php } ?>
-                                    <?php if($rol == 'administrador' || $rol== 'bodega'  ) { ?>
+                                    <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="separacion/principal.php">Separacion </a>
                                     <?php } ?>
-                                    <?php if($rol == 'administrador'  ) { ?>
+                                    <?php if($rol == 'super'  ) { ?>
                                     <a class="nav-link" href="../despacho/principal.php">Despachos </a>
                                     <?php } ?>
-                                    
-                                    
                                  </nav>
                             </div>
-                            <?php }?>
-                            
-
-                            <?php if($rol == 'administrador' ) { ?>
+                            <?php }?>  
+                            <?php if($rol == 'administrador' || $rol == 'supervisor' ) { ?>
                             <div class="sb-sidenav-menu-heading">Operativo:</div>
                             <a class="nav-link collapsed" href="#opera" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
@@ -132,17 +128,23 @@
                             </a>
                             <div class="collapse" id="opera" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                    <?php if($rol == 'administrador' ) { ?>
                                     <a class="nav-link" href="facturacion/principal.php">Facturacion</a>
+                                    <?php } ?>
+                                    <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="produccion/principal.php">Producción </a>
+                                    <?php } ?>
+                                    <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="nomina/principal.php">Nomina </a>
+                                    
                                     <a class="nav-link" href="asistencia/principal.php">Asistencia </a>
+                                    <?php } ?>
                                     <a class="nav-link" href="../gastos/principal.php">Gastos </a>
                                     
                                  </nav>
                             </div>
                             <?php } ?>
-
-                            <?php if($rol == 'administrador' || $rol == 'proveedor' ) { ?>
+                            <?php if($rol == 'administrador' || $rol == 'proveedor' || $rol == 'supervisor') { ?>
                             <div class="sb-sidenav-menu-heading">Materia prima:</div>
                             <a class="nav-link collapsed" href="#prove" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-pen"></i></div>
@@ -151,24 +153,24 @@
                             </a>
                             <div class="collapse" id="prove" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                <?php if($rol == 'administrador' ) { ?>
-                                    <a class="nav-link" href="proveedores/principal.php">Registrar</a>
+                                <?php if($rol == 'administrador' || $rol == 'supervisor' ) { ?>
+                                  <a class="nav-link" href="../pedidos/principal.php">Pedidos </a>
                                 <?php } ?>
-                                    <a class="nav-link" href="pedidos/principal.php">Pedidos </a>
+                                <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="inventario/principal.php">Inventario </a>
-                                   
-                                    
+                                    <?php } ?>
                                  </nav>
                             </div>
                             <?php } ?>
+                        </div>
                     </div>
-                    </div>
+
                     <div class="sb-sidenav-footer">
-                    <div class="small">Login por:</div>
+                        <div class="small">Login por:</div>
                         <?php echo $nombre, " ", $apellido," ",
                         "Rol:"," ", $rol; ?>
                     </div>
-                </nav>
+              </nav>
             </div>
             <!-- empieza la pagina principal -->
             

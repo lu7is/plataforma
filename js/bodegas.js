@@ -105,7 +105,7 @@ function ListarBodega(){
             {"data":"fecha"},
             {"data":"condicion"},
             {"data":"nombre"},
-            {"defaultContent": "<div class='text-center'><div class='btn-group'><button  class='btn btn-warning btn-sm btnEditar'><i class='material-icons'>edit</i>Editar</button><button class='btn btn-danger btn-sm btnBorrar'><i class='material-icons'>delete</i>Eliminar</button></div></div>"}
+            {"defaultContent": "<div class='text-center'><div class='btn-group'><button  class='btn btn-warning btn-sm btnEditar'><i class='material-icons'>edit</i>Editar</button><button class='btn btn-danger btn-sm btnBorrar'> <?php if($rol == 'administrador' || $rol == 'supervisor' ) { ?><i class='material-icons'>delete</i>Eliminar</button> <?php }?></div></div>"}
         ]
     });
 

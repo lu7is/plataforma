@@ -98,10 +98,14 @@ $clientes = new Usuarios();
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="bode" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
+                            <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="../bodegas/principal.php">Registrar</a>
-                                    <a class="nav-link" href="../separacion/principal.php">Separacion </a>
+                                    <?php if($rol == 'super' || $rol== 'super'  ) { ?>
+                                    <a class="nav-link" href="separacion/principal.php">Separacion </a>
+                                    <?php } ?>
+                                    <?php if($rol == 'super'  ) { ?>
                                     <a class="nav-link" href="../despacho/principal.php">Despachos </a>
+                                    <?php } ?>
                                     
                                     
                                  </nav>

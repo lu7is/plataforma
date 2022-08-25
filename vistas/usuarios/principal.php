@@ -84,7 +84,7 @@
                             <?php } ?>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="usuarios/principal.php">Usuarios Registrados</a>
+                                    <a class="nav-link" href="#">Usuarios Registrados</a>
                                  </nav>
                             </div>
                             <a class="nav-link collapsed" href="#tarea" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
@@ -98,7 +98,7 @@
                                     <a class="nav-link" href="../tareas/tareas.php">Tareas </a>
                                  </nav>
                             </div>
-                            <?php if($rol == 'bodega' || $rol == 'administrador' || $rol== 'cliente' || $rol == 'supervisor')  { ?>
+                            <?php if($rol == 'bodega' || $rol == 'administrador' || $rol== 'cliente' || $rol == 'supervisor') { ?>
                             <div class="sb-sidenav-menu-heading">Logistico:</div>
                             <a class="nav-link collapsed" href="#bode" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
@@ -110,10 +110,10 @@
                                    <?php if($rol == 'administrador' || $rol== 'bodega' || $rol== 'cliente' || $rol == 'supervisor'  ) { ?>
                                     <a class="nav-link" href="../bodegas/principal.php">Registrar</a>
                                     <?php } ?>
-                                    <?php if($rol == 'super' || $rol== '' || $rol == ''   ) { ?>
+                                    <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="separacion/principal.php">Separacion </a>
                                     <?php } ?>
-                                    <?php if($rol == 'administrador'  ) { ?>
+                                    <?php if($rol == 'super'  ) { ?>
                                     <a class="nav-link" href="../despacho/principal.php">Despachos </a>
                                     <?php } ?>
                                  </nav>
@@ -136,9 +136,10 @@
                                     <?php } ?>
                                     <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="nomina/principal.php">Nomina </a>
-                                    <?php } ?>
+                                    
                                     <a class="nav-link" href="asistencia/principal.php">Asistencia </a>
-                                    <a class="nav-link" href="gastos/principal.php">Gastos </a>
+                                    <?php } ?>
+                                    <a class="nav-link" href="../gastos/principal.php">Gastos </a>
                                     
                                  </nav>
                             </div>
@@ -152,13 +153,12 @@
                             </a>
                             <div class="collapse" id="prove" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                <?php if($rol == 'administrador' ) { ?>
-                                    <a class="nav-link" href="proveedores/principal.php">Registrar</a>
+                                <?php if($rol == 'administrador' || $rol == 'supervisor' ) { ?>
+                                  <a class="nav-link" href="../pedidos/principal.php">Pedidos </a>
                                 <?php } ?>
-                                    <a class="nav-link" href="pedidos/principal.php">Pedidos </a>
+                                <?php if($rol == 'super' ) { ?>
                                     <a class="nav-link" href="inventario/principal.php">Inventario </a>
-                                   
-                                    
+                                    <?php } ?>
                                  </nav>
                             </div>
                             <?php } ?>
